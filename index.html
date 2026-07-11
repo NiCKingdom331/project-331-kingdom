@@ -2423,6 +2423,14 @@ function showGearTab(i){
   document.querySelectorAll('#gear-tabs .tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
   document.querySelectorAll('#gear-content .tab-content').forEach((c,j)=>c.classList.toggle('active',i===j));
 }
+function showKeTab(i){
+  document.querySelectorAll('#ke-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#ke-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
+}
+function showVikTab(i){
+  document.querySelectorAll('#vik-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#vik-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
+}
 
 function buildCapacity(){
   const D=(LANG==='de');

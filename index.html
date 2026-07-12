@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjoiS2luZ2RvbSAzMzEg4oCTIE5BUDYgQWxsaWFueiIsCiAgInNob3J0X25hbWUiOiJLMzMxIiwKICAiZGVzY3JpcHRpb24iOiJLaW5nc2hvdCBBbGxpYW5jZSBHdWlkZSBmw7xyIEtpbmdkb20gMzMxIiwKICAic3RhcnRfdXJsIjoiLi8iLAogICJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiIjMDYwNDAyIiwKICAidGhlbWVfY29sb3IiOiIjQzlBODRDIiwKICAiaWNvbnMiOlsKICAgIHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCc+PHJlY3Qgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIGZpbGw9JyUyMzA2MDQwMicgcng9JzIwJy8+PHRleHQgeT0nNzAnIGZvbnQtc2l6ZT0nNjAnIHRleHQtYW5jaG9yPSdtaWRkbGUnIHg9JzUwJz7wn5GRPC90ZXh0Pjwvc3ZnPiIsInNpemVzIjoiYW55IiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifQogIF0KfQ==">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚔️ Königreich 331 – Kingshot Ultimate Guide</title>
 <style>
@@ -530,6 +531,70 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
 #lang-canvas, #bt-particles{
   position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;
 }
+
+/* ── PRINT VIEW ── */
+#print-btn{
+  position:fixed;bottom:130px;right:24px;
+  background:linear-gradient(135deg,#3a6b4a,#5a9b6a);
+  color:#fff;border:none;border-radius:50%;
+  width:44px;height:44px;font-size:18px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(90,155,106,0.4);z-index:600;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;
+}
+#print-btn:hover{transform:scale(1.1);}
+@media print{
+  #top-bar,#sidebar,#back-top,#changelog-btn,#print-btn,
+  #theme-btn,#search-results,.tab-nav,.view-toggle,
+  #lang-overlay,#bear-times-overlay,#particles{display:none!important;}
+  body{background:#fff!important;color:#000!important;}
+  .section{display:none!important;}
+  .section.active{display:block!important;}
+  .card{border:1px solid #ccc!important;background:#fff!important;break-inside:avoid;}
+  .table-wrap{overflow:visible!important;}
+  .tab-content{display:block!important;}
+  .accord-body{max-height:none!important;display:block!important;}
+  .alert{border:1px solid #999!important;background:#f9f9f9!important;color:#000!important;}
+  a{color:#000!important;}
+  .sec-head{color:#000!important;border-bottom:2px solid #000!important;}
+  .sub-head{color:#333!important;}
+  p,td,th,li{color:#000!important;}
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"]{
+  --bg-deep:#F5F0E8;--bg-mid:#EDE5D5;--bg-panel:#E8DFC8;
+  --stone-1:#D5C9B0;--stone-2:#C8BAA0;--stone-3:#FFFFFF;
+  --stone-4:#F0E8D8;--stone-5:#C0B090;
+  --text-bright:#1A0E04;--text-dim:#3A2A1A;--text-muted:#6A5A4A;
+  --parch:#3A2A1A;--gold:#8B6914;--gold-glow:rgba(139,105,20,0.4);
+  --ember-lt:#C04020;--green-lt:#2A6A3A;--blue-lt:#1A4A7A;
+}
+[data-theme="light"] body{background:var(--bg-deep);}
+[data-theme="light"] .card{background:var(--stone-3);border-color:var(--stone-5);}
+[data-theme="light"] .section{background:transparent;}
+[data-theme="light"] #top-bar{background:rgba(245,240,232,0.95);border-color:rgba(139,105,20,0.2);}
+[data-theme="light"] .tab-btn{background:var(--stone-4);color:var(--text-dim);}
+[data-theme="light"] .tab-btn.active{background:var(--gold);color:#fff;}
+[data-theme="light"] .alert{background:var(--stone-4)!important;}
+[data-theme="light"] table{background:var(--stone-3);}
+[data-theme="light"] th{background:var(--stone-4)!important;}
+[data-theme="light"] tr:nth-child(even){background:var(--stone-4);}
+[data-theme="light"] input,
+[data-theme="light"] select{background:var(--stone-3);color:var(--text-bright);border-color:var(--stone-5);}
+[data-theme="light"] #sidebar{background:rgba(245,240,232,0.98);}
+[data-theme="light"] .lang-box,[data-theme="light"] .scroll-box{background:var(--stone-3)!important;}
+[data-theme="light"] .particle{background:radial-gradient(circle at 30% 30%,rgba(139,105,20,0.6),rgba(100,70,10,0.2));}
+
+/* ── THEME TOGGLE BUTTON ── */
+#theme-btn{
+  background:rgba(201,168,76,0.12);
+  border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold);border-radius:20px;
+  padding:4px 10px;cursor:pointer;font-size:14px;
+  transition:all 0.2s;white-space:nowrap;
+}
+#theme-btn:hover{background:rgba(201,168,76,0.22);}
 </style>
 </head>
 <body>
@@ -617,6 +682,7 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
     <button id="sidebar-toggle" title="Menü">☰</button>
     <nav id="main-nav"></nav>
     <div class="header-right">
+      <button id="theme-btn" onclick="toggleTheme()" title="Dark/Light">🌙</button>
       <div id="lang-cur-wrap" style="position:relative;display:inline-block">
   <button class="lang-switch-btn" onclick="showLangMenu()" id="lang-cur">🌐 DE</button>
   <div id="lang-dropdown">
@@ -1195,6 +1261,23 @@ function initBearParticles(){
 function stopBearParticles(){
   if(_bearParticles){_bearParticles.stop();_bearParticles=null;}
 }
+
+
+var _theme='dark';
+function toggleTheme(){
+  _theme=(_theme==='dark')?'light':'dark';
+  document.documentElement.setAttribute('data-theme',_theme);
+  var btn=document.getElementById('theme-btn');
+  if(btn)btn.textContent=(_theme==='dark')?'🌙':'☀️';
+  try{localStorage.setItem('ks-theme',_theme);}catch(e){}
+}
+// Restore saved theme
+(function(){
+  try{
+    var saved=localStorage.getItem('ks-theme');
+    if(saved&&saved==='light'){toggleTheme();}
+  }catch(e){}
+})();
 
 function showLangMenu(){
   var dd=document.getElementById('lang-dropdown');
@@ -3398,10 +3481,58 @@ function showEtTab(i){
   document.querySelectorAll('#et-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
   document.querySelectorAll('#et-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
 }
+
+
+// ── PWA INSTALL PROMPT ──
+var _deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  _deferredPrompt=e;
+  // Show install banner after 8 seconds
+  setTimeout(function(){
+    if(!window.matchMedia('(display-mode: standalone)').matches){
+      showPWABanner();
+    }
+  },8000);
+});
+window.addEventListener('appinstalled',function(){
+  var b=document.getElementById('pwa-banner');
+  if(b)b.remove();
+  _deferredPrompt=null;
+});
+function showPWABanner(){
+  if(document.getElementById('pwa-banner'))return;
+  var D=(LANG==='de');
+  var banner=document.createElement('div');
+  banner.id='pwa-banner';
+  banner.style.cssText='position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1A1208,#0E0C08);border-top:1px solid rgba(201,168,76,0.4);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;z-index:9999;font-size:13px;color:var(--parch)';
+  banner.innerHTML='<span>📱 '+(D?'Als App auf dem Homescreen speichern!':'Save as app on home screen!')+'</span>'
+    +'<div style="display:flex;gap:8px">'
+    +'<button onclick="doPWAInstall()" style="background:linear-gradient(135deg,#8B6914,#C9A84C);color:#0A0806;border:none;padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-weight:700">'+(D?'Installieren':'Install')+'</button>'
+    +'<button onclick="document.getElementById(\'pwa-banner\').remove()" style="background:rgba(255,255,255,0.1);color:var(--text-muted);border:none;padding:6px 10px;border-radius:8px;font-size:12px;cursor:pointer">✕</button>'
+    +'</div>';
+  document.body.appendChild(banner);
+}
+function doPWAInstall(){
+  var banner=document.getElementById('pwa-banner');
+  if(_deferredPrompt){
+    _deferredPrompt.prompt();
+    _deferredPrompt.userChoice.then(function(r){
+      _deferredPrompt=null;
+      if(banner)banner.remove();
+    });
+  } else {
+    if(banner)banner.remove();
+    var D=(LANG==='de');
+    alert(D?'Tippe im Browser auf "Teilen" → "Zum Startbildschirm" (iOS) oder Menü → "App installieren" (Android)!':'Tap Share → "Add to Home Screen" (iOS) or Menu → "Install App" (Android)!');
+  }
+}
+
 </script>
 
 
 <!-- CHANGELOG -->
+<button id="print-btn" onclick="window.print()" title="Drucken / Print">🖨️</button>
 <button id="changelog-btn" onclick="toggleChangelog()" title="Was ist neu?">📋</button>
 <div id="changelog-panel">
   <div class="changelog-title">📋 <span id="cl-title">Was ist neu?</span></div>

@@ -1497,7 +1497,7 @@ function calcFormation(){
 function buildEvents(){
   const D=(LANG==='de');
   document.getElementById('ev-title').textContent=tr('🎯 Events','🎯 Events','🎯 Eventos');
-  const tabs=tr([['🐻','Bärenfalle','bear'],['⚔️','KvK','kvk'],['🛡️','Wikinger','viking'],['👑','Schwertland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Geheimmission','intel'],['🌍','Welten d. Ewigkeit','eternity']],[['🐻','Bear Hunt','bear'],['⚔️','KvK','kvk'],['🛡️','Viking','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Intel','intel'],['🌍',("Eternity's Reach"),'eternity']],[['🐻','Trampa del Oso','bear'],['⚔️','RvR','kvk'],['🛡️','Vikingos','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Misiones Intel','intel']]);
+  const tabs=tr([['🐻','Bärenfalle','bear'],['⚔️','KvK','kvk'],['🛡️','Wikinger','viking'],['👑','Schwertland','sword'],['🏟️','TAC','tac'],['💀','Kill Event','killevent'],['⚡','Cesaren Zorn','cesaren'],['🔥','Tyrant','tyrant'],['🕵️','Geheimmission','intel'],['🌍','Welten d. Ewigkeit','eternity']],[['🐻','Bear Hunt','bear'],['⚔️','KvK','kvk'],['🛡️','Viking','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['💀','Kill Event','killevent'],['⚡',"Cesares' Fury",'cesaren'],['🔥','Tyrant','tyrant'],['🕵️','Intel','intel'],['🌍',"Eternity's Reach",'eternity']],[['🐻','Trampa del Oso','bear'],['⚔️','RvR','kvk'],['🛡️','Vikingos','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Misiones Intel','intel']]);
   document.getElementById('evt-tabs').innerHTML=tabs.map(([ic,lb,id])=>`<button class="tab-btn" onclick="showEvt('${id}')">${ic} ${lb}</button>`).join('');
   showEvt('bear');
 }
@@ -2645,6 +2645,101 @@ function showEvt(id){
       var tabDivs='<div id="et-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="ettab-'+i+'">'+c+'</div>';}).join('')+'</div>';
       return tabNav+tabDivs;
     })(),
+    cesaren:(function(){
+      var D=(LANG==='de');
+      var tabs=D
+        ?['📋 Grundlagen','⚔️ Schwierigkeiten & Kapitäne','🏆 Belohnungen','💡 Tipps & Tricks']
+        :['📋 Basics','⚔️ Difficulties & Captains','🏆 Rewards','💡 Tips & Tricks'];
+      var tabNav='<div class="tab-nav" id="cz-tabs">'+tabs.map(function(t,i){return '<button class="tab-btn'+(i===0?' active':'')+'" onclick="showCzTab('+i+')">'+t+'</button>';}).join('')+'</div>';
+
+      // Tab 0: Grundlagen
+      var t0='<div class="alert alert-gold">⚡ '+(D
+        ?'Cesaren Zorn (Cesares Fury) ist ein monatliches Event! Suche und besiege Cesares-Rebellen auf der Karte. Solo oder als Allianz-Rally. 50 Level pro Schwierigkeitsstufe.'
+        :"Cesares' Fury is a monthly event! Find and defeat Cesares Rebels on the map. Solo or Alliance Rally. 50 levels per difficulty.")+'</div>'
+      +'<div class="grid-2">'
+        +'<div class="card card-highlight"><div class="card-title">🔍 '+(D?'Rebellen finden':'Finding Rebels')+'</div><p style="font-size:13px">'
+          +(D?'• <b>15 Ausdauer</b> = Rebellen aufspüren (Scout)<br>• <b>10 Ausdauer</b> = Rebellen solo angreifen<br>• Mit <b>Diana</b> als Held: nur 8 Ausdauer pro Angriff!<br>• 1 Stunde Zeit nach dem Scouten um anzugreifen<br>• 50 Level pro Event → ca. 1.100–1.500 Ausdauer gesamt':'• <b>15 Stamina</b> = Scout a Rebel<br>• <b>10 Stamina</b> = Solo attack a Rebel<br>• With <b>Diana</b> as hero: only 8 Stamina per attack!<br>• 1 hour to attack after scouting<br>• 50 levels per event → approx. 1,100–1,500 Stamina total')+'</p></div>'
+        +'<div class="card card-highlight"><div class="card-title">⚔️ '+(D?'Kampf-Optionen':'Combat Options')+'</div><p style="font-size:13px">'
+          +(D?'• <b>Angriff:</b> Solo-Marsch mit eigenen Truppen<br>• <b>Rally:</b> Allianz greift gemeinsam an (empfohlen ab Level 10!)<br>• <b>Hilfe anfragen:</b> Allianz-Mitglieder besiegen den Rebellen für dich → kostet Cesares-Accord!<br><br><b style="color:var(--gold)">Wichtig:</b> Max. 7x täglich Belohnungen durch Rally-Hilfe!':'• <b>Attack:</b> Solo march with own troops<br>• <b>Rally:</b> Alliance attacks together (recommended from Level 10!)<br>• <b>Request Help:</b> Alliance members defeat Rebel for you → costs Cesares Accord!<br><br><b style="color:var(--gold)">Important:</b> Max. 7x daily rewards from rally help!')+'</p></div>'
+      +'</div>'
+      +'<div class="sub-head">'+(D?'📜 Cesares-Accord (Hilfe-Token)':'📜 Cesares Accord (Help Token)')+'</div>'
+      +'<div class="grid-2">'
+        +'<div class="card"><div class="card-title">'+(D?'🎫 Was sind Accords?':'🎫 What are Accords?')+'</div><p style="font-size:12px">'
+          +(D?'• <b>5 Accords</b> pro Event gratis<br>• Bis zu <b>5 weitere</b> durch anderen Spielern helfen verdienen (max. 10 gesamt)<br>• Für Hilfe anfordern bei schwierigen Rebellen nutzen<br>• <b>Wichtig:</b> Du musst NICHT online sein wenn dein Rebelle mit deinem Accord besiegt wird – Belohnungen kommen per Mail!':'• <b>5 Accords</b> per event for free<br>• Earn up to <b>5 more</b> by helping other players (max. 10 total)<br>• Use to request help for difficult Rebels<br>• <b>Important:</b> You do NOT need to be online when your Rebel is defeated via Accord – rewards come via mail!')+'</p></div>'
+        +'<div class="card"><div class="card-title">'+(D?'💡 Accord-Strategie':'💡 Accord Strategy')+'</div><p style="font-size:12px">'
+          +(D?'Accords für die <b>Meilenstein-Level</b> sparen:<br>• Level 10 (erster Power-Spike!)<br>• Level 20<br>• Level 30<br>• Level 40<br>• Level 50 (Finale!)<br><br>Diese Level sind deutlich stärker – hier lohnt sich Hilfe anfordern!':'Save Accords for <b>milestone levels</b>:<br>• Level 10 (first power spike!)<br>• Level 20<br>• Level 30<br>• Level 40<br>• Level 50 (Final!)<br><br>These levels are significantly stronger – request help here!')+'</p></div>'
+      +'</div>';
+
+      // Tab 1: Schwierigkeiten & Kapitäne
+      var t1='<div class="sub-head">'+(D?'📊 5 Schwierigkeitsstufen':'📊 5 Difficulty Tiers')+'</div>'
+      +'<div class="table-wrap"><table><thead><tr>'+(D?['Stufe','Name','Voraussetzung','Stärke','Besonderheit']:['Tier','Name','Requirement','Strength','Special']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+      +'<tr><td style="color:var(--green-lt);font-weight:700">1</td><td style="color:var(--green-lt)">🟢 '+(D?'Leicht':'Easy')+'</td><td style="font-size:12px">'+(D?'Alle Spieler (Start)':'All players (Start)')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Schwach – solo machbar':'Weak – solo doable')+'</td><td style="font-size:12px">'+(D?'Einstieg für jeden':'Entry level for all')+'</td></tr>'
+      +'<tr><td style="color:var(--blue-lt);font-weight:700">2</td><td style="color:var(--blue-lt)">🔵 '+(D?'Normal':'Normal')+'</td><td style="font-size:12px">'+(D?'50/50 Leicht abgeschlossen':'50/50 Easy completed')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Mittel – solo noch möglich':'Medium – solo still possible')+'</td><td style="font-size:12px">'+(D?'Ab Level 10 Rally empfohlen':'Rally recommended from Level 10')+'</td></tr>'
+      +'<tr><td style="color:var(--gold);font-weight:700">3</td><td style="color:var(--gold)">🟡 '+(D?'Schwer':'Hard')+'</td><td style="font-size:12px">'+(D?'50/50 Normal abgeschlossen':'50/50 Normal completed')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Stark – Rally oft nötig':'Strong – Rally often needed')+'</td><td style="font-size:12px">'+(D?'Bessere Belohnungen!':'Better rewards!')+'</td></tr>'
+      +'<tr><td style="color:var(--ember-lt);font-weight:700">4</td><td style="color:var(--ember-lt)">🔴 '+(D?'Albtraum':'Nightmare')+'</td><td style="font-size:12px">'+(D?'50/50 Schwer abgeschlossen':'50/50 Hard completed')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Sehr stark – Rally nötig':'Very strong – Rally needed')+'</td><td style="font-size:12px">'+(D?'Starke Belohnungen':'Strong rewards')+'</td></tr>'
+      +'<tr><td style="color:#FFD700;font-weight:700">5</td><td style="color:#FFD700">💀 '+(D?'Wahnsinn':'Insane')+'</td><td style="font-size:12px">'+(D?'50/50 Albtraum abgeschlossen':'50/50 Nightmare completed')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Extrem – volle Allianz!':'Extreme – full alliance!')+'</td><td style="font-size:12px">'+(D?'BESTE Belohnungen!':'BEST rewards!')+'</td></tr>'
+      +'</tbody></table></div>'
+      +'<div class="alert alert-info">ℹ️ '+(D?'Jede Stufe hat 50 Level. Alle 10 Level gibt es einen POWER-SPIKE (Level 10, 20, 30, 40, 50) bei dem der Rebel deutlich stärker wird. Diese Level immer mit Rally oder Accord lösen!':'Each tier has 50 levels. Every 10 levels there is a POWER SPIKE (Level 10, 20, 30, 40, 50) where the Rebel becomes significantly stronger. Always use Rally or Accord for these!')+'</div>'
+      +'<div class="sub-head">'+(D?'👑 Cesaren-Kapitäne (NUR R4/R5 rufen!)':'👑 Cesares Captains (R4/R5 ONLY summon!)')+'</div>'
+      +'<div class="alert alert-warn">⚠️ '+(D
+        ?'Kapitäne können NUR von R4 oder R5 gerufen werden! Sie müssen erst durch genug besiegte Rebellen in der Allianz freigeschaltet werden.'
+        :'Captains can ONLY be summoned by R4 or R5! They must first be unlocked by the alliance defeating enough Rebels.')+'</div>'
+      +'<div class="table-wrap"><table><thead><tr>'+(D?['Kapitän','Freischalt-Bedingung','Schwierigkeit','Belohnung']:['Captain','Unlock Requirement','Difficulty','Reward']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+      +'<tr><td style="color:var(--green-lt);font-weight:700">⚡ '+(D?'Kapitän Lv.1':'Captain Lv.1')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Allianz besiegt genug Rebellen (im Event-Tab Allianz prüfen!)':'Alliance defeats enough Rebels (check Event tab Alliance!)')+'</td><td style="font-size:12px"><span class="tag tag-b">'+( D?'Leicht':'Easy')+'</span></td><td style="font-size:12px">'+(D?'Gut – für alle Mitglieder!':'Good – for all members!')+'</td></tr>'
+      +'<tr><td style="color:var(--blue-lt);font-weight:700">⚡ '+(D?'Kapitän Lv.2':'Captain Lv.2')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Höhere Allianz-Gesamt-Kills':'Higher alliance total kills')+'</td><td style="font-size:12px"><span class="tag tag-a">'+( D?'Mittel':'Medium')+'</span></td><td style="font-size:12px">'+(D?'Besser – lohnt Rally!':'Better – Rally worth it!')+'</td></tr>'
+      +'<tr><td style="color:var(--gold);font-weight:700">⚡ '+(D?'Kapitän Lv.3':'Captain Lv.3')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Noch mehr Allianz-Kills':'Even more alliance kills')+'</td><td style="font-size:12px"><span class="tag tag-s">'+(D?'Schwer':'Hard')+'</span></td><td style="font-size:12px">'+(D?'Sehr gut!':'Very good!')+'</td></tr>'
+      +'<tr><td style="color:var(--ember-lt);font-weight:700">⚡ '+(D?'Kapitän Lv.4':'Captain Lv.4')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Viele Allianz-Kills nötig':'Many alliance kills needed')+'</td><td style="font-size:12px"><span class="tag tag-sp">'+(D?'Albtraum':'Nightmare')+'</span></td><td style="font-size:12px">'+(D?'Exzellent!':'Excellent!')+'</td></tr>'
+      +'<tr><td style="color:#FFD700;font-weight:700">⚡ '+(D?'Kapitän Lv.5':'Captain Lv.5')+'</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Maximale Allianz-Kills – sehr viel!':'Maximum alliance kills – a lot!')+'</td><td style="font-size:12px"><span class="tag tag-sp">💀</span></td><td style="font-size:12px">'+(D?'BESTE Belohnungen im gesamten Event!':'BEST rewards in the entire event!')+'</td></tr>'
+      +'</tbody></table></div>'
+      +'<div class="alert alert-tip">💡 '+(D
+        ?'Kapitän-Strategie: ALLE Mitglieder schicken zuerst NUR 1 TRUPPE (ohne Helden)! So überlebt der Kapitän lange genug dass alle einmal treffen und Belohnungen bekommen. Erst danach volle Märsche!'
+        :'Captain Strategy: ALL members first send ONLY 1 TROOP (no heroes)! This keeps the Captain alive long enough for everyone to hit and qualify for rewards. Only then send full marches!')+'</div>';
+
+      // Tab 2: Belohnungen
+      var t2='<div class="alert alert-info">ℹ️ '+(D?'Belohnungen kommen am Ende des Events per Mail. Je höher die Schwierigkeitsstufe desto besser die Belohnungen!':'Rewards arrive via mail at the end of the event. The higher the difficulty the better the rewards!')+'</div>'
+      +'<div class="sub-head">'+(D?'🏆 Belohnungen nach Schwierigkeitsstufe':'🏆 Rewards by Difficulty')+'</div>'
+      +'<div class="table-wrap"><table><thead><tr>'+(D?['Schwierigkeit','Hauptbelohnungen','Exklusiv']:['Difficulty','Main Rewards','Exclusive']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+      +'<tr><td><span class="tag tag-b">🟢 '+(D?'Leicht':'Easy')+'</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Speedups, Ressourcen, Edelsteine':'Speedups, Resources, Gems')+'</td><td style="font-size:12px">'+(D?'Einsteiger-Belohnungen':'Beginner rewards')+'</td></tr>'
+      +'<tr><td><span class="tag tag-a">🔵 '+(D?'Normal':'Normal')+'</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Speedups, Helden-Shards, Forgehammer':'Speedups, Hero Shards, Forgehammers')+'</td><td style="font-size:12px">'+(D?'Erste Mythic-Items':'First Mythic items')+'</td></tr>'
+      +'<tr><td><span class="tag tag-s">🟡 '+(D?'Schwer':'Hard')+'</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Mythic Shards, Forgehammer+, Gear-Materialien':'Mythic Shards, Forgehammer+, Gear Materials')+'</td><td style="font-size:12px">'+(D?'Gute Gear-Drops!':'Good Gear drops!')+'</td></tr>'
+      +'<tr><td><span class="tag tag-sp">🔴 '+(D?'Albtraum':'Nightmare')+'</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Viele Mythic Shards, Rotes Gear Material, Speedups':'Many Mythic Shards, Red Gear Material, Speedups')+'</td><td style="font-size:12px">'+(D?'Rotes Gear-Material!':'Red Gear material!')+'</td></tr>'
+      +'<tr><td><span class="tag tag-sp">💀 '+(D?'Wahnsinn':'Insane')+'</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Maximale Mythic Shards, Mithril, Rotes Gear Material, Truegold':'Maximum Mythic Shards, Mithril, Red Gear Material, Truegold')+'</td><td style="font-size:12px;color:var(--gold);font-weight:700">'+(D?'Truegold + Mithril = Endgame!':'Truegold + Mithril = Endgame!')+'</td></tr>'
+      +'</tbody></table></div>'
+      +'<div class="sub-head">'+(D?'⚡ Kapitän-Belohnungen (Allianz)':'⚡ Captain Rewards (Alliance)')+'</div>'
+      +'<div class="table-wrap"><table><thead><tr>'+(D?['Kapitän','Allianz-Belohnung','Wichtig']:['Captain','Alliance Reward','Important']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+      +'<tr><td style="color:var(--green-lt)">⚡ Lv.1</td><td style="font-size:12px;color:var(--text-dim)">Speedups, Edelsteine</td><td style="font-size:12px">'+(D?'Min. 1 Treffer nötig!':'Min. 1 hit needed!')+'</td></tr>'
+      +'<tr><td style="color:var(--blue-lt)">⚡ Lv.2</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Speedups, Helden-Shards':'Speedups, Hero Shards')+'</td><td style="font-size:12px">'+(D?'1 Truppe reicht für Teilnahme!':'1 troop is enough to qualify!')+'</td></tr>'
+      +'<tr><td style="color:var(--gold)">⚡ Lv.3</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Mythic Shards, Gear Material':'Mythic Shards, Gear Material')+'</td><td style="font-size:12px">'+(D?'Alle treffen = alle bekommen!':'All hit = all receive!')+'</td></tr>'
+      +'<tr><td style="color:var(--ember-lt)">⚡ Lv.4</td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Viele Mythic Shards, Mithril':'Many Mythic Shards, Mithril')+'</td><td style="font-size:12px">'+(D?'Koordination wichtig!':'Coordination important!')+'</td></tr>'
+      +'<tr><td style="color:#FFD700;font-weight:700">⚡ Lv.5</td><td style="font-size:12px;color:var(--gold)">'+(D?'Mithril, Truegold, Top-Tier Items!':'Mithril, Truegold, Top-Tier Items!')+'</td><td style="font-size:12px;font-weight:700">'+(D?'PFLICHT für alle aktiven Mitglieder!':'MUST for all active members!')+'</td></tr>'
+      +'</tbody></table></div>'
+      +'<div class="alert alert-gold">💡 '+(D?'Belohnungs-Regel: Du musst min. EINEN Treffer landen um Kapitän-Belohnungen zu bekommen – auch 0,0% Schaden zählt! Deshalb alle mit 1 Truppe zuerst!':'Reward Rule: You must land min. ONE hit to get Captain rewards – even 0.0% damage counts! That is why everyone sends 1 troop first!')+'</div>';
+
+      // Tab 3: Tipps
+      var t3='<div class="grid-2">'
+      +[
+        [D?'🦸 Diana als Pflicht-Held!':'🦸 Diana is Mandatory!',
+         D?'Diana reduziert Ausdauer-Kosten um bis zu 25%! 10 → 8 Ausdauer pro Angriff. Über 50 Level spart das massiv Ausdauer. Diana IMMER als ersten Helden mitnehmen!':'Diana reduces Stamina cost by up to 25%! 10 → 8 Stamina per attack. Over 50 levels this saves massive Stamina. ALWAYS bring Diana as first hero!'],
+        [D?'⚡ Meilenstein-Level beachten!':'⚡ Watch the Milestone Levels!',
+         D?'Level 10, 20, 30, 40 und 50 sind deutlich stärker! Accords für diese Level sparen. Mit Rally lösen wenn allein zu schwach. Nicht unterschätzen – auch wenn es nach Sieg aussieht kann der nächste Rebel viel stärker sein!':'Levels 10, 20, 30, 40 and 50 are significantly stronger! Save Accords for these. Use Rally if too weak alone. Do not underestimate – even if a win looks certain the next Rebel can be much stronger!'],
+        [D?'👥 Allianz-Koordination für Kapitäne':'👥 Alliance Coordination for Captains',
+         D?'Fixen Zeitpunkt mit Allianz ausmachen! Alle schicken zuerst 1 Truppe ohne Helden → warten bis ALLE drin sind → dann volle Märsche. Kein Mitglied soll die Belohnungen verpassen!':'Arrange a fixed time with alliance! Everyone sends 1 troop without heroes → wait until ALL have hit → then full marches. No member should miss the rewards!'],
+        [D?'📜 Accord ohne Online-Sein':'📜 Accord Without Being Online',
+         D?'Wenn du Hilfe anforderst per Accord musst du NICHT online sein! Die Belohnungen kommen automatisch per Mail. Ideal für Spieler die nicht immer online sein können!':'When you request help via Accord you do NOT need to be online! Rewards come automatically via mail. Ideal for players who cannot always be online!'],
+        [D?'💪 Schwierigkeitsstufe nicht überspringen':'💪 Do Not Skip Difficulty Levels',
+         D?'Jede Stufe muss komplett abgeschlossen werden (50/50). Keine Abkürzungen möglich. Plane mindestens 1 Monat pro Stufe. Je früher du startest desto früher kommst du an die besten Belohnungen!':'Each tier must be fully completed (50/50). No shortcuts possible. Plan at least 1 month per tier. The earlier you start the sooner you reach the best rewards!'],
+        [D?'⚡ Ausdauer ansparen':'⚡ Save Stamina',
+         D?'Ausdauer vor Event-Start ansparen! 1.100–1.500 Ausdauer für 50 Level. Ausdauer läuft täglich auf → nicht verschwenden. Event-Start ankündigung im Chat beachten!':'Save Stamina before event starts! 1,100–1,500 Stamina for 50 levels. Stamina regenerates daily → do not waste it. Watch for event start announcement in chat!'],
+      ].map(function(c){return '<div class="card"><div class="card-title">'+c[0]+'</div><p style="font-size:12px">'+c[1]+'</p></div>';}).join('')
+      +'</div>'
+      +'<div class="alert alert-warn">⚠️ '+(D
+        ?'R4/R5 Pflicht: NUR R4 und R5 dürfen Cesaren-Kapitäne rufen! Bitte immer Rücksprache halten wann ein Kapitän gerufen wird damit alle Mitglieder Zeit haben teilzunehmen!'
+        :'R4/R5 Only: ONLY R4 and R5 may summon Cesares Captains! Always coordinate when a Captain will be summoned so all members have time to participate!')+'</div>';
+
+      var contents=[t0,t1,t2,t3];
+      var tabDivs='<div id="cz-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="cztab-'+i+'">'+c+'</div>';}).join('')+'</div>';
+      return tabNav+tabDivs;
+    })(),
     intel:`<div class="grid-2">
       <div class="card card-highlight"><div class="card-title">📅 ${D?'Anspar-Trick':'Save-Up Trick'}</div><p>${D?'Tag VOR dem Event: 8:00 UTC Missionen machen aber <b>Belohnungen NICHT abholen</b>. 16:00 überspringen. Wenn Event startet alles auf einmal abholen = doppelte Punkte!':'Day BEFORE event: do 8:00 UTC missions but <b>DO NOT collect rewards</b>. Skip 16:00. When event starts collect everything = double points!'}</p></div>
       <div class="card card-highlight"><div class="card-title">🗡️ Golden Glaives</div><p>${D?'Normal: 1 Punkt. Golden Glaives auf der Karte: <b>10 Punkte</b> pro Stück! Immer zuerst Glaives jagen!':'Normal: 1 point. Golden Glaives on map: <b>10 points</b> each! Always hunt Glaives first!'}</p></div>
@@ -2701,6 +2796,10 @@ function showGearTab(i){
 function showKeTab(i){
   document.querySelectorAll('#ke-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
   document.querySelectorAll('#ke-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
+}
+function showCzTab(i){
+  document.querySelectorAll('#cz-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#cz-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
 }
 function showVikTab(i){
   document.querySelectorAll('#vik-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
@@ -3008,6 +3107,7 @@ const SD=[
   {k:'einsteiger anfänger beginner erste tage gems diamanten hospital truppen roulette',t:'Einsteiger / Beginner Guide',s:'einsteiger'},
   {k:'rotes gear imbued mithril mythic upgrade konvertierung',t:'Rotes Gear / Red Gear Guide',s:'einsteiger'},
   {k:'castle battle schloss kampf turret rally king',t:'Schloss-Kampf / Castle Battle',s:'events'},
+  {k:'cesaren zorn fury rebellen kapitän schwierigkeit rally accord stamina ausdauer',t:'Cesaren Zorn / Cesares Fury',s:'events'},
   {k:'kill event all out ke punkte sammler schild regeln pvp',t:'Kill Event (All-Out)',s:'events'},
   {k:'arena conquest front back pvp team lineup kampf',t:'Arena & Conquest Guide',s:'arena'},
   {k:'nap6 königreiche allianz zoonami imperium chaosbrigade rangliste',t:'Königreiche – NAP6 Rangliste',s:'koenigreiche'},
@@ -3338,6 +3438,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 // ── CHANGELOG ──
 var CHANGELOG=[
   {date:'12. Juli 2026',ts:'2026-07-12',items:[
+    {icon:'⚡',text:'Cesaren Zorn (Cesares Fury) komplett neu eingebaut – Schwierigkeiten, Kapitäne (R4/R5), Belohnungen & Tipps',time:'02:00'},
     {icon:'🌍',text:'Welten der Ewigkeit – 1-Minuten-Trick & korrekter Skill-Pfad (R-R-L-L-R) eingebaut',time:'01:00'},
   ]},
   {date:'11. Juli 2026',ts:'2026-07-11',items:[

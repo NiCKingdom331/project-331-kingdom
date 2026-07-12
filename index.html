@@ -490,6 +490,46 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
   50%{opacity:0.8;transform:scale(1.02);}
   100%{opacity:0;transform:scale(0.95);}
 }
+
+/* ── LANG DROPDOWN (nav) ── */
+#lang-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:linear-gradient(145deg,#1A1208,#0E0C08);
+  border:1px solid rgba(201,168,76,0.4);border-radius:10px;
+  padding:10px;z-index:999;display:none;
+  box-shadow:0 8px 24px rgba(0,0,0,0.8);min-width:160px;
+}
+#lang-dropdown.show{display:flex;gap:8px;flex-direction:column;}
+.lang-drop-btn{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);
+  color:var(--parch);border-radius:8px;padding:8px 12px;cursor:pointer;
+  font-size:14px;transition:all 0.2s;
+}
+.lang-drop-btn:hover{background:rgba(201,168,76,0.18);border-color:rgba(201,168,76,0.5);}
+#lang-cur-wrap{position:relative;display:inline-block;}
+
+/* ── EMBER PARTICLES ── */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.particle{
+  position:absolute;bottom:-10px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,200,80,0.9),rgba(201,168,76,0.4));
+  box-shadow:0 0 6px rgba(201,168,76,0.6);
+  animation:ember-rise linear infinite;
+  opacity:0;
+}
+@keyframes ember-rise{
+  0%  {transform:translateY(0) translateX(0) scale(1);   opacity:0;}
+  10% {opacity:0.8;}
+  50% {transform:translateY(-40vh) translateX(var(--drift)) scale(0.8);opacity:0.6;}
+  90% {opacity:0.1;}
+  100%{transform:translateY(-95vh) translateX(var(--drift2)) scale(0.3);opacity:0;}
+}
+/* Overlay canvas particles */
+#lang-canvas, #bt-particles{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;
+}
 </style>
 </head>
 <body>
@@ -537,34 +577,39 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
       <div style="font-size:13px;color:var(--text-dim);font-style:italic">With kind regards</div>
       <div style="font-family:Cinzel,serif;font-size:16px;color:var(--gold);margin-top:4px">NiC <span style="color:var(--text-muted);font-size:13px">~ [40K] Member</span> ⚔️</div>
     </div>
-    <button onclick="document.getElementById('welcome-overlay').style.display='none';document.getElementById('lang-overlay').style.display='flex';" style="background:linear-gradient(135deg,#8B6914,#C9A84C,#E8C96A);color:#0A0806;border:none;padding:13px 40px;border-radius:10px;font-family:Cinzel Decorative,Cinzel,serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s;box-shadow:0 4px 20px rgba(201,168,76,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(201,168,76,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(201,168,76,0.3)'">
+    <button onclick="document.getElementById('welcome-overlay').style.display='none';document.getElementById('lang-overlay').style.display='flex';setTimeout(function(){if(_langParticles)_langParticles.stop();_langParticles=createCanvasParticles('lang-canvas',25);},50);" style="background:linear-gradient(135deg,#8B6914,#C9A84C,#E8C96A);color:#0A0806;border:none;padding:13px 40px;border-radius:10px;font-family:Cinzel Decorative,Cinzel,serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s;box-shadow:0 4px 20px rgba(201,168,76,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(201,168,76,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(201,168,76,0.3)'">
       ⚔️ Enter Kingdom 331
     </button>
   </div>
 </div>
+<div id="particles"></div>
 <div id="lang-overlay" style="display:none">
-  <div class="lang-box">
+  <canvas id="lang-canvas"></canvas>
+  <div class="lang-box" style="position:relative;z-index:1">
     <div class="lang-emblem">👑</div>
     <div class="lang-title">KINGDOM <span>#331</span></div>
     <div class="lang-rule"></div>
     <div class="lang-sub">DEUTSCH · ENGLISH</div>
     <div class="lang-grid" style="grid-template-columns:repeat(2,1fr);gap:16px;max-width:260px;margin:0 auto">
-      <button class="lang-btn" onclick="selectLangAnimated('de',event,this)"><span class="flag">🇩🇪</span><span class="lname">Deutsch</span></button>
-      <button class="lang-btn" onclick="selectLangAnimated('en',event,this)"><span class="flag">🇬🇧</span><span class="lname">English</span></button>
+      <button class="lang-btn" onclick="selectLangAnimated('de',event,this,true)"><span class="flag">🇩🇪</span><span class="lname">Deutsch</span></button>
+      <button class="lang-btn" onclick="selectLangAnimated('en',event,this,true)"><span class="flag">🇬🇧</span><span class="lname">English</span></button>
     </div>
   </div>
 </div>
-<div id="bear-times-overlay" style="display:none;position:fixed;inset:0;z-index:9998;align-items:center;justify-content:center;background:rgba(6,4,2,0.82);padding:16px;" onclick="if(event.target===this)closeBearTimes()">
-  <div class="lang-box" style="max-width:400px;padding:32px 26px;cursor:default;" onclick="event.stopPropagation()">
-    <div class="lang-emblem" style="font-size:40px;margin-bottom:8px">🐻</div>
-    <div id="bt-title" class="lang-title" style="font-size:17px;letter-spacing:2px"></div>
-    <div class="lang-rule"></div>
-    <div id="bt-body" style="text-align:left;font-size:13px;color:var(--text-dim);line-height:1.7;margin-bottom:22px"></div>
-    <button onclick="closeBearTimes()" style="position:relative;z-index:1;background:linear-gradient(135deg,#8B6914,#C9A84C,#E8C96A);color:#0A0806;border:none;padding:11px 34px;border-radius:10px;font-family:Cinzel Decorative,Cinzel,serif;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:1px;">
-      <span id="bt-close-label"></span>
+<div id="bear-times-overlay" style="display:none;position:fixed;inset:0;z-index:10000;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 40%,#1E0E06 0%,#060402 100%);padding:20px;">
+  <canvas id="bt-particles" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
+  <div style="position:relative;z-index:1;width:100%;max-width:420px;background:linear-gradient(145deg,#1A1208,#0E0C08);border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:32px 24px;box-shadow:0 8px 40px rgba(0,0,0,0.8),0 0 40px rgba(201,168,76,0.08);text-align:center;">
+    <div style="font-size:48px;margin-bottom:8px">🐻</div>
+    <div id="bt-title" style="font-family:'Cinzel Decorative','Cinzel',serif;font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:6px"></div>
+    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.5),transparent);margin:10px 0 14px"></div>
+    <div id="bt-sub" style="font-size:12px;color:var(--text-muted);margin-bottom:14px;font-style:italic"></div>
+    <div id="bt-body" style="text-align:left;font-size:13px;color:var(--text-dim);line-height:2;margin-bottom:20px"></div>
+    <button onclick="closeBearTimes()" id="bt-btn" style="background:linear-gradient(135deg,#8B6914,#C9A84C,#E8C96A);color:#0A0806;border:none;padding:11px 36px;border-radius:10px;font-family:'Cinzel Decorative','Cinzel',serif;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 16px rgba(201,168,76,0.3)">
+      <span id="bt-close-label">Verstanden</span>
     </button>
   </div>
 </div>
+
 <header>
   <div class="header-inner">
     <div class="logo" onclick="showSection('start')">⚔️ K<span>331</span></div>
@@ -572,7 +617,13 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
     <button id="sidebar-toggle" title="Menü">☰</button>
     <nav id="main-nav"></nav>
     <div class="header-right">
-      <button class="lang-switch-btn" onclick="document.getElementById('lang-overlay').style.display='flex'" id="lang-cur">🌐 DE</button>
+      <div id="lang-cur-wrap" style="position:relative;display:inline-block">
+  <button class="lang-switch-btn" onclick="showLangMenu()" id="lang-cur">🌐 DE</button>
+  <div id="lang-dropdown">
+    <button class="lang-drop-btn" onclick="setLang('de');closeLangMenu()">🇩🇪 Deutsch</button>
+    <button class="lang-drop-btn" onclick="setLang('en');closeLangMenu()">🇬🇧 English</button>
+  </div>
+</div>
       <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="search" oninput="doSearch(this.value)" autocomplete="off"></div>
     </div>
   </div>
@@ -700,6 +751,7 @@ de:{
     {icon:'🏟️',label:'TAC',action:"showEvt('tac')"},
     {icon:'🔥',label:'Tyrant',action:"showEvt('tyrant')"},
     {icon:'💀',label:'Kill Event',action:"showEvt('killevent')"},
+    {icon:'🌍',label:'Welten d. Ewigkeit',action:"showEvt('eternity')"},
     {icon:'🕵️',label:'Geheimmission',action:"showEvt('intel')"},
     {icon:'📚',label:'Akademie',action:"showSection('akademie')"},
     {icon:'🏛️',label:'Myst. Prüfung',action:"showSection('mystic')"},
@@ -748,6 +800,7 @@ en:{
     {icon:'🏟️',label:'TAC',action:"showEvt('tac')"},
     {icon:'🔥',label:'Tyrant',action:"showEvt('tyrant')"},
     {icon:'💀',label:'Kill Event',action:"showEvt('killevent')"},
+    {icon:'🌍',label:"Eternity's Reach",action:"showEvt('eternity')"},
     {icon:'🕵️',label:'Intel',action:"showEvt('intel')"},
     {icon:'📚',label:'Academy',action:"showSection('akademie')"},
     {icon:'🏛️',label:'Mystic Trial',action:"showSection('mystic')"},
@@ -780,16 +833,17 @@ en:{
 const LANG_NAV={};
 let LANG='de';
 function t(k){return(LANGS[LANG]||LANGS.en)[k]??LANGS.en[k]??k;}
-function setLang(l){
+function setLang(l,fromWelcome){
   LANG=l;
-  document.getElementById('lang-overlay').style.display='none';
+  document.getElementById('lang-overlay').style.display='none';if(_langParticles){_langParticles.stop();_langParticles=null;}
   const curLbl=LANGS[l]?LANGS[l].curLang:l.toUpperCase();
-  document.getElementById('lang-cur').textContent='🌐 '+curLbl;
+  var cur=document.getElementById('lang-cur');
+  if(cur)cur.textContent='🌐 '+curLbl;
   document.getElementById('search').placeholder=t('searchPlaceholder');
   document.dir='ltr';
   buildAll();
-  showSection('start');
-  openBearTimes();
+  _doShowSection('start');
+  if(fromWelcome)openBearTimes();
 }
 
 // ── BEAR TIMES INFO (shown after language selection) ──
@@ -813,13 +867,15 @@ function bearTimesHTML(){
 }
 function openBearTimes(){
   var D=(LANG==='de');
+  var bsub=document.getElementById('bt-sub');if(bsub)bsub.textContent=D?'Friedliches NAP6 · Aktive Spieler · Jeden Monat neues PFP':'Peaceful NAP6 · Active Players · Monthly PFP';
   document.getElementById('bt-title').textContent=D?'🐻 Bärenfallen-Zeiten':'🐻 Bear Times';
   document.getElementById('bt-body').innerHTML=bearTimesHTML();
   document.getElementById('bt-close-label').textContent=D?'Verstanden':'Got it';
-  document.getElementById('bear-times-overlay').style.display='flex';
+  var bto=document.getElementById('bear-times-overlay');bto.style.display='flex';bto.style.flexDirection='column';bto.style.alignItems='center';bto.style.justifyContent='center';setTimeout(initBearParticles,50);
+  setTimeout(startBtParticles,50);
 }
 function closeBearTimes(){
-  document.getElementById('bear-times-overlay').style.display='none';
+  stopBearParticles();document.getElementById('bear-times-overlay').style.display='none';
 }
 // Language helpers
 function isDE(){return LANG==='de';}
@@ -1130,6 +1186,25 @@ function calcPower(){
   document.getElementById('pw-result').classList.add('show');
 }
 
+
+
+function initBearParticles(){
+  if(_bearParticles)_bearParticles.stop();
+  _bearParticles=createCanvasParticles('bt-particles',30);
+}
+function stopBearParticles(){
+  if(_bearParticles){_bearParticles.stop();_bearParticles=null;}
+}
+
+function showLangMenu(){
+  var dd=document.getElementById('lang-dropdown');
+  if(dd)dd.classList.toggle('show');
+}
+function closeLangMenu(){
+  var dd=document.getElementById('lang-dropdown');
+  if(dd)dd.classList.remove('show');
+}
+
 function buildAll(){buildNav();buildStart();buildHelden();buildFormation();buildEvents();buildGear();buildCapacity();buildAkademie();buildMystic();buildPets();buildMasters();buildBooster();buildRessourcen();buildTipps();buildArena();buildEinsteiger();buildKoenigreiche();updateSidebar();}
 
 function buildNav(){
@@ -1339,7 +1414,7 @@ function calcFormation(){
 function buildEvents(){
   const D=(LANG==='de');
   document.getElementById('ev-title').textContent=tr('🎯 Events','🎯 Events','🎯 Eventos');
-  const tabs=tr([['🐻','Bärenfalle','bear'],['⚔️','KvK','kvk'],['🛡️','Wikinger','viking'],['👑','Schwertland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Geheimmission','intel']],[['🐻','Bear Hunt','bear'],['⚔️','KvK','kvk'],['🛡️','Viking','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Intel','intel']],[['🐻','Trampa del Oso','bear'],['⚔️','RvR','kvk'],['🛡️','Vikingos','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Misiones Intel','intel']]);
+  const tabs=tr([['🐻','Bärenfalle','bear'],['⚔️','KvK','kvk'],['🛡️','Wikinger','viking'],['👑','Schwertland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Geheimmission','intel'],['🌍','Welten d. Ewigkeit','eternity']],[['🐻','Bear Hunt','bear'],['⚔️','KvK','kvk'],['🛡️','Viking','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Intel','intel'],['🌍',("Eternity's Reach"),'eternity']],[['🐻','Trampa del Oso','bear'],['⚔️','RvR','kvk'],['🛡️','Vikingos','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Misiones Intel','intel']]);
   document.getElementById('evt-tabs').innerHTML=tabs.map(([ic,lb,id])=>`<button class="tab-btn" onclick="showEvt('${id}')">${ic} ${lb}</button>`).join('');
   showEvt('bear');
 }
@@ -2166,7 +2241,51 @@ function showEvt(id){
         +'</div>'
         +'<div class="alert alert-gold">💡 '+(D?'Win-Formel: Eigene Garrison halten + Feind-Garrison stehlen + Tempel als Erster cappennen + Transit Hubs verteidigen = Fast garantierter Sieg!':'Win Formula: Hold own Garrison + steal enemy Garrison + first-capture Temple + defend Transit Hubs = near guaranteed win!')+'</div>';
 
-      var contents=[t0,t1,t2,t3];
+      var t4=(function(){
+        var D=(LANG==='de');
+        return '<div class="alert alert-gold">🏆 '+(D?'Schwertland-Gipfel-Liga – Saison 1 (11.07. – 24.08.2026). Das kompetitivste Turnier in Kingshot! 192 Legionen pro Zone kämpfen um den Champion-Titel!':'Swordland Summit League – Season 1 (Jul 11 – Aug 24, 2026). The most competitive tournament! 192 legions per zone compete for the Champion title!')+'</div>'
+        +'<div class="sub-head">'+(D?'📋 Turnier-Struktur':'📋 Tournament Structure')+'</div>'
+        +'<div class="grid-3">'
+          +'<div class="card card-highlight" style="border-color:rgba(74,138,186,0.5)"><div class="card-title" style="color:var(--blue-lt)">1️⃣ '+(D?'Qualifikation':'Qualification')+'</div><p style="font-size:12px">'+(D?'K.o.-System, 16 Legionen/Gruppe<br>4 Runden (1 Woche je, Sonntag)<br>Sieg = <b>+4 Ligapunkte</b><br>Niederlage = +2 → Punktekampf<br>Top 2 → Mythische Gruppe<br>Platz 3–4 → Elite-Gruppe':'K.o. system, 16 legions/group<br>4 rounds (1 week each, Sunday)<br>Win = <b>+4 League Points</b><br>Loss = +2 → Point Battle<br>Top 2 → Mythic Group<br>Rank 3–4 → Elite Group')+'</p></div>'
+          +'<div class="card card-highlight" style="border-color:rgba(201,168,76,0.5)"><div class="card-title" style="color:var(--gold)">2️⃣ '+(D?'Punkteschlacht':'Point Battle')+'</div><p style="font-size:12px">'+(D?'Für Qualifikations-Verlierer<br>5 Runden mit zufälliger Zuteilung<br>Sieg = +2 Punkte<br>Niederlage = +1 Punkt<br>Belohnungen nach Ligapunkte-Rang':'For Qualification Losers<br>5 rounds with random assignment<br>Win = +2 points<br>Loss = +1 point<br>Rewards by league point rank')+'</p></div>'
+          +'<div class="card card-highlight" style="border-color:rgba(255,215,0,0.5)"><div class="card-title" style="color:#FFD700">3️⃣ '+(D?'Meisterschaft':'Championship')+'</div><p style="font-size:12px">'+(D?'3 Runden:<br>• Runde 1: Sonntag Woche 1<br>• Runde 2: Freitag Woche 2<br>• Runde 3: Sonntag Woche 2<br>Mythisch: Sieg = bleiben, Niederlage → Elite<br><b style="color:#FFD700">Finale: Beste Mythische vs. Beste Elite!</b>':'3 Rounds:<br>• Round 1: Sunday Week 1<br>• Round 2: Friday Week 2<br>• Round 3: Sunday Week 2<br>Mythic: Win = stay, Loss → Elite<br><b style="color:#FFD700">Final: Best Mythic vs. Best Elite!</b>')+'</p></div>'
+        +'</div>'
+        +'<div class="sub-head">'+(D?'📊 Ligapunkte pro Runde':'📊 League Points per Round')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr>'+(D?['Runde','Sieg','Niederlage']:['Round','Win','Loss']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+        +'<tr><td>'+(D?'Qualifikation':'Qualification')+'</td><td style="color:var(--green-lt);font-weight:700">+4</td><td style="color:var(--ember-lt)">+2</td></tr>'
+        +'<tr><td>'+(D?'Punkteschlacht':'Point Battle')+'</td><td style="color:var(--green-lt);font-weight:700">+2</td><td style="color:var(--ember-lt)">+1</td></tr>'
+        +'<tr><td>'+(D?'Meisterschaft Mythisch R1':'Championship Mythic R1')+'</td><td style="color:var(--green-lt);font-weight:700">+12</td><td style="color:var(--ember-lt)">+6</td></tr>'
+        +'<tr><td>'+(D?'Meisterschaft Elite R1–2':'Championship Elite R1–2')+'</td><td style="color:var(--green-lt);font-weight:700">+6</td><td style="color:var(--ember-lt)">+3</td></tr>'
+        +'<tr><td style="color:#FFD700;font-weight:700">'+(D?'Finale (Runde 3)':'Final (Round 3)')+'</td><td style="color:#FFD700;font-weight:700">+12</td><td style="color:var(--ember-lt)">+6</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="sub-head">'+(D?'🏛️ Gebäude-Punkte (exakt aus dem Spiel)':'🏛️ Building Points (exact from game)')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr>'+(D?['Gebäude','Erste Kontrolle','Besatzung/Min','Bonus']:['Building','First Capture','Occupation/Min','Bonus']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+        +'<tr><td style="font-weight:700;color:#FFD700">⚔️ '+(D?'Schwertschrein':'Swordshrine')+'</td><td>🏛️ 9.000 / 👤 4.500</td><td>🏛️ +1.800 / 👤 +900</td><td>–</td></tr>'
+        +'<tr><td style="font-weight:700;color:var(--gold)">🏛️ '+(D?'Heiligtum (NW/SW)':'Sanctum (NW/SW)')+'</td><td>🏛️ 6.000 / 👤 3.000</td><td>🏛️ +1.200 / 👤 +600</td><td>–</td></tr>'
+        +'<tr><td style="font-weight:700;color:var(--blue-lt)">⛪ '+(D?'Abtei 1–4':'Abbey 1–4')+'</td><td>🏛️ 3.000 / 👤 1.500</td><td>🏛️ +600 / 👤 +300</td><td>–</td></tr>'
+        +'<tr><td style="font-weight:700;color:var(--text-dim)">⚔️ '+(D?'Reformationshalle':'Reformation Hall')+'</td><td>🏛️ 1.200 / 👤 600</td><td>🏛️ +240 / 👤 +120</td><td style="color:var(--green-lt)">+15% Atk / -15% Def</td></tr>'
+        +'<tr><td style="font-weight:700;color:var(--text-dim)">🏕️ '+(D?'Söldnerlager':'Mercenary Camp')+'</td><td>🏛️ 1.200 / 👤 600</td><td>🏛️ +240 / 👤 +120</td><td>–</td></tr>'
+        +'<tr><td style="font-weight:700;color:var(--text-dim)">🐎 '+(D?'Königl. Ställe':'Royal Stables')+'</td><td>🏛️ 1.200 / 👤 600</td><td>🏛️ +240 / 👤 +120</td><td style="color:var(--green-lt)">-50% Teleport</td></tr>'
+        +'<tr><td style="font-weight:700;color:var(--text-dim)">🔔 Glockenturm</td><td>🏛️ 1.200 / 👤 600</td><td>🏛️ +240 / 👤 +120</td><td style="color:var(--green-lt)">-50% '+(D?'Einnahmezeit':'Capture Time')+'</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-warn">⚠️ '+(D?'30 Min ununterbrochen halten = DOPPELTE persönliche Reliktpunkte!':'Hold 30 min continuously = DOUBLE personal Relic Points!')+'</div>'
+        +'<div class="sub-head">'+(D?'⚔️ Kill-Punkte & Voraussetzungen':'⚔️ Kill Points & Requirements')+'</div>'
+        +'<div class="grid-2">'
+          +'<div class="card"><div class="card-title">'+(D?'⚔️ Kill-Punkte':'⚔️ Kill Points')+'</div><p>'
+            +(D?'Verteidigung: 10k Stärke = <b style="color:var(--blue-lt)">40 Pts</b><br>Angriff: 10k Stärke = <b style="color:var(--gold)">80 Pts</b>':'Defense: 10k power = <b style="color:var(--blue-lt)">40 pts</b><br>Attack: 10k power = <b style="color:var(--gold)">80 pts</b>')+'</p></div>'
+          +'<div class="card"><div class="card-title">'+(D?'📋 Wichtige Regeln':'📋 Important Rules')+'</div><p style="font-size:12px">'
+            +(D?'• UTC Slots: 02:00, 07:00, 12:00, 14:00, 19:00 (<b>3 wählen!</b>)<br>• Gipfel-Liga Teilnahme = <b style="color:var(--ember-lt)">KEIN normales Schwertland!</b><br>• TC mind. Lv.16, nicht 5+ Tage offline<br>• Soldaten sterben NICHT (unbegrenzte Krankenstation)<br>• Pet-Skills werden um 0:00 UTC zurückgesetzt':'• UTC Slots: 02:00, 07:00, 12:00, 14:00, 19:00 (<b>choose 3!</b>)<br>• Summit League = <b style="color:var(--ember-lt)">NO normal Swordland!</b><br>• TC min. Lv.16, not 5+ days offline<br>• Troops do NOT die (unlimited infirmary)<br>• Pet skills reset at 0:00 UTC')+'</p></div>'
+        +'</div>'
+        +'<div class="sub-head">'+(D?'🏆 Belohnungen':'🏆 Rewards')+'</div>'
+        +'<div class="grid-2">'
+          +'<div class="card" style="border-color:rgba(255,215,0,0.5)"><div class="card-title" style="color:#FFD700">🏆 '+(D?'Champion-Allianz':'Champion Alliance')+'</div><p style="font-size:12px">'
+            +(D?'• Allianz-HQ Verkleidung (30 Tage)<br>• Allianzbanner-Verkleidung (30 Tage)<br>• Prestige-Gebäude "Königliches Herz"<br>• Goldener Allianzbanner':'• Alliance HQ Skin (30 days)<br>• Alliance Banner Skin (30 days)<br>• Prestige Building "Royal Heart"<br>• Golden Alliance Banner')+'</p></div>'
+          +'<div class="card" style="border-color:rgba(74,138,186,0.4)"><div class="card-title" style="color:var(--blue-lt)">🏅 Top 4</div><p style="font-size:12px">'
+            +(D?'• Prestige-Gebäude "Wille des Champions"<br>• Allianzbanner<br>• Kämpferbelohnungen nach persönlicher Leistung':'• Prestige Building "Will of Champions"<br>• Alliance Banner<br>• Fighter rewards by personal performance')+'</p></div>'
+        +'</div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Nettosiegpunkte = Deine Allianz-Reliktpunkte MINUS Gegner-Reliktpunkte. Je größer der Vorsprung desto besser für die Gesamtwertung!':'Net Victory Points = Your Relic Points MINUS opponent Relic Points. The bigger the margin the better for rankings!')+'</div>';
+      })();
+      var contents=[t0,t1,t2,t3,t4];
       var tabDivs='<div id="sword-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="swordtab-'+i+'">'+c+'</div>';}).join('')+'</div>';
       return tabNav+tabDivs;
     })(),
@@ -2368,6 +2487,79 @@ function showEvt(id){
 
       var contents=[t0,t1,t2,t3,t4,t5];
       var tabDivs='<div id="ke-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="ketab-'+i+'">'+c+'</div>';}).join('')+'</div>';
+      return tabNav+tabDivs;
+    })(),
+    eternity:(function(){
+      var D=(LANG==='de');
+      var tabs=D
+        ?['📋 Grundlagen','🌳 Karte & Mechaniken','🌿 Skill-Baum','⏱️ Ablauf','💡 Tipps & Tricks']
+        :['📋 Basics','🌳 Map & Mechanics','🌿 Skill Tree','⏱️ Timeline','💡 Tips & Tricks'];
+      var tabNav='<div class="tab-nav" id="et-tabs">'+tabs.map(function(t,i){return '<button class="tab-btn'+(i===0?' active':'')+'" onclick="showEtTab('+i+')">'+t+'</button>';}).join('')+'</div>';
+      var t0='<div class="alert alert-gold">🌍 '+(D?'Welten der Ewigkeit ist eines der BESTEN Events fuer F2P! Hauptquelle fuer Gouverneur-Charm-Materialien. 30 Minuten, unbegrenzte Truppen, kein permanenter Verlust!':'Eternity\'s Reach is one of the BEST events for F2P! Main source of Governor Charm materials. 30 minutes, unlimited troops, no permanent losses!')+'</div>'
+        +'<div class="grid-2">'
+          +'<div class="card card-highlight"><div class="card-title">✅ '+(D?'Was gilt':'What applies')+'</div><p style="font-size:12px">'+(D?'• Truppen sind unbegrenzt – auto aufgefuellt<br>• Kein permanenter Truppen-Tod<br>• Kupfererz sammeln = Punkte<br>• Wer am meisten Erz hat gewinnt<br>• Hauptbelohnung: Gouverneur-Charm-Materialien':'• Troops are unlimited – auto-refilled<br>• No permanent troop death<br>• Collect Copper Ore = Points<br>• Most ore at end wins<br>• Main reward: Governor Charm materials')+'</p></div>'
+          +'<div class="card card-highlight"><div class="card-title">❌ '+(D?'Was NICHT gilt':'What does NOT apply')+'</div><p style="font-size:12px">'+(D?'• Bonus-Items, Koenigs-Perks: keine Wirkung<br>• Ministeriums-Positionen: keine Wirkung<br>• Allianz-Territorium-Boni: keine Wirkung<br>• Nur in-field Power zaehlt!':'• Bonus items, King\'s Perks: no effect<br>• Ministry positions: no effect<br>• Alliance territory bonuses: no effect<br>• Only in-field power counts!')+'</p></div>'
+        +'</div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Charm-Materialien = HAUPTQUELLE fuer Gouverneur-Charms → Tödlichkeit & Gesundheit fuer alle Truppen!':'Charm materials = MAIN SOURCE for Governor Charms → Lethality & Health for all troops!')+'</div>';
+      var t1='<div class="table-wrap"><table><thead><tr>'+(D?['Element','Kupfer/Sek','Strategie']:['Element','Copper/sec','Strategy']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+        +'<tr><td>⚔️ Cesares Soldaten (NPCs)</td><td><span class="boost-chip">XP + Drops</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'ZUERST jagen! XP fuer Skill-Baum + Kupfer-Drops':'Hunt FIRST! XP for skill tree + copper drops')+'</td></tr>'
+        +'<tr><td>🪨 '+(D?'Kupferader Stufe 1':'Level 1 Vein')+'</td><td><span class="boost-chip">~8/s</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Gut wenn alles andere belegt':'Good when everything else occupied')+'</td></tr>'
+        +'<tr><td>🪨 '+(D?'Kupferader Stufe 2':'Level 2 Vein')+'</td><td><span class="boost-chip">~16/s</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'HAUPT-Ziel fuer F2P! Zuverlaessiger als Stufe 3':'MAIN target for F2P! More reliable than Level 3')+'</td></tr>'
+        +'<tr><td>🪨 '+(D?'Kupferader Stufe 3':'Level 3 Vein')+'</td><td><span class="boost-chip">~32/s</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'Meist von P2W kontrolliert. Nur wenn staerker!':'Usually controlled by P2W. Only fight if stronger!')+'</td></tr>'
+        +'<tr><td style="color:#FFD700">⚡ Fracture Veins</td><td><span class="tag tag-sp">200/s (!)</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'MASSIVER Bonus! Sofort alle Maersche drauf!':'MASSIVE bonus! Send all marches immediately!')+'</td></tr>'
+        +'<tr><td>👑 Peak of Eternity</td><td><span class="tag tag-sp">+5.000 Bonus</span></td><td style="font-size:12px;color:var(--text-dim)">'+(D?'5.000 Kupfer-Bonus wenn zum richtigen Zeitpunkt!':'5,000 copper bonus at the right time!')+'</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-warn">⚠️ '+(D?'Fracture Vein Outburst: Warnung erscheint vorher! Alle Truppen zurueckrufen → beim Start sofort auf Fracture Veins!':'Fracture Vein Outburst: Warning appears before! Recall all troops → rush Fracture Veins at start!')+'</div>';
+      var t2='<div class="alert alert-gold">🌿 '+(D?'Korrekter Skill-Pfad: Rechts → Rechts → Links → Links → Rechts (R-R-L-L-R)! Dieser Pfad maximiert den 1-Minuten-Trick!':'Correct skill path: Right → Right → Left → Left → Right (R-R-L-L-R)! This path maximizes the 1-minute trick!')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr>'+(D?['Level','Richtung','Skill','Waehlen?','Warum?']:['Level','Direction','Skill','Choose?','Why?']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+        +'<tr><td style="color:var(--gold)">Lv 1</td><td><span class="tag tag-sp">➡️ RECHTS</span></td><td>'+(D?'+1.500 Kupfer pro Cesares-Kill':'1,500 Copper per Cesares kill')+'</td><td><span class="tag tag-sp">✅ JA</span></td><td style="font-size:12px">'+(D?'IMMER Rechts! Jeder getötete NPC gibt sofort 1.500 Kupfer. Keine Chance-Mechanik – immer!':'ALWAYS Right! Every killed NPC gives 1,500 Copper instantly. No chance mechanic – always!')+'</td></tr>'
+        +'<tr><td style="color:var(--gold)">Lv 2</td><td><span class="tag tag-sp">➡️ RECHTS</span></td><td>'+(D?'+25% Marschgeschwindigkeit':'25% March Speed')+'</td><td><span class="tag tag-sp">✅ JA</span></td><td style="font-size:12px">'+(D?'IMMER Rechts! Schneller zu Cesares, Adern und Fracture Veins. Mehr Rotationen pro Minute!':'ALWAYS Right! Faster to Cesares, veins and Fracture Veins. More rotations per minute!')+'</td></tr>'
+        +'<tr><td style="color:#FFD700;font-weight:700">Lv 3</td><td><span class="tag tag-a">⬅️ LINKS</span></td><td style="font-weight:700;color:#FFD700">'+(D?'⭐ +5.000 Kupfer pro Ader-Besetzung (60s Cooldown)':'⭐ +5,000 Copper per vein occupation (60s Cooldown)')+'</td><td><span class="tag tag-sp">✅ JA!</span></td><td style="font-size:12px;font-weight:700;color:#FFD700">'+(D?'DER 1-MINUTEN-TRICK SKILL! Nach Links wählen! Ader berühren → sofort 5.000 Kupfer → sofort zurückrufen → 60 Sek warten → repeat!':'THE 1-MINUTE TRICK SKILL! Choose Left! Touch vein → instantly 5,000 Copper → recall immediately → wait 60 sec → repeat!')+'</td></tr>'
+        +'<tr><td style="color:var(--gold)">Lv 4</td><td><span class="tag tag-a">⬅️ LINKS</span></td><td>'+(D?'+15% Sammel-Effizienz':'15% Gathering efficiency')+'</td><td><span class="tag tag-sp">✅ JA</span></td><td style="font-size:12px">'+(D?'Nach Links! Mehr Kupfer pro Sekunde aus allen Adern – gut fuer Fracture Vein Phase':'Go Left! More copper per second from all veins – good for Fracture Vein phase')+'</td></tr>'
+        +'<tr><td style="color:var(--gold)">Lv 5</td><td><span class="tag tag-sp">➡️ RECHTS</span></td><td>'+(D?'+50% Sammelgeschwindigkeit (60 Sek, manuell!)':'50% Gathering speed (60 sec, manual!)')+'</td><td><span class="tag tag-sp">✅ JA</span></td><td style="font-size:12px">'+(D?'Nach Rechts! Manuell aktivieren VOR Fracture Vein Outburst! 5-Min Cooldown → nicht verschwenden!':'Go Right! Activate manually BEFORE Fracture Vein Outburst! 5-min cooldown → do not waste!')+'</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-warn" style="border-color:rgba(255,215,0,0.5)">'
+          +'⭐ <b>'+(D?'DER 1-MINUTEN-TRICK (Skill Lv3 Links):':'THE 1-MINUTE TRICK (Skill Lv3 Left):')+'</b><br>'
+          +(D
+            ?'Nach dem Freischalten von Skill 3 (Links) bekommst du 5.000 Kupfer JEDES MAL wenn du eine Ader berührst – egal ob du sie hältst oder nicht!<br><br>'
+             +'<b>So funktioniert es:</b><br>'
+             +'1️⃣ Einen Marsch zu einer beliebigen Ader schicken<br>'
+             +'2️⃣ Sobald er ankommt → 5.000 Kupfer erscheint → SOFORT zurückrufen!<br>'
+             +'3️⃣ 60 Sekunden warten (Cooldown)<br>'
+             +'4️⃣ Denselben Marsch wieder zu einer Ader schicken → Repeat!<br><br>'
+             +'Du musst die Ader NICHT halten. Du musst sie nur BERÜHREN! Nutze den Event-Timer als Referenz (z.B. bei 14:00, 13:00, 12:00...) um den Cooldown im Blick zu behalten!'
+            :'After unlocking Skill 3 (Left) you get 5,000 Copper EVERY TIME you touch a vein – whether you hold it or not!<br><br>'
+             +'<b>How it works:</b><br>'
+             +'1️⃣ Send one march to any copper vein<br>'
+             +'2️⃣ The moment it arrives → 5,000 Copper appears → RECALL IMMEDIATELY!<br>'
+             +'3️⃣ Wait 60 seconds (cooldown)<br>'
+             +'4️⃣ Send the same march to a vein again → Repeat!<br><br>'
+             +'You do NOT need to hold the vein. You just need to TOUCH it! Use the event timer as reference (e.g. at 14:00, 13:00, 12:00...) to track the cooldown!')
+        +'</div>'
+        +'<div class="alert alert-tip">💡 '+(D
+          ?'Bonus-Trick: Peak of Eternity nur 1 SEKUNDE einnehmen am Ende reicht fuer die Occupancy-Wertung! Du musst ihn nicht halten!'
+          :'Bonus trick: Capturing Peak of Eternity for just 1 SECOND at the end is enough for the Occupancy ranking! You do not need to hold it!')+'</div>';
+      var t3='<div class="table-wrap"><table><thead><tr>'+(D?['Zeit','Phase','Was tun?']:['Time','Phase','Action']).map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'
+        +'<tr><td style="color:var(--gold)">Min 0–5</td><td>⚔️ Cesares</td><td style="font-size:12px">'+(D?'SOFORT Cesares jagen! Skill Lv1 freischalten!':'IMMEDIATELY hunt Cesares! Unlock Skill Lv1!')+'</td></tr>'
+        +'<tr><td style="color:var(--gold)">Min 5–12</td><td>🪨 '+(D?'Stufe 2 Adern':'Level 2 Veins')+'</td><td style="font-size:12px">'+(D?'Skill Lv2 freischalten. Stufe 2 Adern besetzen!':'Unlock Skill Lv2. Occupy Level 2 veins!')+'</td></tr>'
+        +'<tr><td style="color:var(--gold)">Min 12–18</td><td>⚡ '+(D?'Vorbereitung':'Preparation')+'</td><td style="font-size:12px">'+(D?'Skill Lv3 freischalten. Auf Outburst-Warnung warten!':'Unlock Skill Lv3. Wait for Outburst warning!')+'</td></tr>'
+        +'<tr><td style="color:#FFD700;font-weight:700">OUTBURST!</td><td>⚡⚡ RUSH!</td><td style="font-size:12px;font-weight:600">'+(D?'ALLE Maersche auf Fracture Veins! Skill Lv5 aktivieren!':'ALL marches to Fracture Veins! Activate Skill Lv5!')+'</td></tr>'
+        +'<tr><td style="color:var(--gold)">Min 18–25</td><td>🪨 '+(D?'Stabilisieren':'Stabilize')+'</td><td style="font-size:12px">'+(D?'Skill Lv4 freischalten. Zurueck zu Stufe 2 Adern.':'Unlock Skill Lv4. Back to Level 2 veins.')+'</td></tr>'
+        +'<tr><td style="color:#FFD700;font-weight:700">Min 25–30</td><td>👑 Peak</td><td style="font-size:12px;font-weight:600">'+(D?'Peak wenn Match eng! 5.000 Bonus. Skill Lv5 nochmal!':'Fight for Peak if close! 5,000 bonus. Skill Lv5 again!')+'</td></tr>'
+        +'</tbody></table></div>';
+      var t4='<div class="grid-2">'
+        +[
+          [D?'🎯 Stufe 2 > Stufe 3 fuer F2P':'🎯 Level 2 > Level 3 for F2P', D?'Stufe 3 meist von P2W besetzt. Stufe 2 = 16/s ohne Kampf. Steady Income schlaegt riskante Kaempfe!':'Level 3 usually taken by P2W. Level 2 = 16/s without fighting. Steady income beats risky fights!'],
+          [D?'⚡ Fracture Vein = Hauptmoment':'⚡ Fracture Vein = Key Moment', D?'5 Sekunden VOR Warnung alle Truppen zurueckrufen → beim Start sofort auf Fracture Veins!':'5 seconds BEFORE warning recall all troops → rush Fracture Veins at the start!'],
+          [D?'🔄 Hunting Loop':'🔄 Hunting Loop', D?'Cesares toeten zwischen Ader-Besetzungen! Kill → Ader besetzen → naechsten NPC jagen = maximale Effizienz!':'Kill Cesares between vein occupations! Kill → occupy vein → hunt next NPC = maximum efficiency!'],
+          [D?'⭐ 1-Minuten-Trick (WICHTIGSTER TIPP!)':'⭐ 1-Minute Trick (MOST IMPORTANT TIP!)', D?'Skill 3 Links freischalten → Ader berühren → sofort 5.000 Kupfer → sofort zurückrufen → 60 Sek warten → repeat! Du MUSST die Ader nicht halten!':'Unlock Skill 3 Left → touch vein → instantly 5,000 Copper → recall immediately → wait 60 sec → repeat! You do NOT need to hold the vein!'],
+          [D?'👑 Peak – Nur 1 Sekunde!':'👑 Peak – Just 1 second!', D?'Peak of Eternity nur KURZ einnehmen reicht fuer die Occupancy-Wertung (Bonus-Punkte)! Nicht fest halten – Zeit verschwenden!':'Capturing Peak of Eternity just BRIEFLY is enough for Occupancy ranking (bonus points)! Do not hold it – waste of time!'],
+          [D?'⚙️ Aktiven Skill nicht vergessen!':'⚙️ Do not forget the active skill!', D?'Level 5 MANUELL aktivieren wenn alle Maersche auf Adern! +5.000 Kupfer sofort!':'Level 5 MANUALLY activate when all marches on veins! +5,000 copper instantly!'],
+        ].map(function(c){return '<div class="card"><div class="card-title">'+c[0]+'</div><p style="font-size:12px">'+c[1]+'</p></div>';}).join('')
+        +'</div>'
+        +'<div class="alert alert-gold">💡 '+(D?'F2P Top-10: Cesares jagen → Stufe 2 Adern → Fracture Vein Outburst IMMER mitnehmen → Skill Lv5 manuell!':'F2P Top-10: Hunt Cesares → Level 2 veins → ALWAYS take Fracture Vein Outburst → Skill Lv5 manually!')+'</div>';
+      var contents=[t0,t1,t2,t3,t4];
+      var tabDivs='<div id="et-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="ettab-'+i+'">'+c+'</div>';}).join('')+'</div>';
       return tabNav+tabDivs;
     })(),
     intel:`<div class="grid-2">
@@ -2751,16 +2943,74 @@ function doSearch(q){
 
 // ── PARTICLES ──
 function initParticles(){
-  const c=document.getElementById('particles');
+  var c=document.getElementById('particles');
   if(!c)return;
-  for(let i=0;i<12;i++){
-    const p=document.createElement('div');
+  c.innerHTML='';
+  for(var i=0;i<22;i++){
+    var p=document.createElement('div');
     p.className='particle';
-    p.style.cssText=`left:${Math.random()*100}%;animation-duration:${8+Math.random()*12}s;animation-delay:${-Math.random()*20}s;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;`;
+    var size=(1+Math.random()*2.5);
+    var drift=(Math.random()-0.5)*80;
+    var drift2=(Math.random()-0.5)*120;
+    p.style.cssText='left:'+( Math.random()*100)+'%;'
+      +'width:'+size+'px;height:'+size+'px;'
+      +'--drift:'+drift+'px;--drift2:'+drift2+'px;'
+      +'animation-duration:'+(10+Math.random()*14)+'s;'
+      +'animation-delay:'+(-Math.random()*24)+'s;';
     c.appendChild(p);
   }
 }
 initParticles();
+
+// ── CANVAS PARTICLE ENGINE (shared for overlays) ──
+function createCanvasParticles(canvasId, count, running){
+  var canvas=document.getElementById(canvasId);
+  if(!canvas)return null;
+  var ctx=canvas.getContext('2d');
+  var pts=[];
+  var raf=null;
+  function resize(){
+    canvas.width=canvas.offsetWidth||400;
+    canvas.height=canvas.offsetHeight||600;
+  }
+  resize();
+  for(var i=0;i<count;i++){
+    pts.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*2.2+0.4,
+      vx:(Math.random()-0.5)*0.5,
+      vy:-(Math.random()*0.8+0.2),
+      a:Math.random()*0.7+0.2,
+      life:Math.random()
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pts.forEach(function(p){
+      p.x+=p.vx;p.y+=p.vy;p.life+=0.004;
+      if(p.y<-5||p.life>1){
+        p.y=canvas.height+5;
+        p.x=Math.random()*canvas.width;
+        p.life=0;
+      }
+      var alpha=p.a*(1-p.life)*0.85;
+      var g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.5);
+      g.addColorStop(0,'rgba(255,200,80,'+alpha+')');
+      g.addColorStop(1,'rgba(201,130,30,0)');
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r*2,0,Math.PI*2);
+      ctx.fillStyle=g;
+      ctx.fill();
+    });
+    raf=requestAnimationFrame(draw);
+  }
+  draw();
+  return {stop:function(){if(raf)cancelAnimationFrame(raf);raf=null;},
+          start:function(){if(!raf)draw();}};
+}
+var _langParticles=null;
+var _bearParticles=null;
 
 // ── SIDEBAR SYNC (no recursion) ──
 function updateSidebar(){
@@ -2986,12 +3236,27 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('nav button, .quick-card, .tab-btn, .accord-head').forEach(el=>{
     el.addEventListener('click',playClick);
   });
+  document.addEventListener('click',function(e){
+    var wrap=document.getElementById('lang-cur-wrap');
+    if(wrap&&!wrap.contains(e.target))closeLangMenu();
+  });
+  // Start lang overlay particles if overlay is visible on load
+  (function checkLangOverlay(){
+    var lo=document.getElementById('lang-overlay');
+    if(lo&&lo.style.display!=='none'){
+      if(_langParticles)_langParticles.stop();
+      _langParticles=createCanvasParticles('lang-canvas',25);
+    }
+  })();
   document.getElementById('back-top')?.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
 
 });
 
 // ── CHANGELOG ──
 var CHANGELOG=[
+  {date:'12. Juli 2026',ts:'2026-07-12',items:[
+    {icon:'🌍',text:'Welten der Ewigkeit – 1-Minuten-Trick & korrekter Skill-Pfad (R-R-L-L-R) eingebaut',time:'01:00'},
+  ]},
   {date:'11. Juli 2026',ts:'2026-07-11',items:[
     {icon:'📖',text:'Einsteiger-Guide NEU: Erste 30 Tage, Diamanten, Truppen, Routine, Hero Roulette, Rotes Gear, Power-Rechner',time:'01:30'},
     {icon:'🏰',text:'KvK – Schloss-Kampf (Castle Battle) mit Rally-Timing, Turrets & Shell-Strategie',time:'01:30'},
@@ -3053,19 +3318,7 @@ document.addEventListener('click',function(e){
   }
 });
 
-function selectLangAnimated(lang, evt, btn){
-  // Play click sound
-  try{
-    var ctx=new(window.AudioContext||window.webkitAudioContext)();
-    var osc=ctx.createOscillator();var gain=ctx.createGain();
-    osc.connect(gain);gain.connect(ctx.destination);
-    osc.frequency.setValueAtTime(1200,ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(600,ctx.currentTime+0.15);
-    gain.gain.setValueAtTime(0.12,ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.15);
-    osc.start();osc.stop(ctx.currentTime+0.15);
-  }catch(e){}
-
+function selectLangAnimated(lang, evt, btn, fromWelcome){
   // Ripple effect at click position
   var rect=btn.getBoundingClientRect();
   var ripple=document.createElement('div');
@@ -3087,11 +3340,64 @@ function selectLangAnimated(lang, evt, btn){
     if(box)box.classList.add('lang-overlay-exit');
     
     setTimeout(function(){
-      setLang(lang);
+      setLang(lang,fromWelcome);
     },400);
   },300);
 }
 
+
+
+
+function startBtParticles(){
+  var c=document.getElementById('bt-particles');
+  if(!c)return;
+  var overlay=document.getElementById('bear-times-overlay');
+  c.width=overlay.offsetWidth||window.innerWidth;
+  c.height=overlay.offsetHeight||window.innerHeight;
+  var ctx=c.getContext('2d');
+  var particles=[];
+  for(var i=0;i<40;i++){
+    particles.push({
+      x:Math.random()*c.width,
+      y:Math.random()*c.height,
+      r:Math.random()*2+0.5,
+      speed:Math.random()*0.6+0.2,
+      drift:(Math.random()-0.5)*0.4,
+      opacity:Math.random()*0.6+0.2,
+      hue:Math.random()*30+10
+    });
+  }
+  var animId;
+  function draw(){
+    if(overlay.style.display==='none'){cancelAnimationFrame(animId);return;}
+    ctx.clearRect(0,0,c.width,c.height);
+    particles.forEach(function(p){
+      p.y-=p.speed;p.x+=p.drift;
+      p.opacity+=Math.sin(Date.now()*0.002+p.x)*0.01;
+      if(p.y<-5){p.y=c.height+5;p.x=Math.random()*c.width;}
+      if(p.x<-5)p.x=c.width+5;
+      if(p.x>c.width+5)p.x=-5;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='hsla('+p.hue+',80%,65%,'+Math.max(0.05,Math.min(0.8,p.opacity))+')';
+      ctx.fill();
+    });
+    animId=requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function showMtMainTab(i){
+  document.querySelectorAll('#mt-main-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  ['mt-main-0','mt-main-1','mt-main-2'].forEach(function(id,j){
+    var el=document.getElementById(id);
+    if(el)el.style.display=(i===j)?'block':'none';
+  });
+}
+function showEtTab(i){
+  document.querySelectorAll('#et-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#et-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
+}
 </script>
 
 

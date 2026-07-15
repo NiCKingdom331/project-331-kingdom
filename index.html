@@ -800,62 +800,115 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
 <div class="section" id="sec-formation">
   <div class="sec-head">⚙️ Formation & Strategie</div>
 
-  <div class="sub-head">📊 Formation pro Generation</div>
-  <div class="table-wrap reveal">
+  <div class="alert" style="background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(10,8,4,0.95));border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:12px 16px;margin-bottom:16px">
+    📋 Jede Aktivität braucht eine <b>andere Formation</b>! Hier findest du die richtige für jede Situation.
+  </div>
+
+  <!-- ── KVK RALLY ── -->
+  <div class="sub-head">⚔️ KvK – Rally-Angriff</div>
+  <div class="grid-2">
+    <div class="card card-highlight">
+      <div class="card-title" style="color:var(--green-lt)">🌿 F2P Rally-Leader</div>
+      <p style="font-size:22px;font-weight:700;color:var(--gold);margin:8px 0">50% / 20% / 30%</p>
+      <p style="font-size:12px;color:var(--text-dim)">🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>
+      <b>Leader:</b> Long Fei + Vivian (PFLICHT!)<br>
+      <b>Joiner Slot 1:</b> Chenko<br>
+      <b>Wann:</b> Immer beim KvK Rally-Angriff</p>
+    </div>
+    <div class="card card-highlight">
+      <div class="card-title" style="color:var(--gold)">💎 P2W Rally-Leader</div>
+      <p style="font-size:22px;font-weight:700;color:var(--gold);margin:8px 0">50% / 20% / 30%</p>
+      <p style="font-size:12px;color:var(--text-dim)">🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>
+      <b>Leader:</b> Amadeus + Yang + Vivian<br>
+      <b>Joiner Slot 1:</b> Chenko / Yeonwoo<br>
+      <b>Wann:</b> Immer beim KvK Rally-Angriff</p>
+    </div>
+  </div>
+
+  <!-- ── GARRISON ── -->
+  <div class="sub-head">🏰 Garrison – Stadtverteidigung</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">⚙️ Standard Garrison</div>
+      <p style="font-size:22px;font-weight:700;color:var(--gold);margin:8px 0">60% / 15% / 25%</p>
+      <p style="font-size:12px;color:var(--text-dim)">🛡️ Inf 60% · 🐴 Kav 15% · 🏹 Archer 25%<br><br>
+      <b>Wann:</b> Garrison gegen normale Angriffe<br>
+      Inf tankt · Kav flankt · Archer dealen</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--blue-lt)">🔄 Gegen Heavy Archer</div>
+      <p style="font-size:22px;font-weight:700;color:var(--blue-lt);margin:8px 0">50% / 30% / 20%</p>
+      <p style="font-size:12px;color:var(--text-dim)">🛡️ Inf 50% · 🐴 Kav 30% · 🏹 Archer 20%<br><br>
+      <b>Wann:</b> Gegner spielt 50%+ Archer<br>
+      Kav &gt; Archer! Mehr Kav zerstört Backline</p>
+    </div>
+  </div>
+
+  <!-- ── BÄRENFALLE ── -->
+  <div class="sub-head">🐻 Bärenfalle – Formation pro Generation</div>
+  <div class="alert" style="border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px">
+    🏹 <b>Bärenfalle = Archer-lastig!</b> Je höher deine Generation desto mehr Archer. Grund: Archer-Helden (Petra, Rosa, Vivian, Yang) skalieren exponentiell mit Widget.
+  </div>
+  <div class="table-wrap">
     <table>
       <thead><tr>
         <th>Generation</th><th>🛡️ Inf</th><th>🐴 Kav</th><th>🏹 Archer</th><th>Warum?</th>
       </tr></thead>
       <tbody>
-        <tr><td><b>Gen 1</b></td><td>20%</td><td>20%</td><td style="color:var(--gold);font-weight:700">60%</td><td style="font-size:12px">Noch ausgeglichen, keine Archer-Meta</td></tr>
-        <tr><td><b>Gen 2</b></td><td>10%</td><td>20%</td><td style="color:var(--gold);font-weight:700">70%</td><td style="font-size:12px">Marlin Widget = erste Archer-Meta</td></tr>
-        <tr><td><b>Gen 3</b></td><td>5%</td><td>15%</td><td style="color:var(--gold);font-weight:700">80%</td><td style="font-size:12px">Petra Widget verstärkt Archer massiv</td></tr>
-        <tr><td><b>Gen 4</b></td><td>5%</td><td>10%</td><td style="color:var(--gold);font-weight:700">85%</td><td style="font-size:12px">Rosa +30% Archer Proc dominiert</td></tr>
-        <tr><td style="color:#FFD700"><b>Gen 5 ⭐ META</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:12px">Vivian+Thrud maximieren Archer – BESTE Formation</td></tr>
-        <tr><td style="color:#FFD700"><b>Gen 6</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:12px">Yang+Triton – gleiche Formation wie Gen 5</td></tr>
-        <tr><td style="color:#FFD700"><b>Gen 7</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:12px">Ava+W&W – 20% stärker als Gen 6</td></tr>
+        <tr><td><b>Gen 1</b></td><td>10%</td><td>30%</td><td style="color:var(--gold);font-weight:700">60%</td><td style="font-size:11px">Keine Archer-Meta, noch ausgewogen</td></tr>
+        <tr><td><b>Gen 2</b></td><td>10%</td><td>20%</td><td style="color:var(--gold);font-weight:700">70%</td><td style="font-size:11px">Marlin Widget = erste Archer-Meta</td></tr>
+        <tr><td><b>Gen 3</b></td><td>5%</td><td>15%</td><td style="color:var(--gold);font-weight:700">80%</td><td style="font-size:11px">Petra Widget verstärkt Archer massiv</td></tr>
+        <tr><td><b>Gen 4</b></td><td>5%</td><td>10%</td><td style="color:var(--gold);font-weight:700">85%</td><td style="font-size:11px">Rosa +30% Archer Proc dominiert</td></tr>
+        <tr><td style="color:#FFD700"><b>Gen 5 ⭐</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:11px">META! Vivian+Thrud maximieren Archer</td></tr>
+        <tr><td style="color:#FFD700"><b>Gen 6</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:11px">Yang+Triton – gleich wie Gen 5</td></tr>
+        <tr><td style="color:#FFD700"><b>Gen 7</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:11px">Ava+W&W – 20% stärker als Gen 6</td></tr>
       </tbody>
     </table>
   </div>
+  <div class="alert" style="border:1px solid rgba(200,48,48,0.3);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:12px">
+    ⚠️ Immer min. <b>5.000 Infanterie absolut</b> behalten! Vorschau-Schaden im Spiel prüfen – er entscheidet!
+  </div>
 
-  <div class="alert reveal alert-warn">⚠️ Immer mindestens <b>5.000 Infanterie absolut</b> behalten! Bei unter 100k Truppen lieber 5% Inf nehmen. Vorschau-Schaden im Spiel entscheidet!</div>
-  <div class="alert reveal alert-tip">💡 Kavallerie nie unter 10% senken – sie absorbiert Schaden wenn Infanterie fällt und schützt deine Archer!</div>
+  <!-- ── WIKINGER ── -->
+  <div class="sub-head">🛡️ Wikinger – Verstärkung senden</div>
+  <div class="card" style="border-color:rgba(74,138,186,0.4)">
+    <div class="card-title" style="color:var(--blue-lt)">⚠️ Wikinger Verstärkung</div>
+    <p style="font-size:22px;font-weight:700;color:var(--blue-lt);margin:8px 0">50% / 50% / 0%</p>
+    <p style="font-size:12px;color:var(--text-dim)">🛡️ Inf 50% · 🐴 Kav 50% · 🏹 Archer 0%<br><br>
+    <b>🚫 Archer NIEMALS zum Wikinger-Event schicken!</b><br>
+    Archer bringen <b style="color:var(--ember-lt)">KEINE Punkte</b> beim Wikinger. Sie verschwenden nur Kapazität und helfen nicht beim Töten der Vikings.<br><br>
+    <b>Joiner Slot 1:</b> Chenko / Yeonwoo / Amane / Margot</p>
+  </div>
 
-  <div class="sub-head">🎯 KvK Formation (Rally-Angriff)</div>
-  <div class="grid-2 reveal">
-    <div class="card card-highlight">
-      <div class="card-title" style="color:var(--green-lt)">🌿 F2P Standard</div>
-      <p style="font-size:13px"><b style="color:var(--gold);font-size:18px">50% / 20% / 30%</b><br><br>🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>Leader: Long Fei + Vivian<br>Joiner Slot 1: Chenko</p>
+  <!-- ── SAMMELN ── -->
+  <div class="sub-head">🌾 Sammeln – Ressourcen farmen</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">⛏️ Normal Sammeln</div>
+      <p style="font-size:22px;font-weight:700;color:var(--green-lt);margin:8px 0">0% / 0% / 100%</p>
+      <p style="font-size:12px;color:var(--text-dim)">🏹 Nur Archer senden!<br><br>
+      Archer sammeln schneller als Inf/Kav.<br>
+      <b>Wann:</b> Normales Farmen außerhalb KvK</p>
     </div>
-    <div class="card card-highlight">
-      <div class="card-title" style="color:var(--gold)">💎 P2W Standard</div>
-      <p style="font-size:13px"><b style="color:var(--gold);font-size:18px">50% / 20% / 30%</b><br><br>🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>Leader: Amadeus + Vivian<br>Joiner Slot 1: Chenko / Yeonwoo</p>
+    <div class="card">
+      <div class="card-title" style="color:var(--ember-lt)">⚔️ Sammeln während KvK</div>
+      <p style="font-size:22px;font-weight:700;color:var(--ember-lt);margin:8px 0">50% / 20% / 30%</p>
+      <p style="font-size:12px;color:var(--text-dim)">🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>
+      <b style="color:var(--ember-lt)">NIEMALS 100% Archer beim Sammeln in KvK!</b><br>
+      Überfälle kommen – du brauchst Inf+Kav zur Verteidigung!</p>
     </div>
   </div>
 
-  <div class="sub-head">🏰 Garrison Formation (Stadtverteidigung)</div>
-  <div class="grid-2 reveal">
-    <div class="card">
-      <div class="card-title">⚙️ Standard Garrison</div>
-      <p style="font-size:18px;font-weight:700;color:var(--gold)">60% / 15% / 25%</p>
-      <p style="font-size:12px;color:var(--text-dim)">Inf tankt · Kav flankt · Archer dealen</p>
-    </div>
-    <div class="card">
-      <div class="card-title" style="color:var(--blue-lt)">vs. Archer-Heavy Gegner</div>
-      <p style="font-size:18px;font-weight:700;color:var(--blue-lt)">50% / 30% / 20%</p>
-      <p style="font-size:12px;color:var(--text-dim)">Mehr Kav um feindliche Archer zu kontern (Kav &gt; Archer)</p>
-    </div>
-  </div>
-
-  <div class="sub-head">🔄 Konter-Formation</div>
-  <div class="table-wrap reveal">
+  <!-- ── KONTER ── -->
+  <div class="sub-head">🔄 Konter-Formation (KvK Angriff)</div>
+  <div class="table-wrap">
     <table>
       <thead><tr><th>Gegner spielt</th><th>Dein Konter</th><th>Warum?</th></tr></thead>
       <tbody>
-        <tr><td>⚖️ Standard 50/20/30</td><td><b>50/20/30</b></td><td style="font-size:12px">Gleiches Spiel – wer mehr Lethality hat gewinnt</td></tr>
-        <tr><td>🛡️ Heavy Inf 60%+</td><td><b>30/20/50</b></td><td style="font-size:12px">Archer &gt; Inf! Mehr Archer schmelzen Inf-Wall</td></tr>
-        <tr><td>🏹 Heavy Archer 50%+</td><td><b>40/40/20</b></td><td style="font-size:12px">Kav &gt; Archer! Kavallerie zerstört Backline</td></tr>
-        <tr><td>🐴 Heavy Kav 40%+</td><td><b>60/10/30</b></td><td style="font-size:12px">Inf &gt; Kav! Inf-Wall stoppt jeden Kav-Rush</td></tr>
+        <tr><td>⚖️ Standard 50/20/30</td><td><b>50/20/30</b></td><td style="font-size:11px">Gleiches Spiel – Lethality entscheidet</td></tr>
+        <tr><td>🛡️ Heavy Inf 60%+</td><td><b>30/20/50</b></td><td style="font-size:11px">Archer &gt; Inf! Mehr Archer schmelzen Inf-Wall</td></tr>
+        <tr><td>🏹 Heavy Archer 50%+</td><td><b>40/40/20</b></td><td style="font-size:11px">Kav &gt; Archer! Kavallerie zerstört Backline</td></tr>
+        <tr><td>🐴 Heavy Kav 40%+</td><td><b>60/10/30</b></td><td style="font-size:11px">Inf &gt; Kav! Inf-Wall stoppt jeden Kav-Rush</td></tr>
       </tbody>
     </table>
   </div>

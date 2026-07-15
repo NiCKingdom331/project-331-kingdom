@@ -595,6 +595,56 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
   transition:all 0.2s;white-space:nowrap;
 }
 #theme-btn:hover{background:rgba(201,168,76,0.22);}
+
+.tab-nav{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:6px;padding-bottom:6px;scrollbar-width:none;-ms-overflow-style:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-nav .tab-btn{flex:0 0 auto;white-space:nowrap;font-size:11px;padding:6px 10px;}
+/* HERO CARD TIER COLORS */
+.hero-card[data-tier="S+"]{border-left:3px solid #FFD700;background:linear-gradient(135deg,rgba(255,215,0,0.06),var(--stone-3));}
+.hero-card[data-tier="A"]{border-left:3px solid var(--blue-lt);}
+.hero-card[data-tier="B"]{border-left:3px solid var(--green-lt);}
+.hero-card[data-tier="C"],.hero-card[data-tier="D"]{border-left:3px solid var(--text-muted);}
+/* FORMATION VISUALIZER */
+.form-viz{display:flex;gap:4px;align-items:center;margin:8px 0;flex-wrap:wrap;}
+.form-bar{height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;min-width:22px;}
+.form-inf{background:linear-gradient(135deg,#2a5a8a,#3a7acc);}
+.form-cav{background:linear-gradient(135deg,#6a3a8a,#9a5acc);}
+.form-arc{background:linear-gradient(135deg,#8a4a1a,#c87a3a);}
+.form-viz-wrap{margin:6px 0;}
+.copy-form-btn{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold);border-radius:6px;padding:3px 8px;font-size:10px;cursor:pointer;margin-left:6px;}
+.copy-form-btn.copied{background:rgba(90,155,106,0.2);color:var(--green-lt);}
+/* HEUTE CARD */
+.heute-card{background:linear-gradient(135deg,rgba(42,90,138,0.15),rgba(10,18,30,0.95));border:1px solid rgba(74,138,186,0.4);border-radius:12px;padding:14px 18px;margin-bottom:14px;cursor:pointer;}
+.heute-tag{display:inline-block;background:rgba(74,138,186,0.2);color:var(--blue-lt);font-size:11px;font-weight:700;padding:2px 10px;border-radius:8px;margin-bottom:6px;}
+/* GLOSSAR FAB */
+#glossar-fab{position:fixed;bottom:180px;right:24px;background:linear-gradient(135deg,#4a2c8a,#7a5acc);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;box-shadow:0 4px 16px rgba(120,80,200,0.4);z-index:600;display:flex;align-items:center;justify-content:center;}
+#glossar-popup{position:fixed;bottom:234px;right:24px;background:linear-gradient(145deg,#1A1208,#0E0C08);border:1px solid rgba(120,80,200,0.4);border-radius:14px;width:290px;max-height:380px;overflow-y:auto;padding:16px;z-index:600;display:none;box-shadow:0 8px 40px rgba(0,0,0,0.7);}
+#glossar-popup.show{display:block;}
+.g-term{font-family:Cinzel,serif;font-size:11px;color:var(--gold);}
+.g-def{font-size:11px;color:var(--text-dim);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid rgba(58,52,42,0.4);}
+
+/* ── PREP PROGRESS BAR ── */
+.prep-progress{background:rgba(58,52,42,0.4);border-radius:8px;padding:10px 14px;margin-bottom:14px;}
+.prep-steps{display:flex;gap:4px;margin:6px 0 4px;}
+.prep-step{flex:1;height:8px;border-radius:4px;background:rgba(58,52,42,0.6);}
+.prep-step.done{background:var(--green-lt);}
+.prep-step.active{background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.5);}
+.prep-names{display:flex;gap:4px;}
+.prep-name{flex:1;font-size:9px;color:var(--text-muted);text-align:center;}
+.prep-name.active{color:var(--gold);font-weight:700;}
+/* ── BEAR TIMES START ── */
+.bear-start{background:linear-gradient(135deg,rgba(30,14,6,0.98),rgba(20,8,2,0.98));border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:12px 16px;margin-bottom:14px;}
+.bear-row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(58,52,42,0.3);font-size:12px;}
+.bear-row:last-child{border-bottom:none;}
+.bear-ally{font-family:Cinzel,serif;font-weight:700;color:var(--parch);font-size:11px;}
+.bear-t{color:var(--text-muted);font-family:monospace;font-size:11px;}
+/* ── FAVORITEN ── */
+.fav-card{background:linear-gradient(135deg,rgba(10,8,4,0.95),rgba(20,16,8,0.95));border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:12px 16px;margin-bottom:14px;}
+.fav-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.fav-pin{display:flex;align-items:center;gap:6px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--parch);cursor:pointer;transition:all 0.2s;}
+.fav-pin:hover{background:rgba(201,168,76,0.2);}
+.nav-star{font-size:10px;color:var(--text-muted);cursor:pointer;margin-left:2px;transition:color 0.2s;}
+.nav-star.on{color:#FFD700;}
 </style>
 </head>
 <body>
@@ -642,7 +692,7 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
       <div style="font-size:13px;color:var(--text-dim);font-style:italic">With kind regards</div>
       <div style="font-family:Cinzel,serif;font-size:16px;color:var(--gold);margin-top:4px">NiC <span style="color:var(--text-muted);font-size:13px">~ [40K] Member</span> ⚔️</div>
     </div>
-    <button onclick="document.getElementById('welcome-overlay').style.display='none';document.getElementById('lang-overlay').style.display='flex';setTimeout(function(){if(_langParticles)_langParticles.stop();_langParticles=createCanvasParticles('lang-canvas',25);},50);" style="background:linear-gradient(135deg,#8B6914,#C9A84C,#E8C96A);color:#0A0806;border:none;padding:13px 40px;border-radius:10px;font-family:Cinzel Decorative,Cinzel,serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s;box-shadow:0 4px 20px rgba(201,168,76,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(201,168,76,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(201,168,76,0.3)'">
+    <button onclick="document.getElementById('welcome-overlay').style.display='none';document.getElementById('lang-overlay').style.display='flex';setTimeout(function(){if(typeof createCanvasParticles==='function'){if(_langParticles)_langParticles.stop();_langParticles=createCanvasParticles('lang-canvas',25);}},50);" style="background:linear-gradient(135deg,#8B6914,#C9A84C,#E8C96A);color:#0A0806;border:none;padding:13px 40px;border-radius:10px;font-family:Cinzel Decorative,Cinzel,serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s;box-shadow:0 4px 20px rgba(201,168,76,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(201,168,76,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(201,168,76,0.3)'">
       ⚔️ Enter Kingdom 331
     </button>
   </div>
@@ -686,8 +736,8 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
       <div id="lang-cur-wrap" style="position:relative;display:inline-block">
   <button class="lang-switch-btn" onclick="showLangMenu()" id="lang-cur">🌐 DE</button>
   <div id="lang-dropdown">
-    <button class="lang-drop-btn" onclick="setLang('de');closeLangMenu()">🇩🇪 Deutsch</button>
-    <button class="lang-drop-btn" onclick="setLang('en');closeLangMenu()">🇬🇧 English</button>
+    <button class="lang-drop-btn" onclick="if(typeof setLang==='function')setLang('de');if(typeof closeLangMenu==='function')closeLangMenu();">🇩🇪 Deutsch</button>
+    <button class="lang-drop-btn" onclick="if(typeof setLang==='function')setLang('en');if(typeof closeLangMenu==='function')closeLangMenu();">🇬🇧 English</button>
   </div>
 </div>
       <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="search" oninput="doSearch(this.value)" autocomplete="off"></div>
@@ -748,30 +798,66 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
   <div id="hero-tab-content"></div>
 </div>
 <div class="section" id="sec-formation">
-  <div class="sec-head" id="f-title"></div>
-  <div class="sub-head" id="f-sub1"></div>
-  <div class="table-wrap reveal"><table><thead><tr id="form-thead"></tr></thead><tbody id="form-tbody"></tbody></table></div>
-  <div class="alert reveal alert-warn" id="f-warn1"></div>
-  <div class="alert reveal alert-tip" id="f-tip1"></div>
-  <div class="sub-head" id="f-sub2"></div>
-  <div class="calc-box">
-    <div class="calc-row">
-      <div class="input-group"><label id="cl1"></label><input type="number" id="total-troops" value="100000" min="1000" step="1000"></div>
-      <div class="input-group"><label id="cl2"></label><select id="gen-sel"><option value="20-20-60" id="gopt1"></option><option value="10-20-70" id="gopt2"></option><option value="5-15-80" id="gopt3"></option><option value="5-10-85" id="gopt4"></option><option value="1-10-89" selected id="gopt5"></option><option value="custom" id="gopt6"></option></select></div>
-      <div class="input-group" id="cw" style="display:none"><label id="cl3"></label><input type="text" id="custom-split" placeholder="1-10-89"></div>
-      <div class="input-group"><label id="cl4"></label><input type="number" id="march-count" value="6" min="1" max="10"></div>
-      <button class="btn" id="calc-btn" onclick="calcFormation()"></button>
+  <div class="sec-head">⚙️ Formation & Strategie</div>
+
+  <div class="sub-head">📊 Formation pro Generation</div>
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Generation</th><th>🛡️ Inf</th><th>🐴 Kav</th><th>🏹 Archer</th><th>Warum?</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>Gen 1</b></td><td>20%</td><td>20%</td><td style="color:var(--gold);font-weight:700">60%</td><td style="font-size:12px">Noch ausgeglichen, keine Archer-Meta</td></tr>
+        <tr><td><b>Gen 2</b></td><td>10%</td><td>20%</td><td style="color:var(--gold);font-weight:700">70%</td><td style="font-size:12px">Marlin Widget = erste Archer-Meta</td></tr>
+        <tr><td><b>Gen 3</b></td><td>5%</td><td>15%</td><td style="color:var(--gold);font-weight:700">80%</td><td style="font-size:12px">Petra Widget verstärkt Archer massiv</td></tr>
+        <tr><td><b>Gen 4</b></td><td>5%</td><td>10%</td><td style="color:var(--gold);font-weight:700">85%</td><td style="font-size:12px">Rosa +30% Archer Proc dominiert</td></tr>
+        <tr><td style="color:#FFD700"><b>Gen 5 ⭐ META</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:12px">Vivian+Thrud maximieren Archer – BESTE Formation</td></tr>
+        <tr><td style="color:#FFD700"><b>Gen 6</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:12px">Yang+Triton – gleiche Formation wie Gen 5</td></tr>
+        <tr><td style="color:#FFD700"><b>Gen 7</b></td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:12px">Ava+W&W – 20% stärker als Gen 6</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert reveal alert-warn">⚠️ Immer mindestens <b>5.000 Infanterie absolut</b> behalten! Bei unter 100k Truppen lieber 5% Inf nehmen. Vorschau-Schaden im Spiel entscheidet!</div>
+  <div class="alert reveal alert-tip">💡 Kavallerie nie unter 10% senken – sie absorbiert Schaden wenn Infanterie fällt und schützt deine Archer!</div>
+
+  <div class="sub-head">🎯 KvK Formation (Rally-Angriff)</div>
+  <div class="grid-2 reveal">
+    <div class="card card-highlight">
+      <div class="card-title" style="color:var(--green-lt)">🌿 F2P Standard</div>
+      <p style="font-size:13px"><b style="color:var(--gold);font-size:18px">50% / 20% / 30%</b><br><br>🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>Leader: Long Fei + Vivian<br>Joiner Slot 1: Chenko</p>
     </div>
-    <div class="result-box" id="calc-result">
-      <div class="result-grid">
-        <div class="result-item"><div class="result-num" id="ri">-</div><div class="result-label">🛡️ <span id="rl-i"></span><br><small id="rp-i"></small></div></div>
-        <div class="result-item"><div class="result-num" id="rc">-</div><div class="result-label">🐴 <span id="rl-c"></span><br><small id="rp-c"></small></div></div>
-        <div class="result-item"><div class="result-num" id="ra">-</div><div class="result-label">🏹 <span id="rl-a"></span><br><small id="rp-a"></small></div></div>
-      </div>
-      <div class="result-bar-row" id="r-bar"></div>
-      <div id="r-warn" style="margin-top:8px;font-size:12px;color:var(--ember-lt);display:none"></div>
-      <div id="r-total" style="margin-top:7px;font-size:12px;color:var(--text-dim)"></div>
+    <div class="card card-highlight">
+      <div class="card-title" style="color:var(--gold)">💎 P2W Standard</div>
+      <p style="font-size:13px"><b style="color:var(--gold);font-size:18px">50% / 20% / 30%</b><br><br>🛡️ Inf 50% · 🐴 Kav 20% · 🏹 Archer 30%<br><br>Leader: Amadeus + Vivian<br>Joiner Slot 1: Chenko / Yeonwoo</p>
     </div>
+  </div>
+
+  <div class="sub-head">🏰 Garrison Formation (Stadtverteidigung)</div>
+  <div class="grid-2 reveal">
+    <div class="card">
+      <div class="card-title">⚙️ Standard Garrison</div>
+      <p style="font-size:18px;font-weight:700;color:var(--gold)">60% / 15% / 25%</p>
+      <p style="font-size:12px;color:var(--text-dim)">Inf tankt · Kav flankt · Archer dealen</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--blue-lt)">vs. Archer-Heavy Gegner</div>
+      <p style="font-size:18px;font-weight:700;color:var(--blue-lt)">50% / 30% / 20%</p>
+      <p style="font-size:12px;color:var(--text-dim)">Mehr Kav um feindliche Archer zu kontern (Kav &gt; Archer)</p>
+    </div>
+  </div>
+
+  <div class="sub-head">🔄 Konter-Formation</div>
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr><th>Gegner spielt</th><th>Dein Konter</th><th>Warum?</th></tr></thead>
+      <tbody>
+        <tr><td>⚖️ Standard 50/20/30</td><td><b>50/20/30</b></td><td style="font-size:12px">Gleiches Spiel – wer mehr Lethality hat gewinnt</td></tr>
+        <tr><td>🛡️ Heavy Inf 60%+</td><td><b>30/20/50</b></td><td style="font-size:12px">Archer &gt; Inf! Mehr Archer schmelzen Inf-Wall</td></tr>
+        <tr><td>🏹 Heavy Archer 50%+</td><td><b>40/40/20</b></td><td style="font-size:12px">Kav &gt; Archer! Kavallerie zerstört Backline</td></tr>
+        <tr><td>🐴 Heavy Kav 40%+</td><td><b>60/10/30</b></td><td style="font-size:12px">Inf &gt; Kav! Inf-Wall stoppt jeden Kav-Rush</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <div class="section" id="sec-events"><div class="sec-head" id="ev-title"></div><div class="tab-nav" id="evt-tabs"></div><div id="evt-content"></div></div>
@@ -897,7 +983,7 @@ en:{
 },
 };
 var LANG_NAV={};
-let LANG='de';
+var LANG='de';
 function t(k){return(LANGS[LANG]||LANGS.en)[k]??LANGS.en[k]??k;}
 function setLang(l,fromWelcome){
   LANG=l;
@@ -1347,7 +1433,7 @@ function closeLangMenu(){
   if(dd)dd.classList.remove('show');
 }
 
-function buildAll(){buildNav();buildStart();buildHelden();buildFormation();buildEvents();buildGear();buildCapacity();buildAkademie();buildMystic();buildPets();buildMasters();buildBooster();buildRessourcen();buildTipps();buildArena();buildEinsteiger();buildKoenigreiche();updateSidebar();}
+function buildAll(){buildNav();buildStart();buildHelden();buildEvents();buildGear();buildCapacity();buildAkademie();buildMystic();buildPets();buildMasters();buildBooster();buildRessourcen();buildTipps();buildArena();buildEinsteiger();buildKoenigreiche();updateSidebar();}
 
 function buildNav(){
   var navArr=t('nav');
@@ -1366,7 +1452,7 @@ function buildNav(){
     }});}
     return secs.filter(function(v,i,a){return a.indexOf(v)===i;});
   })();
-  document.getElementById('main-nav').innerHTML=navArr.map((n,i)=>`<button onclick="showSection('${navIds[i]}')" data-sec="${navIds[i]}">${n}${todayNewSecs.includes(navIds[i])?'<span class=\"badge-new\">NEU</span>':''}</button>`).join('');
+  document.getElementById('main-nav').innerHTML=navArr.map((n,i)=>`<button onclick="showSection('${navIds[i]}')" data-sec="${navIds[i]}">${n}${todayNewSecs.includes(navIds[i])?'<span class=\"badge-new\">NEU</span>':''}<span class="nav-star" data-id="${navIds[i]}" onclick="event.stopPropagation();toggleFav(navIds[i],navArr[i],icons[i]||'📌')">☆</span></button>`).join('');
   var _navStart=document.querySelector('[data-sec="start"]');
   if(_navStart)_navStart.classList.add('active');
 }
@@ -1461,10 +1547,10 @@ function buildHelden(){
   ];
   document.getElementById('hero-tab-content').innerHTML=`
   <div class="tab-content active" id="htab-0"><div class="view-toggle"><button class="active" onclick="setHeroView('table',this)">${isDE?'📋 Tabelle':'📋 Table'}</button><button onclick="setHeroView('cards',this)">${isDE?'🃏 Karten (Handy)':'🃏 Cards (Mobile)'}</button></div>
-    <div class="table-wrap" id="hero-table-view"><table>
+    <div class="table-wrap" id="hero-table-view" style="display:none"><table>
       <thead><tr>${th.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
       <tbody>${hRows.map(r=>`<tr><td>${r[0]}</td><td class="td-dim">${r[1]}</td><td>${r[2]}</td><td><span class="tag ${tm[r[3]]||'tag-b'}">${r[3]}</span></td><td class="td-dim" style="font-size:12px">${r[4]}</td><td class="td-dim">${r[5]}</td><td><span class="tag ${rm[r[6]]||'tag-b'}">${r[6]}</span></td><td class="td-dim" style="font-size:12px">${r[7]}</td></tr>`).join('')}</tbody>
-    </table></div><div id="hero-card-view" class="hero-card-grid" style="display:none"></div>
+    </table></div><div id="hero-card-view" class="hero-card-grid"></div>
   </div>
   <div class="tab-content" id="htab-1">
     <div class="grid-2">${combos.map(c=>`<div class="card card-highlight"><div class="card-title">⚔️ ${c.gen}</div><p style="font-size:13px">${c.j.join('<br>')}</p><div class="alert alert-gold" style="margin-top:10px;font-size:12px">💡 ${c.tip}</div></div>`).join('')}</div>
@@ -1505,6 +1591,43 @@ function showHeroTab(i){
   document.querySelectorAll('#hero-tabs .tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
   document.querySelectorAll('#hero-tab-content .tab-content').forEach((c,j)=>c.classList.toggle('active',i===j));
 }
+
+function bearCalcUpdate(){
+  var sel=document.getElementById('bear-gen-sel');
+  var cw=document.getElementById('bear-custom-wrap');
+  if(sel&&cw)cw.style.display=sel.value==='custom'?'block':'none';
+}
+function bearCalc(){
+  var D=(LANG==='de');
+  var _bgs=document.getElementById('bear-gen-sel');if(!_bgs)return;var gen=_bgs.value;
+  var troops=parseInt(document.getElementById('bear-troops').value)||500000;
+  var marches=parseInt(document.getElementById('bear-marches').value)||1;
+  var inf,cav,arc;
+  if(gen==='custom'){
+    var p=(document.getElementById('bear-custom').value||'1-10-89').split('-').map(Number);
+    inf=p[0]||1;cav=p[1]||10;arc=p[2]||89;
+  } else {
+    var p=gen.split('-').map(Number);inf=p[0];cav=p[1];arc=p[2];
+  }
+  var total=Math.floor(troops/marches);
+  var s=inf+cav+arc;
+  var infN=Math.round(total*inf/s);
+  var cavN=Math.round(total*cav/s);
+  var arcN=total-infN-cavN;
+  var fmt=function(n){return n>=1000?(n/1000).toFixed(1)+'k':String(n);};
+  var res=document.getElementById('bear-calc-result');
+  var out=document.getElementById('bear-calc-output');
+  if(res)res.style.display='block';
+  if(out){
+    out.innerHTML='<b>'+(D?'Pro Marsch ('+marches+'x)':'Per March ('+marches+'x)')+':</b><br>'
+      +'🛡️ '+(D?'Infanterie':'Infantry')+': <b style="color:var(--blue-lt)">'+fmt(infN)+'</b><br>'
+      +'🐴 '+(D?'Kavallerie':'Cavalry')+': <b style="color:#9a5acc">'+fmt(cavN)+'</b><br>'
+      +'🏹 '+(D?'Bogenschützen':'Archers')+': <b style="color:var(--gold)">'+fmt(arcN)+'</b><br>'
+      +'<hr style="border-color:rgba(58,52,42,0.4);margin:6px 0">'
+      +'📊 Total: <b>'+fmt(troops)+'</b> | Formation: <b>'+inf+'%/'+cav+'%/'+arc+'%</b>';
+  }
+}
+
 function buildFormation(){
   var D=(LANG==='de');
   document.getElementById('f-title').textContent=tr('⚙️ Formation & Rechner','⚙️ Formation & Calculator','⚙️ Formación y Calculadora');
@@ -1519,8 +1642,8 @@ function buildFormation(){
     ['Gen 6','1%','10%','89%',D?'Yang+Triton – gleiche Formation':'Yang+Triton – same formation'],
     ['Gen 7','1%','10%','89%',D?'Ava+W&W – 20% stärker als Gen6':'Ava+W&W – 20% stronger than Gen6'],
   ];
-  document.getElementById('form-thead').innerHTML=fh.map(h=>`<th>${h}</th>`).join('');
-  document.getElementById('form-tbody').innerHTML=fr.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+  document.getElementById('form-thead').innerHTML=fh.map(function(h){return '<th>'+h+'</th>';}).join('');
+  document.getElementById('form-tbody').innerHTML=fr.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';}).join('');
   document.getElementById('f-warn1').innerHTML=tr('⚠️ Mindestens <b>5.000 Infanterie absolut</b>! Bei unter 100k Truppen lieber 5% Inf nehmen!','⚠️ Always keep at least <b>5,000 Infantry absolute</b>! Below 100k troops use 5% Infantry!','⚠️ ¡Mínimo <b>5.000 Infantería absoluta</b>! Por debajo de 100k tropas usa 5% Infantería!');
   document.getElementById('f-tip1').innerHTML=tr('💡 Kavallerie 10% nie weglassen – sie absorbiert Schaden wenn Infanterie fällt!','💡 Never drop Cavalry below 10% – they absorb damage when Infantry falls!','💡 ¡Nunca bajes la Caballería del 10%! Absorbe el daño cuando cae la Infantería.');
   document.getElementById('f-sub2').textContent=tr('🧮 Formationsrechner','🧮 Formation Calculator','🧮 Calculadora de Formación');
@@ -1529,18 +1652,19 @@ function buildFormation(){
   document.getElementById('cl3').textContent=tr('Inf% / Kav% / Arch%','Inf% / Cav% / Arch%','Inf% / Cab% / Arch%');
   document.getElementById('cl4').textContent=tr('Anzahl Märsche','Number of marches','Número de marchas');
   document.getElementById('calc-btn').textContent=tr('Berechnen','Calculate','Calcular');
-  [D?'Gen 1 (20/20/60)':'Gen 1 (20/20/60)',D?'Gen 2 (10/20/70)':'Gen 2 (10/20/70)',D?'Gen 3 (5/15/80)':'Gen 3 (5/15/80)',D?'Gen 4 (5/10/85)':'Gen 4 (5/10/85)',D?'Gen 5/6/7 META (1/10/89)':'Gen 5/6/7 META (1/10/89)',D?'Benutzerdefiniert':'Custom'].forEach((o,i)=>{var el=document.getElementById('gopt'+(i+1));if(el)el.textContent=o;});
+  var genOpts=[D?'Gen 1 (20/20/60)':'Gen 1 (20/20/60)',D?'Gen 2 (10/20/70)':'Gen 2 (10/20/70)',D?'Gen 3 (5/15/80)':'Gen 3 (5/15/80)',D?'Gen 4 (5/10/85)':'Gen 4 (5/10/85)',D?'Gen 5/6/7 META (1/10/89)':'Gen 5/6/7 META (1/10/89)',D?'Benutzerdefiniert':'Custom'];
+  genOpts.forEach(function(o,i){var el=document.getElementById('gopt'+(i+1));if(el)el.textContent=o;});
   document.getElementById('rl-i').textContent=tr('Infanterie','Infantry','Infantería');
   document.getElementById('rl-c').textContent=tr('Kavallerie','Cavalry','Caballería');
   document.getElementById('rl-a').textContent=tr('Bogenschützen','Archers','Arqueros');
 }
-document.getElementById('gen-sel').addEventListener('change',function(){document.getElementById('cw').style.display=this.value==='custom'?'flex':'none';});
+var _gs=document.getElementById('gen-sel');if(_gs)_gs.addEventListener('change',function(){var _cw=document.getElementById('cw');if(_cw)_cw.style.display=this.value==='custom'?'flex':'none';});
 function calcFormation(){
   var D=(LANG==='de');
   var total=parseInt(document.getElementById('total-troops').value)||0;
   var marches=parseInt(document.getElementById('march-count').value)||1;
   var gen=document.getElementById('gen-sel').value;
-  let inf,cav,arc;
+  var inf,cav,arc;
   if(gen==='custom'){var p=(document.getElementById('custom-split').value||'1-10-89').split('-').map(Number);inf=p[0]||1;cav=p[1]||10;arc=p[2]||89;}
   else{var p=gen.split('-').map(Number);inf=p[0];cav=p[1];arc=p[2];}
   var s=inf+cav+arc;
@@ -1830,11 +1954,11 @@ function showEvt(id){
     })(),
     kvk:(function(){
     var D=(LANG==='de');
-    var t1=D?'🗡️ Angriff (Gen5+)':'🗡️ Attack (Gen5+)';
+    var t1=D?'🗡️ Angriff':'⚔️ Attack';
     var t2=D?'🛡️ Verteidigung':'🛡️ Defense';
     var t3=D?'⛏️ Beim Sammeln':'⛏️ Gathering';
     var t4='🏥 Field Triage';
-    var tabLabels=D?['📋 Übersicht','📦 Vorbereitung','⚔️ Angriff','🛡️ Verteidigung','🏰 Schloss-Kampf','📋 Punktequ.','⚡ Grundfertig+','🐾 Begleittier','🦸 Heldenentw.','💪 Kraftschub']:['📋 Overview','📦 Preparation','⚔️ Attack','🛡️ Defense','🏰 Castle Battle','📋 DayPoints','⚡ Basic Skills+','🐾 Pet Training','🦸 Hero Dev.','💪 Power Boost'];
+    var tabLabels=D?['📋 Übersicht','📦 Vorbereitung']:['📋 Overview','📦 Preparation'];
     var tabs=tabLabels.map(function(l,i){return '<button class="tab-btn'+(i===0?' active':'')+'" onclick="showKvkTab('+i+')">'+l+'</button>';}).join('');
 
     var statsHtml=(function(){
@@ -1957,7 +2081,7 @@ function showEvt(id){
     }
 
     var day1tip=D?'Watchtower Intel Missionen = 6.000 Punkte each! Vor dem Ausgeben: Wolf-Pet + Double Time aktivieren! Truegold für Gebäude = 2.000 Pts. Nie ohne Buffs ausgeben!':'Watchtower Intel Missions = 6,000 pts each! Before spending: activate Wolf pet + Double Time! Truegold on buildings = 2,000 pts. Never spend without buffs!';
-    var day1=buildPrepMatrix(1,D)+pointsTable([
+    var day1=buildPrepProgress(1)+buildPrepMatrix(1,D)+pointsTable([
       [D?'1x Tempered Truegold (Gebäude)':'1x Tempered Truegold (building)','30.000'],
       [D?'1x Hero Roulette spielen':'Play Hero Roulette (1x)','8.000'],
       [D?'1x Master Emblem (kein Allgemeines)':'1x Master Emblem (no Common)','6.000'],
@@ -1979,7 +2103,7 @@ function showEvt(id){
 
     var day2tip=D?'Grundfertigkeiten+ (Tag 2): Roulette und Shards hier ausgeben! Embleme NICHT – die für Tag 3 aufbewahren. Alle Truegold/Dust/Speedups hier verwenden!':'Basic Skills+ (Day 2): Spend Roulette and Shards here! Emblems NO – save for Day 3. All Truegold/Dust/Speedups spend here!';
     var day3tip=D?'Begleittier-Ausbildung: Adv. Taming Marks (15.000 Pts!) sind der Hauptfokus. Wochenlang sammeln und HIER ausgeben! Auch Intel Missionen nicht vergessen!':'Pet Training: Adv. Taming Marks (15,000 pts!) are the main focus. Save for weeks and spend HERE! Also do not forget Intel Missions!';
-    var day2=buildPrepMatrix(2,D)+pointsTable([
+    var day2=buildPrepProgress(2)+buildPrepMatrix(2,D)+pointsTable([
       [D?'1x Hero Roulette spielen':'Play Hero Roulette (1x)','8.000'],
       [D?'1x Master Emblem (kein Allgemeines)':'1x Master Emblem (no Common)','6.000'],
       [D?'1x Mythic Hero Shard':'1x Mythic Hero Shard','3.040'],
@@ -1997,7 +2121,7 @@ function showEvt(id){
       [D?'1.000 Brot/Holz sammeln':'Gather 1,000 Bread/Wood','2'],
       [D?'200 Stein / 50 Eisen sammeln':'Gather 200 Stone / 50 Iron','2'],
     ])+'<div class="alert alert-warn">⚠️ '+(D?'Embleme hier NICHT ausgeben (🚫 laut Tabelle)! Embleme für Tag 3 (Begleittier) sparen → dort gibt es mehr Synergie. Roulette und Shards hier ausgeben!':'Do NOT spend Emblems here (🚫 per table)! Save Emblems for Day 3 (Pet Training) → better synergy there. Spend Roulette and Shards here!')+'</div>'+'<div class="alert alert-tip">💡 '+(D?'Grundfertigkeiten+ (Tag 2): Hero Roulette (8.000!) und Mythic Shards (3.040!) sind Pflicht. Truegold/Dust und alle Speedups hier einsetzen!':'Basic Skills+ (Day 2): Hero Roulette (8,000!) and Mythic Shards (3,040!) are mandatory. Spend Truegold/Dust and all Speedups here!')+'</div>';
-    var day3=buildPrepMatrix(3,D)+pointsTable([
+    var day3=buildPrepProgress(3)+buildPrepMatrix(3,D)+pointsTable([
       [D?'1x Fortgeschr. Zähmungszeichen (Pet Refinement)':'1x Advanced Taming Mark (Pet Refinement)','15.000'],
       [D?'1x Hero Roulette spielen':'Play Hero Roulette (1x)','8.000'],
       [D?'1x Master Emblem (kein Allgemeines)':'1x Master Emblem (no Common)','6.000'],
@@ -2014,7 +2138,7 @@ function showEvt(id){
     ])+'<div class="alert alert-tip">💡 '+day3tip+'</div>';
 
     var day4tip=D?'Heldenentwicklung: Mithril (40.000!) und Widgets (8.000!) sind die Goldgrube. T11 Truppen trainieren für 75 Pts/Truppe. Beförderungen zählen als Differenz!':'Hero Development: Mithril (40,000!) and Widgets (8,000!) are the goldmine. Train T11 troops for 75 pts/troop. Promotions count as the difference in points!';
-    var day4=buildPrepMatrix(4,D)+pointsTable([
+    var day4=buildPrepProgress(4)+buildPrepMatrix(4,D)+pointsTable([
       ['1x Mithril','40.000'],
       [D?'1x Widget (Helden Exklusive Ausrüstung)':'1x Widget (Hero Exclusive Gear)','8.000'],
       [D?'1x Hero Gear Schmiedehammer':'1x Hero Gear Forgehammer','4.000'],
@@ -2035,7 +2159,7 @@ function showEvt(id){
     ])+'<div class="alert alert-warn">⚠️ '+(D?'Punkte von Beförderungen = Differenz zwischen Ausbildungspunkten der entsprechenden Level! T11→T10 = 75-60 = 15 Punkte für jeden beförderten T11-T10 Trupp.':'Promotion points = difference between training points of the respective levels! T11→T10 = 75-60 = 15 points for each promoted T11-T10 troop.')+'</div>'+'<div class="alert alert-tip">💡 '+day4tip+'</div>';
 
     var day5tip=D?'Kraftschub: Mithril (40.000!) an diesem Tag breit einsetzen. Gov.-Ausrüstung Score (+36) passiv durch normales Spielen. Intel Missionen täglich machen!':'Power Boost: Spend Mithril (40,000!) broadly on this day. Gov. Gear Score (+36) passively through normal play. Do Intel Missions daily!';
-    var day5=buildPrepMatrix(5,D)+pointsTable([
+    var day5=buildPrepProgress(5)+buildPrepMatrix(5,D)+pointsTable([
       ['1x Mithril','40.000'],
       [D?'1x Widget (Hero Exclusive Gear)':'1x Widget (Hero Exclusive Gear)','8.000'],
       [D?'1x Hero Gear Forgehammer':'1x Hero Gear Forgehammer','4.000'],
@@ -2253,7 +2377,7 @@ function showEvt(id){
     +'</div>'
     +'<div class="alert alert-warn">⚠️ '+(D?'Vorbereitungsphase gewinnen = Kingdom Bonus + der Kampf findet im GEGNER-Königreich statt. Prep Phase ist genau so wichtig wie der Kampf selbst!':'Winning Prep Phase = Kingdom Bonus + battle takes place in ENEMY kingdom. Prep Phase is just as important as the battle itself!')+'</div>';
 
-    var contents=[overview,prep,attackStrategy,defenseStrategy,castleBattle,day1,day2,day3,day4,day5];
+    var contents=[overview,prep];
     
     var tabDivs=contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="kvktab-'+i+'">'+c+'</div>';}).join('');
     return '<div class="tab-nav" id="kvk-tabs">'+tabs+'</div><div id="kvk-tab-content">'+tabDivs+'</div>';
@@ -2280,7 +2404,7 @@ function showEvt(id){
         +'<div class="card card-highlight"><div class="card-title">'+(D?'🏰 Guard Station (eigene Stadt)':'🏰 Guard Station (own city)')+'</div><p style="font-size:13px">'
           +(D?'<b>Formation: 60% / 15% / 25%</b><br><br>Helden:<br>• Alcar (70% Schadensred.!)<br>• Long Fei / Zoe (F2P Tank)<br>• Vivian (Debuff für mehr Schaden)<br><br>Garrison-Formation: Gleiche Logik wie KvK Verteidigung!':'<b>Formation: 60% / 15% / 25%</b><br><br>Heroes:<br>• Alcar (70% damage red.!)<br>• Long Fei / Zoe (F2P tank)<br>• Vivian (Debuff for more damage)<br><br>Garrison formation: Same logic as KvK defense!')+'</p></div>'
         +'<div class="card card-highlight"><div class="card-title">'+(D?'⚔️ Verstärkung senden':'⚔️ Send Reinforcement')+'</div><p style="font-size:13px">'
-          +(D?'<b>Formation: 50% / 20% / 30%</b><br><br>Joiner-Held in Slot 1:<br>• Chenko (bester Joiner)<br>• Gordon / Howard (Defensiv-Joiner)<br>• Saul (Defense Widget)<br><br><b>Gleiche Logik wie Bear Hunt Joiner!</b> Nur Slot 1 Skill zählt!':'<b>Formation: 50% / 20% / 30%</b><br><br>Joiner hero in Slot 1:<br>• Chenko (best joiner)<br>• Gordon / Howard (defensive joiners)<br>• Saul (Defense Widget)<br><br><b>Same logic as Bear Hunt joiners!</b> Only Slot 1 skill counts!')+'</p></div>'
+          +(D?'<b>⚠️ Formation: 50% / 50% / 0% (KEIN Archer!)</b><br>🏹 Archer IMMER zu Hause lassen!<br><br>Joiner-Held in Slot 1:<br>• Chenko (bester Joiner)<br>• Gordon / Howard (Defensiv-Joiner)<br>• Saul (Defense Widget)<br><br><b>Gleiche Logik wie Bear Hunt Joiner!</b> Nur Slot 1 Skill zählt!':'<b>Formation: 50% / 20% / 30%</b><br><br>Joiner hero in Slot 1:<br>• Chenko (best joiner)<br>• Gordon / Howard (defensive joiners)<br>• Saul (Defense Widget)<br><br><b>Same logic as Bear Hunt joiners!</b> Only Slot 1 skill counts!')+'</p></div>'
       +'</div>';
 
       var t3='<div class="grid-2">'
@@ -2365,6 +2489,42 @@ function showEvt(id){
         +'<div class="card" style="border-color:rgba(74,138,186,0.4)"><div class="card-title" style="color:var(--blue-lt)">'+(D?'🏅 Top 4 Allianzen':'🏅 Top 4 Alliances')+'</div><p style="font-size:12px">'+(D?'• Prestige-Gebaeude "Wille des Champions"<br>• Allianzbanner<br>• + individuelle Kaempferbelohnungen nach persoenlicher Leistung':'• Prestige Building "Will of Champions"<br>• Alliance Banner<br>• + individual fighter rewards by personal performance')+'</p></div>'
       +'</div>'
       +'<div class="alert alert-tip">💡 '+(D?'Nettosiegpunkte = Deine Allianz-Reliktpunkte MINUS Gegner-Reliktpunkte pro Match. Je hoeher der Vorsprung desto besser fuer die Gesamt-Bestenliste!':'Net Victory Points = Your Alliance Relic Points MINUS opponent Relic Points per match. The bigger the margin the better for the overall leaderboard!')+'</div>';
+
+      
+      var t_calc='<div class="alert alert-gold">🧮 '+(D?'Formationsrechner – Berechne deine optimale Formation für jeden Marsch!':'Formation Calculator – Calculate your optimal formation for each march!')+'</div>'
+      +'<div class="sub-head">'+(D?'📊 Formation pro Generation (Bärenfalle)':'📊 Formation by Generation (Bear Hunt)')+'</div>'
+      +'<div class="table-wrap"><table><thead><tr><th>Gen</th><th>Inf%</th><th>Kav%</th><th>Archer%</th><th>'+(D?'Warum?':'Why?')+'</th></tr></thead><tbody>'
+      +'<tr><td>Gen 1</td><td>10%</td><td>30%</td><td style="color:var(--gold);font-weight:700">60%</td><td style="font-size:11px">'+(D?'Noch ausgeglichen':'Still balanced')+'</td></tr>'
+      +'<tr><td>Gen 2</td><td>10%</td><td>20%</td><td style="color:var(--gold);font-weight:700">70%</td><td style="font-size:11px">'+(D?'Mehr Archer':'More Archers')+'</td></tr>'
+      +'<tr><td>Gen 3</td><td>5%</td><td>15%</td><td style="color:var(--gold);font-weight:700">80%</td><td style="font-size:11px">'+(D?'Archer dominiert':'Archers dominate')+'</td></tr>'
+      +'<tr><td>Gen 4</td><td style="color:var(--green-lt)">5%</td><td>10%</td><td style="color:var(--gold);font-weight:700">85%</td><td style="font-size:11px">'+(D?'Rosa Proc Meta':'Rosa Proc Meta')+'</td></tr>'
+      +'<tr><td style="color:#FFD700;font-weight:700">Gen 5/6/7 ⭐</td><td style="color:var(--green-lt)">1%</td><td>10%</td><td style="color:var(--gold);font-weight:700">89%</td><td style="font-size:11px">'+(D?'META! Min. 5.000 Inf!':'META! Min. 5,000 Inf!')+'</td></tr>'
+      +'</tbody></table></div>'
+      +'<div class="alert alert-warn">⚠️ '+(D?'Immer min. 5.000 Infanterie absolut! Vorschau-Schaden entscheidet – teste beide Formationen!':'Always min. 5,000 Infantry absolute! Preview damage decides – test both formations!')+'</div>'
+      +'<div class="sub-head">'+(D?'🧮 Rechner':'🧮 Calculator')+'</div>'
+      +'<div class="card" style="padding:16px">'
+        +'<div class="form-row" style="display:flex;flex-direction:column;gap:10px;">'
+          +'<div><label style="font-size:12px;color:var(--text-muted)">'+(D?'Generation:':'Generation:')+'</label>'
+          +'<select id="bear-gen-sel" onchange="bearCalcUpdate()" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px;font-size:13px">'
+          +'<option value="10-30-60">Gen 1 (10/30/60)</option>'
+          +'<option value="10-20-70">Gen 2 (10/20/70)</option>'
+          +'<option value="5-15-80">Gen 3 (5/15/80)</option>'
+          +'<option value="5-10-85">Gen 4 (5/10/85)</option>'
+          +'<option value="1-10-89" selected>Gen 5/6/7 META (1/10/89)</option>'
+          +'<option value="custom">'+(D?'Benutzerdefiniert':'Custom')+'</option>'
+          +'</select></div>'
+          +'<div id="bear-custom-wrap" style="display:none"><label style="font-size:12px;color:var(--text-muted)">Inf/Kav/Arch %:</label>'
+          +'<input id="bear-custom" type="text" placeholder="1-10-89" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px;font-size:13px"></div>'
+          +'<div><label style="font-size:12px;color:var(--text-muted)">'+(D?'Truppen total:':'Total Troops:')+'</label>'
+          +'<input id="bear-troops" type="number" value="500000" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px;font-size:13px"></div>'
+          +'<div><label style="font-size:12px;color:var(--text-muted)">'+(D?'Anzahl Märsche:':'Number of Marches:')+'</label>'
+          +'<input id="bear-marches" type="number" value="1" min="1" max="10" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px;font-size:13px"></div>'
+          +'<button onclick="bearCalc()" style="background:linear-gradient(135deg,#8B6914,#C9A84C);color:#0A0806;border:none;padding:10px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;width:100%">'+(D?'🧮 Berechnen':'🧮 Calculate')+'</button>'
+          +'<div id="bear-calc-result" style="background:var(--stone-4);border-radius:8px;padding:12px;display:none">'
+          +'<div id="bear-calc-output" style="font-size:13px;color:var(--parch);line-height:2"></div>'
+          +'</div>'
+        +'</div>'
+      +'</div>';
 
       var contents=[t0,t1,t2,t3,t4];
       var tabDivs='<div id="vik-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="viktab-'+i+'">'+c+'</div>';}).join('')+'</div>';
@@ -3180,6 +3340,7 @@ function showSection(id){_doShowSection(id);}
 function toggleAccord(head){head.closest('.accord').classList.toggle('open');}
 
 // ── SEARCH ──
+var SD_HEROES=['Amadeus','Chenko','Vivian','Long Fei','Yang','Ava','Wee & Woo','Helga','Zoe','Marlin','Margot','Rosa','Petra','Alcar','Charles','Eric','Triton','Thrud','Gordon','Saul','Jabel','Hilde'];
 var SD=[
   {k:'amadeus leader tödlichkeit zeitlos widget',t:'Amadeus – S-Tier Leader',s:'helden'},
   {k:'chenko joiner slot 1 flat bester',t:'Chenko – Bester Joiner',s:'helden'},
@@ -3334,7 +3495,7 @@ function _doShowSection(id){
   // re-trigger reveal
   setTimeout(()=>{
     document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>el.classList.remove('visible'));
-    setTimeout(initReveal,60);
+    
   },80);
 }
 
@@ -3431,7 +3592,7 @@ function initEmber(){
   canvas.width=window.innerWidth;canvas.height=window.innerHeight;
   window.addEventListener('resize',function(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
   var embers=[];
-  for(let i=0;i<35;i++){embers.push({
+  for(var i=0;i<35;i++){embers.push({
     x:Math.random()*canvas.width,
     y:canvas.height+Math.random()*200,
     vx:(Math.random()-0.5)*0.6,vy:-(0.4+Math.random()*1.2),
@@ -3465,7 +3626,7 @@ function initEmber(){
 
 // ── 3D CARD TILT ──
 function init3DTilt(){
-  document.addEventListener('mousemove',e=>{
+  document.addEventListener('mousemove',function(e){
     document.querySelectorAll('.card').forEach(function(card){
       var rect=card.getBoundingClientRect();
       var inX=e.clientX-rect.left,inY=e.clientY-rect.top;
@@ -3475,8 +3636,8 @@ function init3DTilt(){
       var cx=rect.width/2,cy=rect.height/2;
       var dx=(inX-cx)/cx,dy=(inY-cy)/cy;
       var rx=-dy*5,ry=dx*5;
-      card.style.transform=`perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(4px)`;
-      card.style.boxShadow=`${-ry*2}px ${rx*2}px 24px rgba(0,0,0,0.4),0 0 16px rgba(201,168,76,0.1)`;
+      card.style.transform='perspective(600px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateZ(4px)';
+      card.style.boxShadow=(-ry*2)+'px '+(rx*2)+'px 24px rgba(0,0,0,0.4),0 0 16px rgba(201,168,76,0.1)';
     });
   });
   document.addEventListener('mouseleave',function(){
@@ -3490,7 +3651,7 @@ function initParallax(){
   if(!para)return;
   window.addEventListener('scroll',function(){
     var y=window.scrollY;
-    para.style.transform=`translateY(${y*0.3}px)`;
+    para.style.transform='translateY('+(y*0.3)+'px)';
   },{passive:true});
 }
 
@@ -3522,7 +3683,7 @@ function playClick(){
 window.addEventListener('scroll',function(){updateScrollProgress();updateBackTop();},{passive:true});
 document.addEventListener('DOMContentLoaded',function(){
   initEmber();init3DTilt();initParallax();initSidebar();
-  setTimeout(initReveal,100);
+  
   document.querySelectorAll('nav button, .quick-card, .tab-btn, .accord-head').forEach(function(el){
     el.addEventListener('click',playClick);
   });
@@ -3676,6 +3837,128 @@ function startBtParticles(){
     animId=requestAnimationFrame(draw);
   }
   draw();
+}
+
+
+function makeFormViz(inf,cav,arc){
+  var D=(LANG==='de');
+  var id='fv'+Date.now();
+  var formStr=inf+'% / '+cav+'% / '+arc+'%';
+  return '<div class="form-viz-wrap"><div class="form-viz">'
+    +'<div class="form-bar form-inf" style="width:'+Math.round(inf/100*160)+'px">'+inf+'%</div>'
+    +'<div class="form-bar form-cav" style="width:'+Math.round(cav/100*160)+'px">'+cav+'%</div>'
+    +'<div class="form-bar form-arc" style="width:'+Math.round(arc/100*160)+'px">'+arc+'%</div>'
+    +'<button class="copy-form-btn" id="'+id+'" onclick="copyForm(this,\''+formStr+'\')">📋</button>'
+    +'</div>'
+    +'<div style="font-size:10px;color:var(--text-muted)">🛡️ Inf &nbsp;🐴 '+(D?'Kav':'Cav')+' &nbsp;🏹 '+(D?'Archer':'Archers')+'</div>'
+  +'</div>';
+}
+function copyForm(btn,text){
+  if(navigator.clipboard)navigator.clipboard.writeText(text).then(function(){
+    btn.textContent='✅';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='📋';btn.classList.remove('copied');},2000);
+  });
+}
+
+function buildHeuteCard(){
+  var D=(LANG==='de');
+  var el=document.getElementById('heute-card-container');
+  if(!el)return;
+  var days=D
+    ?['📋 Punktequ. – Tempered Truegold 30k, Intel 6k, Speedups 30','⚡ Grundfertig+ – Roulette 8k, Mythic Shard 3k, Truegold 2k','🐾 Begleittier – Adv. Taming 15k, Roulette 8k, Emblem 6k, Intel 6k','🦸 Heldenentw. – Mithril 40k, Widget 8k, T11 Truppen 75 Pts','💪 Kraftschub – Mithril 40k, Tempered TG 30k, Widget 8k, Intel 6k']
+    :['📋 Day Points – Tempered Truegold 30k, Intel 6k, Speedups 30','⚡ Basic Skills+ – Roulette 8k, Mythic Shard 3k, Truegold 2k','🐾 Pet Training – Adv. Taming 15k, Roulette 8k, Emblem 6k, Intel 6k','🦸 Hero Dev – Mithril 40k, Widget 8k, T11 Troops 75 pts','💪 Power Boost – Mithril 40k, Tempered TG 30k, Widget 8k, Intel 6k'];
+  var tags=D
+    ?['Tag 1','Tag 2','Tag 3','Tag 4','Tag 5']
+    :['Day 1','Day 2','Day 3','Day 4','Day 5'];
+  var dow=new Date().getDay();
+  var idx=dow===0?0:dow===1?1:dow===2?2:dow===3?3:4;
+  el.innerHTML='<div class="heute-card reveal" onclick="showSection(\'events\')">'
+    +'<div style="font-family:Cinzel,serif;font-size:12px;color:var(--blue-lt);margin-bottom:6px">📅 '+(D?'KvK Prep – Heute':'KvK Prep – Today')+'</div>'
+    +'<div class="heute-tag">'+tags[idx]+'</div>'
+    +'<div style="font-size:12px;color:var(--text-dim);margin-top:4px">'+days[idx]+'</div>'
+    +'<div style="font-size:10px;color:var(--text-muted);margin-top:6px">'+(D?'→ Tippen für alle 5 Tage':'→ Tap for all 5 days')+'</div>'
+  +'</div>';
+}
+
+var GT=[
+  ['Additiv','Buffs summieren sich: +25%+25%=+50%'],
+  ['Multiplikativ','Multipliziert die additive Gruppe → exponentiell mehr Schaden!'],
+  ['Debuff','Schwächung auf den Feind. Wirkt wie Multiplikator!'],
+  ['Flat','Fester Wert, kein Zufall. Immer garantiert (z.B. Chenko +25%)'],
+  ['Proc','Effekt mit CHANCE. RNG-abhängig (z.B. Petra 5-600%)'],
+  ['Widget','Exclusive Gear eines Mythic-Helden. Nicht in Arena!'],
+  ['Rally','Gemeinsamer Angriff. Nur Joiner Slot-1-Skill zählt!'],
+  ['Garrison','Stadtverteidigung: Guard Station + Formation + Helden'],
+  ['Joiner','Rally-Teilnehmer. Nur erster Expeditions-Skill (Slot 1) zählt!'],
+  ['Tödlichkeit','Haupt-Schadenswert. Oft wichtiger als Angriff!'],
+  ['Field Triage','Nach KvK: bis 90% Truppen zurück (Satchels+Rescue Orders)'],
+  ['NAP','Non-Aggression Pact. Nicht-Angriffspakt zwischen Allianzen'],
+];
+function buildGlossar(){
+  var p=document.getElementById('glossar-popup');
+  if(!p)return;
+  p.innerHTML='<div style="font-family:Cinzel,serif;font-size:12px;color:var(--gold);margin-bottom:10px">📖 '+(LANG==='de'?'Glossar':'Glossary')+'</div>'
+    +GT.map(function(t){return '<div class="g-term">'+t[0]+'</div><div class="g-def">'+t[1]+'</div>';}).join('');
+}
+function toggleGlossar(){
+  var p=document.getElementById('glossar-popup');if(!p)return;
+  p.classList.toggle('show');if(p.classList.contains('show'))buildGlossar();
+}
+
+
+// ── PREP PROGRESS BAR ──
+function buildPrepProgress(day){
+  var D=(LANG==='de');
+  var names=D?['Pkt.','Grundf.','Begl.','Held.','Kraft.']:['Pts','Basic','Pet','Hero','Boost'];
+  var s='<div class="prep-progress">'
+    +'<div style="font-size:11px;color:var(--text-muted)">KvK Prep: '+(D?'Tag ':'Day ')+day+' / 5</div>'
+    +'<div class="prep-steps">';
+  for(var i=1;i<=5;i++) s+='<div class="prep-step'+(i<day?' done':i===day?' active':'')+'"></div>';
+  s+='</div><div class="prep-names">';
+  for(var i=0;i<5;i++) s+='<div class="prep-name'+(i+1===day?' active':'')+'">'+names[i]+'</div>';
+  return s+'</div></div>';
+}
+
+// ── BÄRENFALLEN-ZEITEN AUF STARTSEITE ──
+function buildBearStart(){
+  var D=(LANG==='de');
+  var el=document.getElementById('bear-start-container');
+  if(!el)return;
+  var times=[['[ZOO]','20:00 | 23:00 UTC'],['[40K]','01:00 | 17:00 UTC'],['[CBA]','20:15 | 01:00 UTC'],['[ANU]','20:30 | 01:30 UTC'],['[WBA]','00:30 | 19:30 UTC'],['[200]','12:00 | 19:00 UTC']];
+  el.innerHTML='<div class="bear-start">'
+    +'<div style="font-family:Cinzel,serif;font-size:12px;color:var(--gold);margin-bottom:8px">🐻 '+(D?'Bärenfallen-Zeiten':'Bear Hunt Times')+'</div>'
+    +times.map(function(t){return '<div class="bear-row"><span class="bear-ally">'+t[0]+'</span><span class="bear-t">'+t[1]+'</span></div>';}).join('')
+  +'</div>';
+}
+
+// ── FAVORITEN ──
+var FAVS=[];
+try{var _f=localStorage.getItem('ks331-favs');if(_f)FAVS=JSON.parse(_f);}catch(e){}
+function saveFavs(){try{localStorage.setItem('ks331-favs',JSON.stringify(FAVS));}catch(e){}}
+function toggleFav(id,name,icon){
+  var idx=FAVS.findIndex(function(f){return f.id===id;});
+  if(idx===-1)FAVS.push({id:id,name:name,icon:icon||'📌'});
+  else FAVS.splice(idx,1);
+  saveFavs();buildFavSection();refreshNavStars();
+}
+function refreshNavStars(){
+  document.querySelectorAll('.nav-star').forEach(function(s){
+    var id=s.getAttribute('data-id');
+    var on=FAVS.some(function(f){return f.id===id;});
+    s.classList.toggle('on',on);s.textContent=on?'★':'☆';
+  });
+}
+function buildFavSection(){
+  var el=document.getElementById('fav-section');if(!el)return;
+  var D=(LANG==='de');
+  var head='<div class="fav-card"><div style="font-family:Cinzel,serif;font-size:12px;color:var(--gold);margin-bottom:6px">⭐ '+(D?'Favoriten':'Favorites')+'</div>';
+  if(FAVS.length===0){
+    el.innerHTML=head+'<div style="font-size:12px;color:var(--text-muted);font-style:italic">'+(D?'☆ bei einem Kapitel tippen um es zu pinnen!':'Tap ☆ on any section to pin it!')+'</div></div>';
+    return;
+  }
+  el.innerHTML=head+'<div class="fav-grid">'
+    +FAVS.map(function(f){return '<div class="fav-pin" onclick="showSection(\''+f.id+'\')">'+f.icon+' '+f.name+'</div>';}).join('')
+  +'</div></div>';
 }
 
 function showMtMainTab(i){

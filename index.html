@@ -566,25 +566,93 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
   --bg-deep:#F5F0E8;--bg-mid:#EDE5D5;--bg-panel:#E8DFC8;
   --stone-1:#D5C9B0;--stone-2:#C8BAA0;--stone-3:#FFFFFF;
   --stone-4:#F0E8D8;--stone-5:#C0B090;
-  --text-bright:#1A0E04;--text-dim:#3A2A1A;--text-muted:#6A5A4A;
-  --parch:#3A2A1A;--gold:#8B6914;--gold-glow:rgba(139,105,20,0.4);
-  --ember-lt:#C04020;--green-lt:#2A6A3A;--blue-lt:#1A4A7A;
+  --text-bright:#1A0E04;--text-dim:#2A1A0A;--text-muted:#5A4A3A;
+  --parch:#1A0E04;--gold:#7A5A10;--gold-glow:rgba(122,90,16,0.4);
+  --ember-lt:#B03010;--green-lt:#1A5A2A;--blue-lt:#0A3A6A;
 }
-[data-theme="light"] body{background:var(--bg-deep);}
-[data-theme="light"] .card{background:var(--stone-3);border-color:var(--stone-5);}
+/* ── LIGHT MODE – VOLLSTÄNDIGE ANPASSUNGEN ── */
+[data-theme="light"] body{background:var(--bg-deep);color:var(--text-bright);}
+/* Karten & Container */
+[data-theme="light"] .card{background:#fff;border-color:var(--stone-5);color:var(--text-bright);}
+[data-theme="light"] .card-highlight{background:#fff;}
+[data-theme="light"] .card-title{color:var(--gold);}
 [data-theme="light"] .section{background:transparent;}
-[data-theme="light"] #top-bar{background:rgba(245,240,232,0.95);border-color:rgba(139,105,20,0.2);}
-[data-theme="light"] .tab-btn{background:var(--stone-4);color:var(--text-dim);}
+[data-theme="light"] .sub-head{color:#5A3A0A;border-color:rgba(122,90,16,0.3);}
+[data-theme="light"] .sec-head{color:var(--gold);}
+/* Navigation */
+[data-theme="light"] #top-bar{background:rgba(245,240,232,0.97);border-color:rgba(122,90,16,0.25);}
+[data-theme="light"] #main-nav button{background:var(--stone-4);color:#2A1A0A;border-color:var(--stone-5);}
+[data-theme="light"] #main-nav button.active{background:var(--gold);color:#fff;}
+[data-theme="light"] #search-bar{background:var(--stone-3);color:#1A0E04;border-color:var(--stone-5);}
+[data-theme="light"] #search-bar::placeholder{color:#8A7A6A;}
+/* Tabs */
+[data-theme="light"] .tab-btn{background:var(--stone-4);color:#2A1A0A;border:1px solid var(--stone-5);}
 [data-theme="light"] .tab-btn.active{background:var(--gold);color:#fff;}
-[data-theme="light"] .alert{background:var(--stone-4)!important;}
-[data-theme="light"] table{background:var(--stone-3);}
-[data-theme="light"] th{background:var(--stone-4)!important;}
-[data-theme="light"] tr:nth-child(even){background:var(--stone-4);}
-[data-theme="light"] input,
-[data-theme="light"] select{background:var(--stone-3);color:var(--text-bright);border-color:var(--stone-5);}
-[data-theme="light"] #sidebar{background:rgba(245,240,232,0.98);}
-[data-theme="light"] .lang-box,[data-theme="light"] .scroll-box{background:var(--stone-3)!important;}
-[data-theme="light"] .particle{background:radial-gradient(circle at 30% 30%,rgba(139,105,20,0.6),rgba(100,70,10,0.2));}
+/* Alerts */
+[data-theme="light"] .alert{background:var(--stone-4)!important;color:#1A0E04!important;border-color:var(--stone-5)!important;}
+[data-theme="light"] .alert-gold{background:rgba(122,90,16,0.1)!important;border-color:rgba(122,90,16,0.4)!important;color:#4A2A00!important;}
+[data-theme="light"] .alert-warn{background:rgba(180,80,0,0.08)!important;border-color:rgba(180,80,0,0.3)!important;color:#5A2A00!important;}
+[data-theme="light"] .alert-tip{background:rgba(26,90,42,0.08)!important;border-color:rgba(26,90,42,0.3)!important;color:#0A3A1A!important;}
+[data-theme="light"] .alert-info{background:rgba(10,58,106,0.08)!important;border-color:rgba(10,58,106,0.3)!important;color:#0A2A5A!important;}
+/* Tabellen */
+[data-theme="light"] table{background:#fff;color:#1A0E04;}
+[data-theme="light"] th{background:var(--stone-4)!important;color:#2A1A0A!important;}
+[data-theme="light"] td{color:#1A0E04;}
+[data-theme="light"] tr:nth-child(even){background:#F8F3EC;}
+[data-theme="light"] tr:hover{background:#F0E8D8;}
+/* Tags & Badges */
+[data-theme="light"] .tag{opacity:0.85;}
+[data-theme="light"] .tag-sp{background:rgba(122,90,16,0.15);color:#5A3A00;}
+[data-theme="light"] .tag-s{background:rgba(122,90,16,0.12);color:#4A3000;}
+[data-theme="light"] .tag-a{background:rgba(10,58,106,0.12);color:#0A2A5A;}
+[data-theme="light"] .tag-b{background:rgba(26,90,42,0.12);color:#0A3A1A;}
+[data-theme="light"] .tag-c{background:rgba(90,70,50,0.12);color:#3A2A1A;}
+/* Inputs & Selects */
+[data-theme="light"] input,[data-theme="light"] select,[data-theme="light"] textarea{
+  background:#fff;color:#1A0E04;border-color:var(--stone-5);}
+[data-theme="light"] input::placeholder{color:#8A7A6A;}
+/* Sidebar */
+[data-theme="light"] #sidebar{background:rgba(245,240,232,0.99);color:#1A0E04;}
+[data-theme="light"] .sidebar-btn{color:#2A1A0A;}
+/* Paragraphen und Text */
+[data-theme="light"] p{color:#2A1A0A;}
+[data-theme="light"] b{color:#1A0E04;}
+[data-theme="light"] small{color:#5A4A3A;}
+/* Quick-Cards */
+[data-theme="light"] .quick-card{background:#fff;border-color:var(--stone-5);color:#1A0E04;}
+[data-theme="light"] .quick-card .qlabel{color:#2A1A0A;}
+/* Heute Karte & Bear Start */
+[data-theme="light"] .heute-card{background:rgba(10,58,106,0.08);border-color:rgba(10,58,106,0.3);}
+[data-theme="light"] .heute-tag{background:rgba(10,58,106,0.12);color:#0A2A5A;}
+[data-theme="light"] .bear-start{background:#fff;border-color:var(--stone-5);}
+[data-theme="light"] .bear-row{border-color:var(--stone-5);}
+[data-theme="light"] .bear-ally{color:#1A0E04;}
+[data-theme="light"] .bear-t{color:#5A4A3A;}
+/* Accord */
+[data-theme="light"] .accord-head{background:var(--stone-4);color:#1A0E04;}
+[data-theme="light"] .accord-body{background:#fff;color:#2A1A0A;}
+/* Hero Cards */
+[data-theme="light"] .hero-card{background:#fff;color:#1A0E04;}
+[data-theme="light"] .hero-card-name{color:#1A0E04;}
+[data-theme="light"] .hero-card-skill{color:#3A2A1A;}
+[data-theme="light"] .hero-card-note{color:#5A4A3A;}
+[data-theme="light"] .hero-card-gen{color:#5A4A3A;}
+/* Overlays */
+[data-theme="light"] .lang-box,[data-theme="light"] .scroll-box{background:#fff!important;color:#1A0E04!important;}
+[data-theme="light"] .lang-title{color:#1A0E04;}
+[data-theme="light"] .lang-sub{color:#5A4A3A;}
+/* Partikel */
+[data-theme="light"] .particle{background:radial-gradient(circle at 30% 30%,rgba(122,90,16,0.5),rgba(90,60,10,0.15));}
+/* Misc */
+[data-theme="light"] .form-inf{background:linear-gradient(135deg,#1A4A7A,#2A6ABA);}
+[data-theme="light"] .form-cav{background:linear-gradient(135deg,#5A2A7A,#8A4ABA);}
+[data-theme="light"] .form-arc{background:linear-gradient(135deg,#7A3A0A,#BA6A2A);}
+[data-theme="light"] #glossar-popup{background:#fff;border-color:rgba(90,60,160,0.3);color:#1A0E04;}
+[data-theme="light"] .g-term{color:#5A3A8A;}
+[data-theme="light"] .g-def{color:#2A1A0A;border-color:rgba(90,70,50,0.2);}
+[data-theme="light"] .prep-progress{background:rgba(90,70,50,0.15);}
+[data-theme="light"] .prep-name{color:#5A4A3A;}
+[data-theme="light"] .prep-name.active{color:var(--gold);}
 
 /* ── THEME TOGGLE BUTTON ── */
 #theme-btn{
@@ -638,13 +706,7 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
 .bear-row:last-child{border-bottom:none;}
 .bear-ally{font-family:Cinzel,serif;font-weight:700;color:var(--parch);font-size:11px;}
 .bear-t{color:var(--text-muted);font-family:monospace;font-size:11px;}
-/* ── FAVORITEN ── */
-.fav-card{background:linear-gradient(135deg,rgba(10,8,4,0.95),rgba(20,16,8,0.95));border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:12px 16px;margin-bottom:14px;}
-.fav-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.fav-pin{display:flex;align-items:center;gap:6px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--parch);cursor:pointer;transition:all 0.2s;}
-.fav-pin:hover{background:rgba(201,168,76,0.2);}
-.nav-star{font-size:10px;color:var(--text-muted);cursor:pointer;margin-left:2px;transition:color 0.2s;}
-.nav-star.on{color:#FFD700;}
+
 </style>
 </head>
 <body>
@@ -930,6 +992,75 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
   <div class="sec-head" id="kr-title">👑 Königreiche – NAP6 Allianz-Rangliste</div>
   <div id="kr-content"></div>
 </div>
+<div class="section" id="sec-news">
+  <div class="sec-head">📰 News & Updates</div>
+
+  <div class="alert" style="background:linear-gradient(135deg,rgba(74,138,186,0.15),rgba(10,8,4,0.95));border:1px solid rgba(74,138,186,0.4);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:12px">
+    📡 Hier findest du die neuesten Kingshot Updates & Patch Notes – speziell was für Kingdom 331 relevant ist.
+  </div>
+
+  <!-- JULI 2026 UPDATE -->
+  <div class="card card-highlight" style="border-color:rgba(74,138,186,0.5);margin-bottom:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div class="card-title" style="color:var(--blue-lt)">🆕 Juli 2026 Update (v1.11.25)</div>
+      <span style="font-size:10px;color:var(--text-muted);background:rgba(74,138,186,0.15);padding:2px 8px;border-radius:8px">08. Juli 2026</span>
+    </div>
+
+    <div class="sub-head" style="font-size:12px;margin:10px 0 6px">⭐ Für uns wichtig</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 12px">
+        <div style="font-size:12px;font-weight:700;color:var(--gold)">🎰 Hero Roulette – 2 Generationen zurück</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Beim Hero Roulette kann man jetzt auch Helden der letzten 2 Generationen wählen. Für F2P gold wert – immer Auswahl vor dem Spin prüfen!</div>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 12px">
+        <div style="font-size:12px;font-weight:700;color:var(--gold)">🏆 Schwertland – 30-Min Relic Bonus bestätigt</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">30 Minuten ein Gebäude halten = erhöhte persönliche Reliktpunkte-Rate. Jetzt offiziell im Patch bestätigt!</div>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:8px 12px">
+        <div style="font-size:12px;font-weight:700;color:var(--gold)">🐻 Bärenfalle Auto-Register verbessert</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Registriert jetzt für den exakten Moment wenn der Trap-Cooldown endet. Die 5 Minuten Extra-Delay wurden entfernt!</div>
+      </div>
+      <div style="background:rgba(90,155,106,0.08);border-left:3px solid var(--green-lt);border-radius:0 8px 8px 0;padding:8px 12px">
+        <div style="font-size:12px;font-weight:700;color:var(--green-lt)">📊 Event-Fortschritt Echtzeit</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Alliance Mobilization, Strongest Governor & Kingdom of Power zeigen jetzt Live-Fortschritt zu Phasen-Belohnungen.</div>
+      </div>
+      <div style="background:rgba(90,155,106,0.08);border-left:3px solid var(--green-lt);border-radius:0 8px 8px 0;padding:8px 12px">
+        <div style="font-size:12px;font-weight:700;color:var(--green-lt)">💎 Daily Chests → Gems</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Daily Deals & Custom Forging Set Daily Chests geben jetzt Gems statt der alten Belohnungen.</div>
+      </div>
+    </div>
+
+    <div class="sub-head" style="font-size:12px;margin:12px 0 6px">📋 Weitere Änderungen</div>
+    <div style="font-size:11px;color:var(--text-dim);line-height:1.8">
+      • 🛡️ Wikinger: Ally-Verstärkungsformation verbessert (Max-Truppen überschreiten Kapazität nicht mehr)<br>
+      • ⏱️ Alle Events zeigen jetzt UTC/Lokalzeit umschaltbar<br>
+      • 💌 Battle Mail zeigt verschiedene Icons für Sieg/Niederlage<br>
+      • 🃏 Name Cards: Neue Kosmetik fürs Profil in der Wildnis<br>
+      • 🏆 Prestige Merit Shop: Neuer Shop im Prestige-System verfügbar<br>
+      • ⚔️ Castle Battle: Position-Bewerbungen können storniert werden<br>
+      • 🔍 Wilderness: Nach Biest-Besiegung springt Suche automatisch zum nächsten Level
+    </div>
+  </div>
+
+  <!-- APRIL 2026 UPDATE -->
+  <div class="card" style="margin-bottom:16px;opacity:0.85">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div class="card-title" style="color:var(--text-muted)">🗂️ April 2026 Update (v1.10.7)</div>
+      <span style="font-size:10px;color:var(--text-muted);background:rgba(58,52,42,0.4);padding:2px 8px;border-radius:8px">27. April 2026</span>
+    </div>
+    <div style="font-size:11px;color:var(--text-dim);line-height:1.8">
+      • 🎓 <b>Master System</b> eingeführt – Quinn erkundet die Badlands, Meister ziehen in die Meister-Akademie<br>
+      • 👘 March Skin Rotation – bis zu 6 Skins gleichzeitig<br>
+      • 💬 Chat: Polls/Abstimmungen in der Allianz verfügbar<br>
+      • ⚔️ Rally & Formation Verbesserungen<br>
+      • 🐾 Pet System Optimierungen
+    </div>
+  </div>
+
+  <div style="text-align:center;font-size:11px;color:var(--text-muted);padding:8px">
+    Quelle: kingshotmastery.com · Letzte Prüfung: Juli 2026
+  </div>
+</div>
 <div class="section" id="sec-tipps"><div class="sec-head" id="tip-title"></div><div id="tip-content"></div></div>
 
 </div>
@@ -937,14 +1068,15 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
 <script>
 var LANGS = {
 de:{
-  nav:['🏠 Start','👑 Kingdom #331','📖 Einsteiger','🦸 Helden','⚙️ Formation','🎯 Events','🛡️ Ausrüstung','🏰 Kapazität','📚 Akademie','🏛️ Myst. Prüfung','🏟️ Arena','🦁 Tiere','🎓 Meister','⚡ Booster','🌾 Ressourcen','💡 Tipps'],
-  navIds:['start','koenigreiche','einsteiger','helden','formation','events','ausruestung','kapazitaet','akademie','mystic','arena','pets','masters','booster','ressourcen','tipps'],
+  nav:['🏠 Start','👑 Kingdom #331','📖 Einsteiger','🦸 Helden','⚙️ Formation','🎯 Events','🛡️ Ausrüstung','🏰 Kapazität','📚 Akademie','🏛️ Myst. Prüfung','🏟️ Arena','🦁 Tiere','🎓 Meister','⚡ Booster','🌾 Ressourcen','💡 Tipps','📰 News'],
+  navIds:['start','koenigreiche','einsteiger','helden','formation','events','ausruestung','kapazitaet','akademie','mystic','arena','pets','masters','booster','ressourcen','tipps','news'],
   searchPlaceholder:'Suchen...',curLang:'DE',
   hbTitle:'🔥 KÖNIGREICH 331',
   hbSub:'Die ultimative Kingshot-Wissensdatenbank – Guides, Tools & Strategien',
   bGen:'⭐ Gen 5 Server',bAll:'⚔️ Gen 1–7',bF2p:'🌿 F2P',bP2w:'💎 P2W',
   qsLabel:'🗺️ Schnellzugriff',
   quickItems:[
+    {icon:'📰',label:'News & Updates',action:"showSection('news')"},
     {icon:'👑',label:'Kingdom #331',action:"showSection('koenigreiche')"},
     {icon:'📖',label:'Einsteiger',action:"showSection('einsteiger')"},
     {icon:'🦸',label:'Helden',action:"showSection('helden')"},
@@ -967,6 +1099,7 @@ de:{
     {icon:'🗡️',label:'Gear',action:"showSection('ausruestung')"},
     {icon:'🏰',label:'Kapazität',action:"showSection('kapazitaet')"},
     {icon:'💡',label:'Tipps',action:"showSection('tipps')"},
+    {icon:'📰',label:'News & Updates',action:"showSection('news')"},
     {icon:'🌐',label:'Sprache',action:"document.getElementById('lang-overlay').style.display='flex'"},
   ],
   tlLabel:'📅 Server-Zeitplan',
@@ -1505,7 +1638,7 @@ function buildNav(){
     }});}
     return secs.filter(function(v,i,a){return a.indexOf(v)===i;});
   })();
-  document.getElementById('main-nav').innerHTML=navArr.map((n,i)=>`<button onclick="showSection('${navIds[i]}')" data-sec="${navIds[i]}">${n}${todayNewSecs.includes(navIds[i])?'<span class=\"badge-new\">NEU</span>':''}<span class="nav-star" data-id="${navIds[i]}" onclick="event.stopPropagation();toggleFav(navIds[i],navArr[i],icons[i]||'📌')">☆</span></button>`).join('');
+  document.getElementById('main-nav').innerHTML=navArr.map((n,i)=>`<button onclick="showSection('${navIds[i]}')" data-sec="${navIds[i]}">${n}${todayNewSecs.includes(navIds[i])?'<span class=\"badge-new\">NEU</span>':''}</button>`).join('');
   var _navStart=document.querySelector('[data-sec="start"]');
   if(_navStart)_navStart.classList.add('active');
 }
@@ -2646,7 +2779,8 @@ function showEvt(id){
 
       var t4=(function(){
         var D=(LANG==='de');
-        return '<div class="alert alert-gold">🏆 '+(D?'Schwertland-Gipfel-Liga – Saison 1 (11.07. – 24.08.2026). Das kompetitivste Turnier in Kingshot! 192 Legionen pro Zone kämpfen um den Champion-Titel!':'Swordland Summit League – Season 1 (Jul 11 – Aug 24, 2026). The most competitive tournament! 192 legions per zone compete for the Champion title!')+'</div>'
+        return '<div class="alert" style="border:1px solid rgba(74,138,186,0.4);border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:12px">'+(D?'🆕 <b>Juli 2026 Update:</b> Nach <b>30 Min</b> ununterbrochener Gebäude-Kontrolle steigt die Rate deiner persönlichen Reliktpunkte! Allianz-Koordination ist der Schlüssel!':'🆕 <b>July 2026 Update:</b> After <b>30 min</b> of continuous building control, your personal Relic Point rate increases! Alliance coordination is key!')+'</div>'
+        +'<div class="alert alert-gold">🏆 '+(D?'Schwertland-Gipfel-Liga – Saison 1 (11.07. – 24.08.2026). Das kompetitivste Turnier in Kingshot! 192 Legionen pro Zone kämpfen um den Champion-Titel!':'Swordland Summit League – Season 1 (Jul 11 – Aug 24, 2026). The most competitive tournament! 192 legions per zone compete for the Champion title!')+'</div>'
         +'<div class="sub-head">'+(D?'📋 Turnier-Struktur':'📋 Tournament Structure')+'</div>'
         +'<div class="grid-3">'
           +'<div class="card card-highlight" style="border-color:rgba(74,138,186,0.5)"><div class="card-title" style="color:var(--blue-lt)">1️⃣ '+(D?'Qualifikation':'Qualification')+'</div><p style="font-size:12px">'+(D?'K.o.-System, 16 Legionen/Gruppe<br>4 Runden (1 Woche je, Sonntag)<br>Sieg = <b>+4 Ligapunkte</b><br>Niederlage = +2 → Punktekampf<br>Top 2 → Mythische Gruppe<br>Platz 3–4 → Elite-Gruppe':'K.o. system, 16 legions/group<br>4 rounds (1 week each, Sunday)<br>Win = <b>+4 League Points</b><br>Loss = +2 → Point Battle<br>Top 2 → Mythic Group<br>Rank 3–4 → Elite Group')+'</p></div>'
@@ -2671,7 +2805,7 @@ function showEvt(id){
         +'<tr><td style="font-weight:700;color:var(--text-dim)">🐎 '+(D?'Königl. Ställe':'Royal Stables')+'</td><td>🏛️ 1.200 / 👤 600</td><td>🏛️ +240 / 👤 +120</td><td style="color:var(--green-lt)">-50% Teleport</td></tr>'
         +'<tr><td style="font-weight:700;color:var(--text-dim)">🔔 Glockenturm</td><td>🏛️ 1.200 / 👤 600</td><td>🏛️ +240 / 👤 +120</td><td style="color:var(--green-lt)">-50% '+(D?'Einnahmezeit':'Capture Time')+'</td></tr>'
         +'</tbody></table></div>'
-        +'<div class="alert alert-warn">⚠️ '+(D?'30 Min ununterbrochen halten = DOPPELTE persönliche Reliktpunkte!':'Hold 30 min continuously = DOUBLE personal Relic Points!')+'</div>'
+        +'<div class="alert alert-warn">⚠️ '+(D?'30 Min ununterbrochen halten = DOPPELTE persönliche Reliktpunkte! (Bestätigt im Juli 2026 Update – offizielle Spielmechanik!)':'Hold 30 min continuously = DOUBLE personal Relic Points! (Confirmed in July 2026 Update – official game mechanic!)')+'</div>'
         +'<div class="sub-head">'+(D?'⚔️ Kill-Punkte & Voraussetzungen':'⚔️ Kill Points & Requirements')+'</div>'
         +'<div class="grid-2">'
           +'<div class="card"><div class="card-title">'+(D?'⚔️ Kill-Punkte':'⚔️ Kill Points')+'</div><p>'
@@ -3982,48 +4116,6 @@ function buildBearStart(){
     +'<div style="font-family:Cinzel,serif;font-size:12px;color:var(--gold);margin-bottom:8px">🐻 '+(D?'Bärenfallen-Zeiten':'Bear Hunt Times')+'</div>'
     +times.map(function(t){return '<div class="bear-row"><span class="bear-ally">'+t[0]+'</span><span class="bear-t">'+t[1]+'</span></div>';}).join('')
   +'</div>';
-}
-
-// ── FAVORITEN ──
-var FAVS=[];
-try{var _f=localStorage.getItem('ks331-favs');if(_f)FAVS=JSON.parse(_f);}catch(e){}
-function saveFavs(){try{localStorage.setItem('ks331-favs',JSON.stringify(FAVS));}catch(e){}}
-function toggleFav(id,name,icon){
-  var idx=FAVS.findIndex(function(f){return f.id===id;});
-  if(idx===-1)FAVS.push({id:id,name:name,icon:icon||'📌'});
-  else FAVS.splice(idx,1);
-  saveFavs();buildFavSection();refreshNavStars();
-}
-function refreshNavStars(){
-  document.querySelectorAll('.nav-star').forEach(function(s){
-    var id=s.getAttribute('data-id');
-    var on=FAVS.some(function(f){return f.id===id;});
-    s.classList.toggle('on',on);s.textContent=on?'★':'☆';
-  });
-}
-function buildFavSection(){
-  var el=document.getElementById('fav-section');if(!el)return;
-  var D=(LANG==='de');
-  var head='<div class="fav-card"><div style="font-family:Cinzel,serif;font-size:12px;color:var(--gold);margin-bottom:6px">⭐ '+(D?'Favoriten':'Favorites')+'</div>';
-  if(FAVS.length===0){
-    el.innerHTML=head+'<div style="font-size:12px;color:var(--text-muted);font-style:italic">'+(D?'☆ bei einem Kapitel tippen um es zu pinnen!':'Tap ☆ on any section to pin it!')+'</div></div>';
-    return;
-  }
-  el.innerHTML=head+'<div class="fav-grid">'
-    +FAVS.map(function(f){return '<div class="fav-pin" onclick="showSection(\''+f.id+'\')">'+f.icon+' '+f.name+'</div>';}).join('')
-  +'</div></div>';
-}
-
-function showMtMainTab(i){
-  document.querySelectorAll('#mt-main-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
-  ['mt-main-0','mt-main-1','mt-main-2'].forEach(function(id,j){
-    var el=document.getElementById(id);
-    if(el)el.style.display=(i===j)?'block':'none';
-  });
-}
-function showEtTab(i){
-  document.querySelectorAll('#et-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
-  document.querySelectorAll('#et-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
 }
 
 

@@ -532,35 +532,6 @@ input[type="number"]:focus,select:focus{border-color:var(--gold);box-shadow:0 0 
   position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;
 }
 
-/* ── PRINT VIEW ── */
-#print-btn{
-  position:fixed;bottom:130px;right:24px;
-  background:linear-gradient(135deg,#3a6b4a,#5a9b6a);
-  color:#fff;border:none;border-radius:50%;
-  width:44px;height:44px;font-size:18px;cursor:pointer;
-  box-shadow:0 4px 16px rgba(90,155,106,0.4);z-index:600;
-  display:flex;align-items:center;justify-content:center;
-  transition:all 0.3s;
-}
-#print-btn:hover{transform:scale(1.1);}
-@media print{
-  #top-bar,#sidebar,#back-top,#changelog-btn,#print-btn,
-  #theme-btn,#search-results,.tab-nav,.view-toggle,
-  #lang-overlay,#bear-times-overlay,#particles{display:none!important;}
-  body{background:#fff!important;color:#000!important;}
-  .section{display:none!important;}
-  .section.active{display:block!important;}
-  .card{border:1px solid #ccc!important;background:#fff!important;break-inside:avoid;}
-  .table-wrap{overflow:visible!important;}
-  .tab-content{display:block!important;}
-  .accord-body{max-height:none!important;display:block!important;}
-  .alert{border:1px solid #999!important;background:#f9f9f9!important;color:#000!important;}
-  a{color:#000!important;}
-  .sec-head{color:#000!important;border-bottom:2px solid #000!important;}
-  .sub-head{color:#333!important;}
-  p,td,th,li{color:#000!important;}
-}
-
 /* ── LIGHT THEME ── */
 [data-theme="light"]{
   --bg-deep:#F5F0E8;--bg-mid:#EDE5D5;--bg-panel:#E8DFC8;
@@ -1193,7 +1164,7 @@ function bearTimesHTML(){
     ['[CBA]','20:15 | 01:00 UTC'],
     ['[ANU]','20:30 | 01:30 UTC'],
     ['[WBA]','00:30 | 19:30 UTC'],
-    ['[200]','12:00 | 19:00 UTC'],
+    ['[200]','17:00 | 18:00 UTC'],
   ];
   var intro=D
     ?'Friedliches & geeintes NAP6 · Aktive Spieler & Chat 💬 · Jeden Monat ein neues Theme-PFP'
@@ -1226,12 +1197,12 @@ function buildKoenigreiche(){
   var D=(LANG==='de');
   document.getElementById('kr-title').textContent=D?'👑 Kingdom #331 – NAP6 Allianz-Rangliste':'👑 Kingdom #331 – NAP6 Alliance Rankings';
   var al=[
-    {rank:1,tag:'[ZOO]',name:'Zoonami',power:'27.336.364.084',raw:27336364084,col:'#C9A84C',glow:'rgba(201,168,76,0.4)',badge:'🥇',tier:'S',note:D?'Stärkste Allianz im Königreich!':'Strongest alliance in the kingdom!'},
-    {rank:2,tag:'[40K]',name:'Imperium',power:'25.080.199.039',raw:25080199039,col:'#B8C0D0',glow:'rgba(184,192,208,0.3)',badge:'🥈',tier:'S',note:D?'Kaum hinter Rang 1 – extrem stark!':'Barely behind rank 1 – extremely strong!'},
-    {rank:3,tag:'[CBA]',name:'ChaosBrigade',power:'25.002.520.710',raw:25002520710,col:'#CD7F32',glow:'rgba(205,127,50,0.3)',badge:'🥉',tier:'S',note:D?'Sehr nah an Rang 2 – eng umkämpft!':'Very close to rank 2 – tightly contested!'},
-    {rank:4,tag:'[ANU]',name:'TheAnunaki',power:'24.578.626.134',raw:24578626134,col:'#6A8AB0',glow:'rgba(106,138,176,0.3)',badge:'4️⃣',tier:'A',note:D?'Starke 4. Kraft im Königreich':'Strong 4th force in the kingdom'},
-    {rank:5,tag:'[WBA]',name:'WorldBestAnime',power:'15.119.748.118',raw:15119748118,col:'#9A6ABA',glow:'rgba(154,106,186,0.3)',badge:'5️⃣',tier:'A',note:D?'Bedeutende Allianz-Macht':'Significant alliance power'},
-    {rank:6,tag:'[200]',name:'Zoomania',power:'8.066.240.788',raw:8066240788,col:'#5A9B6A',glow:'rgba(90,155,106,0.4)',badge:'🏠',tier:'B',note:D?'Unser Heimat-Königreich 331 – wir wachsen!':'Our home Kingdom 331 – we are growing!'},
+    {rank:1,tag:'[ZOO]',name:'Zoonami',power:'25.441.336.410',raw:25441336410,col:'#C9A84C',glow:'rgba(201,168,76,0.4)',badge:'🥇',tier:'S',note:D?'Stärkste Allianz im Königreich!':'Strongest alliance in the kingdom!'},
+    {rank:2,tag:'[CBA]',name:'ChaosBrigade',power:'24.632.480.876',raw:24632480876,col:'#B8C0D0',glow:'rgba(184,192,208,0.3)',badge:'🥈',tier:'S',note:D?'Knapp hinter Rang 1 – extrem stark!':'Barely behind rank 1 – extremely strong!'},
+    {rank:3,tag:'[40K]',name:'Imperium',power:'24.488.698.163',raw:24488698163,col:'#CD7F32',glow:'rgba(205,127,50,0.3)',badge:'🥉',tier:'S',note:D?'Sehr nah an Rang 2 – eng umkämpft!':'Very close to rank 2 – tightly contested!'},
+    {rank:4,tag:'[ANU]',name:'TheAnunaki',power:'23.449.528.058',raw:23449528058,col:'#6A8AB0',glow:'rgba(106,138,176,0.3)',badge:'4️⃣',tier:'A',note:D?'Solide Top-4 Allianz':'Solid top-4 alliance'},
+    {rank:5,tag:'[WBA]',name:'WorldBestAnime',power:'12.418.316.279',raw:12418316279,col:'#8060A0',glow:'rgba(128,96,160,0.3)',badge:'5️⃣',tier:'B',note:D?'Mid-Tier – wächst stetig':'Mid-tier – steadily growing'},
+    {rank:6,tag:'[200]',name:'Zoomania',power:'7.454.641.707',raw:7454641707,col:'#A06040',glow:'rgba(160,96,64,0.3)',badge:'6️⃣',tier:'B',note:D?'Aktive kleine Allianz':'Active smaller alliance'},
   ];
   var top=al[0].raw;
   var total=al.reduce(function(s,a){return s+a.raw;},0);
@@ -1494,6 +1465,7 @@ function buildEinsteiger(){
   var tabNav='<div class="tab-nav" id="bg-tabs">'+tabs.map(function(t,i){return '<button class="tab-btn'+(i===0?' active':'')+'" onclick="showBgTab('+i+')">'+t+'</button>';}).join('')+'</div>';
   var contents=[t0,t1,t2,t3,t4,t5,t6];
   var tabDivs='<div id="bg-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="bgtab-'+i+'">'+c+'</div>';}).join('')+'</div>';
+    t6+='<div class="sub-head">'+(D?'🏹 Truppen-Rechner':'🏹 Troop Calculator')+'</div>'+'<div class="card" style="padding:16px">'+'<div style="display:flex;flex-direction:column;gap:10px">'+'<div><label style="font-size:12px;color:var(--text-muted)">'+(D?'Truppen-Tier:':'Troop Tier:')+'</label>'+'<select id="tc-tier" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px">'+'<option value="8">T8</option><option value="9">T9</option><option value="10">T10</option><option value="11" selected>T11 META</option>'+'</select></div>'+'<div><label style="font-size:12px;color:var(--text-muted)">'+(D?'Training Speed %:':'Training Speed %:')+'</label>'+'<input id="tc-speed" type="number" value="100" min="0" max="300" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px"></div>'+'<div><label style="font-size:12px;color:var(--text-muted)">'+(D?'Zeitraum (Tage):':'Period (days):')+'</label>'+'<input id="tc-days" type="number" value="30" min="1" max="365" style="width:100%;padding:8px;margin-top:4px;background:var(--stone-4);color:var(--parch);border:1px solid var(--stone-5);border-radius:6px"></div>'+'<button onclick="calcTroops()" style="background:linear-gradient(135deg,#8B6914,#C9A84C);color:#0A0806;border:none;padding:10px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;width:100%">'+(D?'🏹 Berechnen':'🏹 Calculate')+'</button>'+'<div id="tc-result" style="background:var(--stone-4);border-radius:8px;padding:12px;display:none"></div>'+'</div></div>';
   document.getElementById('bg-content').innerHTML=tabNav+tabDivs;
 }
 
@@ -1619,7 +1591,45 @@ function closeLangMenu(){
   if(dd)dd.classList.remove('show');
 }
 
-function buildAll(){buildNav();buildStart();buildHelden();buildEvents();buildGear();buildCapacity();buildAkademie();buildMystic();buildPets();buildMasters();buildBooster();buildRessourcen();buildTipps();buildArena();buildEinsteiger();buildKoenigreiche();updateSidebar();}
+
+function buildKvkCountdown(){
+  var el=document.getElementById('kvk-countdown');
+  if(!el)return;
+  var D=(LANG==='de');
+  var now=new Date();
+  var nextKvk=new Date('2026-08-10T06:00:00Z');
+  if(now>nextKvk) nextKvk=new Date('2026-09-08T06:00:00Z');
+  var diff=nextKvk-now;
+  if(diff<=0){el.innerHTML='';return;}
+  var days=Math.floor(diff/(1000*60*60*24));
+  var hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  var mins=Math.floor((diff%(1000*60*60))/(1000*60));
+  var urgent=days<7;
+  var col=urgent?'var(--ember-lt)':'#FFD700';
+  el.innerHTML='<div class="heute-card" style="border-color:'+(urgent?'rgba(200,48,48,0.4)':'rgba(201,168,76,0.3)')+';margin-bottom:14px">'
+    +'<div style="font-family:Cinzel,serif;font-size:12px;color:'+col+';margin-bottom:6px">'+(urgent?'⚔️':'📅')+' '+(D?'Nächstes KvK ca. in:':'Next KvK approx. in:')+'</div>'
+    +'<div style="font-size:22px;font-weight:700;color:'+col+';letter-spacing:2px">'+days+'d '+hours+'h '+mins+'m</div>'
+    +'<div style="font-size:10px;color:var(--text-muted);margin-top:4px">'+(D?'Geschätzt – offizielle Ankündigung im Allianz-Chat':'Estimated – official announcement in alliance chat')+'</div>'
+    +'</div>';
+}
+function buildGipfelCountdown(){
+  var el=document.getElementById('gipfel-countdown');
+  if(!el)return;
+  var D=(LANG==='de');
+  var end=new Date('2026-08-24T23:59:00Z');
+  var now=new Date();
+  var diff=end-now;
+  if(diff<=0){el.innerHTML='';return;}
+  var days=Math.floor(diff/(1000*60*60*24));
+  var hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  el.innerHTML='<div class="heute-card" style="border-color:rgba(74,138,186,0.35);margin-bottom:14px">'
+    +'<div style="font-family:Cinzel,serif;font-size:12px;color:var(--blue-lt);margin-bottom:6px">🏆 '+(D?'Gipfel-Liga Saison 1 endet in:':'Summit League Season 1 ends in:')+'</div>'
+    +'<div style="font-size:20px;font-weight:700;color:var(--blue-lt);letter-spacing:2px">'+days+'d '+hours+'h</div>'
+    +'<div style="font-size:10px;color:var(--text-muted);margin-top:4px">'+(D?'11.07. – 24.08.2026':'Jul 11 – Aug 24, 2026')+'</div>'
+    +'</div>';
+}
+
+function buildAll(){buildNav();buildKvkCountdown();buildGipfelCountdown();buildStart();buildHelden();buildEvents();buildGear();buildCapacity();buildAkademie();buildMystic();buildPets();buildMasters();buildBooster();buildRessourcen();buildTipps();buildArena();buildEinsteiger();buildKoenigreiche();updateSidebar();}
 
 function buildNav(){
   var navArr=t('nav');
@@ -1646,7 +1656,7 @@ function buildNav(){
 function buildStart(){
   document.getElementById('hb-title').textContent=t('hbTitle');
   document.getElementById('hb-sub').textContent=t('hbSub');
-  ['bGen','bAll','bF2p','bP2w'].forEach(k=>{var el=document.getElementById('b-'+k.slice(1).toLowerCase());if(el)el.textContent=t(k);});
+  ['bGen','bAll','bF2p','bP2w'].forEach(function(k){var el=document.getElementById('b-'+k.slice(1).toLowerCase());if(el)el.textContent=t(k);});
   document.getElementById('b-gen').textContent=t('bGen');
   document.getElementById('b-all').textContent=t('bAll');
   document.getElementById('b-f2p').textContent=t('bF2p');
@@ -1679,6 +1689,43 @@ function buildStart(){
   if(esL2){esL2.textContent=(LANG==='de')?'Diamanten':'Diamonds';}
   if(esL3){esL3.textContent=(LANG==='de')?'Routine':'Routine';}
   if(esL4){esL4.textContent=(LANG==='de')?'Roulette':'Roulette';}
+}
+
+
+
+function buildWidgetSection(){
+  var D=(LANG==='de');
+  var el=document.getElementById('widget-info');
+  if(!el)return;
+  var h='<div class="sub-head">'+(D?'⚙️ Widget-System – Multiplikativ statt Additiv!':'⚙️ Widget System – Multiplicative not Additive!')+'</div>';
+  h+='<div class="alert" style="border:1px solid rgba(200,48,48,0.4);border-radius:10px;padding:12px 16px;margin-bottom:12px;font-size:12px">'
+    +'🔑 <b>'+(D?'Wichtigste Regel:':'Most important rule:')+'</b> '
+    +(D?'Widgets sind MULTIPLIKATIV! 125% Tödlichkeit + 15% Widget-Bonus = 125% × 1.15 = <b>143,75%</b> (NICHT 140%). Der richtige Widget auf dem richtigen Helden skaliert exponentiell!':'Widgets are MULTIPLICATIVE! 125% Lethality + 15% Widget bonus = 125% × 1.15 = <b>143.75%</b> (NOT 140%). The right widget on the right hero scales exponentially!')
+    +'</div>';
+  var widgets=[
+    {gen:'Gen 2',hero:'Marlin',type:D?'Archer Tödlichkeit':'Archer Lethality',bonus:'+15%',note:D?'F2P Basis – erster wichtiger Angriffs-Widget':'F2P base – first important attack widget',f2p:true},
+    {gen:'Gen 3',hero:'Petra',type:D?'Archer Schaden':'Archer Damage',bonus:'+20%',note:D?'#1 F2P Gen 3 – massiver Bärenfallen-Schaden':'#1 F2P Gen 3 – massive Bear Hunt damage',f2p:true},
+    {gen:'Gen 4',hero:'Rosa',type:D?'Archer Proc +30%':'Archer Proc +30%',bonus:'+30% Chance',note:D?'RNG-basiert aber sehr stark':'RNG-based but very strong',f2p:true},
+    {gen:'Gen 5',hero:'Vivian',type:D?'Archer Tödlichkeit':'Archer Lethality',bonus:'+25%',note:D?'#1 F2P Gen 5 – PFLICHT für alle':'#1 F2P Gen 5 – MANDATORY for all',f2p:true},
+    {gen:'Gen 5',hero:'Yang',type:D?'Archer + Kav Angriff':'Archer + Cav Attack',bonus:'+20%',note:D?'P2W Top – kombiniert beide Truppentypen':'P2W top – combines both troop types',f2p:false},
+    {gen:'Gen 6',hero:'Triton',type:D?'Inf Tödlichkeit':'Inf Lethality',bonus:'+25%',note:D?'Garrison P2W Fokus':'Garrison P2W focus',f2p:false},
+    {gen:'Gen 7',hero:'Ava',type:D?'Kav Tödlichkeit':'Cav Lethality',bonus:'+30%',note:D?'#1 P2W Gen 7 Rally-Widget':'#1 P2W Gen 7 Rally Widget',f2p:false},
+    {gen:'Gen 7',hero:'Wee & Woo',type:D?'ATK + Tödlichkeit (hybrid)':'ATK + Lethality (hybrid)',bonus:'+20%/+20%',note:D?'F2P Gen 7 via Hero Roulette! Beste F2P Option Gen 7':'F2P Gen 7 via Hero Roulette! Best F2P option Gen 7',f2p:true},
+    {gen:'Gen 7',hero:'Charles',type:D?'Garrison Defense':'Garrison Defense',bonus:'+25%',note:D?'#1 Garrison P2W – nicht für Rally!':'#1 Garrison P2W – not for Rally!',f2p:false},
+  ];
+  h+='<div class="table-wrap"><table><thead><tr><th>Gen</th><th>'+D?'Held':'Hero'+'</th><th>'+D?'Widget':'Widget'+'</th><th>Bonus</th><th>'+D?'Info':'Info'+'</th></tr></thead><tbody>';
+  widgets.forEach(function(w){
+    var fc=w.f2p?'var(--green-lt)':'var(--gold)';
+    h+='<tr><td style="font-size:11px;color:var(--text-muted)">'+w.gen+'</td>'
+      +'<td style="font-weight:700;color:'+fc+'">'+w.hero+'</td>'
+      +'<td style="font-size:11px">'+w.type+'</td>'
+      +'<td style="color:'+fc+';font-weight:700;font-size:12px">'+w.bonus+'</td>'
+      +'<td style="font-size:11px;color:var(--text-dim)">'+w.note+'</td></tr>';
+  });
+  h+='</tbody></table></div>';
+  h+='<div class="alert" style="border:1px solid rgba(200,48,48,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">'
+    +'⚠️ '+(D?'Widget NIEMALS auf einen Helden bauen den du nicht als Rally-Leader nutzt! Widget ist an den Helden gebunden – falsch investiert = Monate verloren!':'NEVER build a Widget on a hero you don\'t use as Rally Leader! Widget is bound to the hero – wrong investment = months wasted!')+'</div>';
+  el.innerHTML=h;
 }
 
 function buildHelden(){
@@ -1734,7 +1781,7 @@ function buildHelden(){
   document.getElementById('hero-tab-content').innerHTML=`
   <div class="tab-content active" id="htab-0"><div class="view-toggle"><button class="active" onclick="setHeroView('table',this)">${isDE?'📋 Tabelle':'📋 Table'}</button><button onclick="setHeroView('cards',this)">${isDE?'🃏 Karten (Handy)':'🃏 Cards (Mobile)'}</button></div>
     <div class="table-wrap" id="hero-table-view" style="display:none"><table>
-      <thead><tr>${th.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+      <thead><tr>${th.map(function(h){return '<th>'+h+'</th>';}).join('')}</tr></thead>
       <tbody>${hRows.map(r=>`<tr><td>${r[0]}</td><td class="td-dim">${r[1]}</td><td>${r[2]}</td><td><span class="tag ${tm[r[3]]||'tag-b'}">${r[3]}</span></td><td class="td-dim" style="font-size:12px">${r[4]}</td><td class="td-dim">${r[5]}</td><td><span class="tag ${rm[r[6]]||'tag-b'}">${r[6]}</span></td><td class="td-dim" style="font-size:12px">${r[7]}</td></tr>`).join('')}</tbody>
     </table></div><div id="hero-card-view" class="hero-card-grid"></div>
   </div>
@@ -1756,6 +1803,7 @@ function buildHelden(){
       ['Wee & Woo (Gen7)','🏹','S+',isDE?'F2P-freundlich! +Squad Attack + Lethality FLAT. Sofort S+ Joiner – kein RNG!':'F2P-friendly! +Squad Attack + Lethality FLAT. Instant S+ joiner – no RNG!'],
     ].map(([n,type,r,d])=>`<div class="card"><div class="card-title">${n}</div><p><span class="tag ${r==='S+'?'tag-sp':'tag-s'}">${r}</span> ${type}<br><br><span style="font-size:12px;color:var(--text-dim)">${d}</span></p></div>`).join('')}</div>
   </div>`;
+  buildWidgetSection();
 }
 function showSwordTab(i){
   document.querySelectorAll('#sword-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
@@ -1774,8 +1822,8 @@ function showKvkTab(i){
   document.querySelectorAll('#kvk-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
 }
 function showHeroTab(i){
-  document.querySelectorAll('#hero-tabs .tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
-  document.querySelectorAll('#hero-tab-content .tab-content').forEach((c,j)=>c.classList.toggle('active',i===j));
+  document.querySelectorAll('#hero-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#hero-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
 }
 
 function bearCalcUpdate(){
@@ -1867,14 +1915,29 @@ function calcFormation(){
 function buildEvents(){
   var D=(LANG==='de');
   document.getElementById('ev-title').textContent=tr('🎯 Events','🎯 Events','🎯 Eventos');
-  var tabs=tr([['🐻','Bärenfalle','bear'],['⚔️','KvK','kvk'],['🛡️','Wikinger','viking'],['👑','Schwertland','sword'],['🏟️','TAC','tac'],['💀','Kill Event','killevent'],['⚡','Cesaren Zorn','cesaren'],['🔥','Tyrant','tyrant'],['🕵️','Geheimmission','intel'],['🌍','Welten d. Ewigkeit','eternity']],[['🐻','Bear Hunt','bear'],['⚔️','KvK','kvk'],['🛡️','Viking','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['💀','Kill Event','killevent'],['⚡',"Cesares' Fury",'cesaren'],['🔥','Tyrant','tyrant'],['🕵️','Intel','intel'],['🌍',"Eternity's Reach",'eternity']],[['🐻','Trampa del Oso','bear'],['⚔️','RvR','kvk'],['🛡️','Vikingos','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Misiones Intel','intel']]);
+  var tabs=tr([['🐻','Bärenfalle','bear'],['⚔️','KvK','kvk'],['🛡️','Wikinger','viking'],['👑','Schwertland','sword'],['🤝','Allianz-Gemenge','brawl'],['🏟️','TAC','tac'],['💀','Kill Event','killevent'],['⚡','Cesaren Zorn','cesaren'],['🔥','Tyrant','tyrant'],['🕵️','Geheimmission','intel'],['🌍','Welten d. Ewigkeit','eternity']],[['🐻','Bear Hunt','bear'],['⚔️','KvK','kvk'],['🛡️','Viking','viking'],['🤝','Alliance Brawl','brawl'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['💀','Kill Event','killevent'],['⚡',"Cesares' Fury",'cesaren'],['🔥','Tyrant','tyrant'],['🕵️','Intel','intel'],['🌍',"Eternity's Reach",'eternity']],[['🐻','Trampa del Oso','bear'],['⚔️','RvR','kvk'],['🛡️','Vikingos','viking'],['👑','Swordland','sword'],['🏟️','TAC','tac'],['🔥','Tyrant','tyrant'],['🕵️','Misiones Intel','intel']]);
   document.getElementById('evt-tabs').innerHTML=tabs.map(function(row){var ic=row[0],lb=row[1],id=row[2];return `<button class="tab-btn" onclick="showEvt('${id}')">${ic} ${lb}</button>`;}).join('');
   showEvt('bear');
 }
 
+
+
+function showEtTab(i){
+  document.querySelectorAll('#et-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#et-tab-content .tab-content').forEach(function(c,j){
+    c.classList.toggle('active',i===j);
+    c.style.display=(i===j)?'block':'none';
+  });
+}
+
+function showBrawlTab(i){
+  document.querySelectorAll('#brawl-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
+  document.querySelectorAll('#brawl-tab-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});
+}
+
 function showEvt(id){
   showSection('events');
-  document.querySelectorAll('#evt-tabs .tab-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(id==='bear'?'bär':id==='kvk'?'kvk':id==='viking'?'wik':id==='sword'?'schw':id==='tyrant'?'tyrant':'geheim')||(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))));
+  document.querySelectorAll('#evt-tabs .tab-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(id==='bear'?'bär':id==='kvk'?'kvk':id==='viking'?'wik':id==='sword'?'schw':id==='brawl'?'gemenge':id==='tyrant'?'tyrant':'geheim')||(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))));
   var D=(LANG==='de');
   var content={
     bear:(function(){
@@ -2414,7 +2477,9 @@ function showEvt(id){
       +'</p></div></div>'
       +'<div class="alert alert-warn">⚠️ '+(D?'Niemals kurz vor KvK große Forschungen oder Gebäude-Upgrades starten!':'NEVER start big research or building upgrades right before KvK!')+'</div>';
 
-    var prep=spendTable
+    
+      var kvkHistory='<div class="sub-head">'+(D?'📊 KvK-Verlauf Königreich 331 (Stand Juli 2026)':'📊 KvK History Kingdom 331 (July 2026)')+'</div>'+'<div class="grid-2">'+'<div class="card"><div class="card-title" style="color:var(--gold)">📈 '+(D?'Gesamtstatistik':'Overall Stats')+'</div>'+'<p style="font-size:12px">'+(D?'⚔️ Gesamt KvKs: <b>13</b><br>🏆 Dominanzen: <b style="color:var(--green-lt)">5 (38%)</b><br>⬆️ Comebacks: <b style="color:var(--blue-lt)">3 (23%)</b><br>⬇️ Wenden: <b style="color:var(--ember-lt)">3 (23%)</b><br>💀 Invasionen: <b style="color:red">2 (15%)</b>':'⚔️ Total KvKs: <b>13</b><br>🏆 Dominances: <b style="color:var(--green-lt)">5 (38%)</b><br>⬆️ Comebacks: <b style="color:var(--blue-lt)">3 (23%)</b><br>⬇️ Upsets: <b style="color:var(--ember-lt)">3 (23%)</b><br>💀 Invasions: <b style="color:red">2 (15%)</b>')+'</p></div>'+'<div class="card"><div class="card-title" style="color:var(--blue-lt)">'+(D?'🎯 Phasen-Bilanz':'🎯 Phase Record')+'</div>'+'<p style="font-size:12px">'+(D?'📦 Vorb.: <b style="color:var(--green-lt)">8S</b>/<b style="color:var(--ember-lt)">5N</b> 62% · Aktuell: 2W<br>⚔️ Kampf: <b style="color:var(--green-lt)">8S</b>/<b style="color:var(--ember-lt)">5N</b> 62%<br>🏅 Beste Serie: 4W · Aktuell: 3L':'📦 Prep: <b style="color:var(--green-lt)">8W</b>/<b style="color:var(--ember-lt)">5L</b> 62% · Current: 2W<br>⚔️ Combat: <b style="color:var(--green-lt)">8W</b>/<b style="color:var(--ember-lt)">5L</b> 62%<br>🏅 Best: 4W · Current: 3L')+'</p></div>'+'</div>'+'<div class="table-wrap"><table><thead><tr><th>KvK</th><th>'+(D?'Gegner':'Opponent')+'</th><th>'+(D?'Vorb.':'Prep')+'</th><th>'+(D?'Kampf':'Combat')+'</th><th>'+(D?'Ergebnis':'Result')+'</th></tr></thead><tbody>'+'<tr><td>16</td><td>K-128</td><td style="color:var(--green-lt)">W</td><td style="color:var(--ember-lt)">L</td><td>⬆️</td></tr>'+'<tr><td>15</td><td>K-139</td><td style="color:var(--green-lt)">W</td><td style="color:var(--ember-lt)">L</td><td>⬆️</td></tr>'+'<tr><td>14</td><td>K-412</td><td style="color:var(--ember-lt)">L</td><td style="color:var(--ember-lt)">L</td><td>💀</td></tr>'+'<tr><td>13</td><td>K-339</td><td style="color:var(--green-lt)">W</td><td style="color:var(--green-lt)">W</td><td>👑</td></tr>'+'<tr><td>12</td><td>K-237</td><td style="color:var(--green-lt)">W</td><td style="color:var(--green-lt)">W</td><td>👑</td></tr>'+'<tr><td>11</td><td>K-365</td><td style="color:var(--ember-lt)">L</td><td style="color:var(--green-lt)">W</td><td>⬇️</td></tr>'+'<tr><td>10</td><td>K-415</td><td style="color:var(--green-lt)">W</td><td style="color:var(--green-lt)">W</td><td>👑</td></tr>'+'<tr><td>9</td><td>K-390</td><td style="color:var(--ember-lt)">L</td><td style="color:var(--ember-lt)">L</td><td>💀</td></tr>'+'<tr><td>8</td><td>K-339</td><td style="color:var(--green-lt)">W</td><td style="color:var(--ember-lt)">L</td><td>⬆️</td></tr>'+'<tr><td>7</td><td>K-347</td><td style="color:var(--ember-lt)">L</td><td style="color:var(--green-lt)">W</td><td>⬇️</td></tr>'+'<tr><td>6</td><td>K-322</td><td style="color:var(--ember-lt)">L</td><td style="color:var(--green-lt)">W</td><td>⬇️</td></tr>'+'<tr><td>5</td><td>K-318</td><td style="color:var(--green-lt)">W</td><td style="color:var(--green-lt)">W</td><td>👑</td></tr>'+'<tr><td>4</td><td>K-307</td><td style="color:var(--green-lt)">W</td><td style="color:var(--green-lt)">W</td><td>👑</td></tr>'+'</tbody></table></div>';
+var prep=spendTable
       +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Item':'Item')+'</th><th>'+(D?'Bester Tag':'Best day')+'</th></tr></thead><tbody>'+saveRows+'</tbody></table></div>'
       +extraContent;
 
@@ -3026,6 +3091,157 @@ function showEvt(id){
       var tabDivs='<div id="ke-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="ketab-'+i+'">'+c+'</div>';}).join('')+'</div>';
       return tabNav+tabDivs;
     })(),
+    brawl:(function(){
+      var D=(LANG==='de');
+      var t0='<div class="alert" style="background:linear-gradient(135deg,rgba(74,138,186,0.15),rgba(10,8,4,0.95));border:1px solid rgba(74,138,186,0.4);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px">'
+        +'🤝 <b>'+(D?'Allianz-Gemenge – monatliches 6.5-Tage Allianz-Duell!':'Alliance Brawl – monthly 6.5-day alliance duel!')+'</b><br>'
+        +(D?'Eure Allianz kämpft gegen eine andere Allianz aus einem anderen Königreich. Wer am Ende mehr Punkte hat gewinnt das Tagesduell. 6 Tage × verschiedene Themen!':'Your alliance fights another alliance from a different kingdom. Whoever has more points wins the daily duel. 6 days × different themes!')
+        +'</div>'
+        +'<div class="sub-head">'+(D?'📋 Voraussetzungen & Zeitplan':'📋 Requirements & Schedule')+'</div>'
+        +'<div class="grid-2">'
+          +'<div class="card"><div class="card-title">'+(D?'✅ Teilnahme-Bedingungen':'✅ Requirements')+'</div>'
+          +'<p style="font-size:12px">'
+          +(D?'• Mitglied einer Allianz sein<br>• Allianz muss <b>Top 20 nach Macht</b> im Königreich sein<br>• <b>VOR Matchmaking beitreten</b> (Sonntag 23:00 UTC)<br>• Wechsel nach Matchmaking = nur persönliche Punkte!':'• Be in an alliance<br>• Alliance must be <b>Top 20 by power</b> in kingdom<br>• <b>Join BEFORE matchmaking</b> (Sunday 23:00 UTC)<br>• Switching after matchmaking = only personal points!')
+          +'</p></div>'
+          +'<div class="card"><div class="card-title">'+(D?'📅 Zeitplan':'📅 Schedule')+'</div>'
+          +'<p style="font-size:12px">'
+          +(D?'• Startet nach Kingdom of Power Event<br>• Läuft <b>parallel zum Händlerimperium</b><br>• Tag 1–5: je 24 Stunden<br>• Tag 6: <b>36 Stunden</b> (1,5 Tage!)<br>• Monatlich wiederkehrend':'• Starts after Kingdom of Power event<br>• Runs <b>alongside Merchant Empire</b><br>• Day 1–5: 24 hours each<br>• Day 6: <b>36 hours</b> (1.5 days!)<br>• Monthly recurring')
+          +'</p></div>'
+        +'</div>'
+        +'<div class="sub-head">'+(D?'🏆 Belohnungen':'🏆 Rewards')+'</div>'
+        +'<div class="grid-2">'
+          +'<div class="card"><div class="card-title" style="color:var(--gold)">'+(D?'📦 Tägliche Belohnungen':'📦 Daily Rewards')+'</div>'
+          +'<p style="font-size:12px">'
+          +(D?'• 5 persönliche Meilenstein-Truhen täglich<br>• Tages-Allianz-Belohnung nach jedem 24h-Tag<br>• <b>Gewinner = Doppelt</b> die Belohnungen!<br>• Rekrutierungsschlüssel, Wasser-Essenz, Allianz-Token':'• 5 personal milestone chests daily<br>• Daily alliance reward after each 24h day<br>• <b>Winner = Double</b> rewards!<br>• Recruitment Keys, Water Essence, Alliance Tokens')
+          +'</p></div>'
+          +'<div class="card"><div class="card-title" style="color:var(--gold)">'+(D?'🎖️ Event-Abschluss':'🎖️ End of Event')+'</div>'
+          +'<p style="font-size:12px">'
+          +(D?'• <b>Stern-Rating Belohnungen</b> (Gewinner +1★, Verlierer -1★)<br>• Händler-Karawane Dekoration (Stern-Rating)<br>• <b>Siegerhorn</b> Dekoration (Top 50 Ranking)<br>• Top 50 Spieler beider Allianzen erhalten Ranking-Belohnungen':'• <b>Star Rating Rewards</b> (winner +1★, loser -1★)<br>• Merchant Caravan decoration (Star Rating)<br>• <b>Horn of Victory</b> decoration (Top 50 Ranking)<br>• Top 50 players of both alliances get ranking rewards')
+          +'</p></div>'
+        +'</div>';
+
+      var t1='<div class="alert alert-gold">🏙️ '+(D?'Tag 1 – Aufstieg der Stadt (24h)':'Day 1 – Rise of the City (24h)')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Aufgabe':'Task')+'</th><th>'+(D?'Punkte':'Points')+'</th></tr></thead><tbody>'
+        +'<tr><td>🚛 '+(D?'Karawane begleiten (jede Stufe)':'Escort Caravan (any grade)')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>🚛 '+(D?'Karawane überfallen (jede Stufe)':'Raid Caravan (any grade)')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>'+(D?'Meister-Emblem (kein Allgemeines)':'Master Emblem (no Common)')+'</td><td style="color:var(--gold);font-weight:700">3.600</td></tr>'
+        +'<tr><td>'+(D?'1x Truegold (Gebäude-Upgrade)':'1x Truegold (building upgrade)')+'</td><td>1.250</td></tr>'
+        +'<tr><td>'+(D?'1x Truegold Dust (Forschung)':'1x Truegold Dust (Research)')+'</td><td>625</td></tr>'
+        +'<tr><td>'+(D?'1 Min Bau-Speedup':'1 min Build Speedup')+'</td><td>18</td></tr>'
+        +'<tr><td>'+(D?'1 Min Forschungs-Speedup':'1 min Research Speedup')+'</td><td>18</td></tr>'
+        +'<tr><td>'+(D?'1 Min Truppen-Training Speedup':'1 min Troop Training Speedup')+'</td><td>18</td></tr>'
+        +'<tr><td>'+(D?'1 Min Master Skill Speedup':'1 min Master Skill Speedup')+'</td><td>18</td></tr>'
+        +'<tr><td>'+(D?'2.000 Brot/Holz sammeln':'Gather 2,000 Bread/Wood')+'</td><td>2</td></tr>'
+        +'<tr><td>'+(D?'400 Stein / 100 Eisen sammeln':'Gather 400 Stone / 100 Iron')+'</td><td>2</td></tr>'
+        +'<tr><td>1x Meister-Manuskript</td><td>36</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Karawanes = beste Quelle! Je 10.000 Punkte pro Karawane. Begleiten UND Überfallen täglich machen! Parallel alle Händlerimperium-Karawanes nutzen!':'Trucks = best source! 10,000 points per Caravan. Escort AND raid daily! Use all Merchant Empire Caravans in parallel!')+'</div>';
+
+      var t2='<div class="alert alert-gold">🦸 '+(D?'Tag 2 – Heldenentwicklung (24h)':'Day 2 – Hero Development (24h)')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Aufgabe':'Task')+'</th><th>'+(D?'Punkte':'Points')+'</th></tr></thead><tbody>'
+        +'<tr><td>🚛 '+(D?'Karawane begleiten':'Escort Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>🚛 '+(D?'Karawane überfallen':'Raid Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>'+(D?'Intel Mission abschließen':'Complete Intel Mission')+'</td><td style="color:var(--gold);font-weight:700">3.000</td></tr>'
+        +'<tr><td>'+(D?'Meister-Emblem (kein Allgemeines)':'Master Emblem (no Common)')+'</td><td style="color:var(--gold);font-weight:700">3.600</td></tr>'
+        +'<tr><td>'+(D?'1x Mythic Hero Shard':'1x Mythic Hero Shard')+'</td><td>1.875</td></tr>'
+        +'<tr><td>'+(D?'1x Truegold (Gebäude)':'1x Truegold (building)')+'</td><td>1.250</td></tr>'
+        +'<tr><td>'+(D?'1x Epic Hero Shard':'1x Epic Hero Shard')+'</td><td>750</td></tr>'
+        +'<tr><td>'+(D?'1x Truegold Dust':'1x Truegold Dust')+'</td><td>625</td></tr>'
+        +'<tr><td>'+(D?'1x Rare Hero Shard':'1x Rare Hero Shard')+'</td><td>210</td></tr>'
+        +'<tr><td>'+(D?'1 Min Speedups (alle Typen)':'1 min Speedups (all types)')+'</td><td>18</td></tr>'
+        +'<tr><td>1x Meister-Manuskript</td><td>36</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Intel Missionen HIER sparen und ausgeben! 3.000 Punkte pro Mission = massiv. Mythic Shards für Tag 2 aufbewahren!':'Save Intel Missions for HERE! 3,000 points per mission = massive. Save Mythic Shards for Day 2!')+'</div>';
+
+      var t3='<div class="alert alert-gold">🐾 '+(D?'Tag 3 – Begleittier-Ausbildung (24h)':'Day 3 – Pet Training (24h)')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Aufgabe':'Task')+'</th><th>'+(D?'Punkte':'Points')+'</th></tr></thead><tbody>'
+        +'<tr><td>🚛 '+(D?'Karawane begleiten':'Escort Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>🚛 '+(D?'Karawane überfallen':'Raid Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>'+(D?'1x Fortgeschr. Zähmungszeichen (Pet Refinement)':'1x Advanced Taming Mark (Pet Refinement)')+'</td><td style="color:var(--gold);font-weight:700">9.370</td></tr>'
+        +'<tr><td>'+(D?'Gov. Talisman Punkte +1 (bis Level 10)':'Gov. Talisman score +1 (up to Lv10)')+'</td><td style="color:var(--gold)">625 – 15.000</td></tr>'
+        +'<tr><td>'+(D?'1x Gewöhnl. Zähmungszeichen':'1x Common Taming Mark')+'</td><td>680</td></tr>'
+        +'<tr><td>'+(D?'Begleittier-Förderungswert +1':'Pet Advancement Score +1')+'</td><td>30</td></tr>'
+        +'<tr><td>'+(D?'Gov. Talisman Charm +1':'Gov. Charm score +1')+'</td><td>45</td></tr>'
+        +'<tr><td>'+(D?'2.000 Brot/Holz / 400 Stein / 100 Eisen sammeln':'Gather 2k Bread/Wood, 400 Stone, 100 Iron')+'</td><td>2</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Adv. Taming Marks = 9.370 Punkte pro Stück! Für Tag 3 aufbewahren. Gov. Talisman upgraden wenn möglich.':'Adv. Taming Marks = 9,370 points each! Save for Day 3. Upgrade Gov. Talisman if possible.')+'</div>';
+
+      var t4='<div class="alert alert-gold">⚙️ '+(D?'Tag 4 – Ausrüstungsverbesserung (24h)':'Day 4 – Gear Enhancement (24h)')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Aufgabe':'Task')+'</th><th>'+(D?'Punkte':'Points')+'</th></tr></thead><tbody>'
+        +'<tr><td>🚛 '+(D?'Karawane begleiten':'Escort Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>🚛 '+(D?'Karawane überfallen':'Raid Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>'+(D?'Intel Mission abschließen':'Complete Intel Mission')+'</td><td style="color:var(--gold);font-weight:700">3.000</td></tr>'
+        +'<tr><td>1x Mithril</td><td style="color:var(--gold);font-weight:700">18.750</td></tr>'
+        +'<tr><td>'+(D?'1x Widget (Helden Exclusive Gear)':'1x Widget (Hero Exclusive Gear)')+'</td><td>3.750</td></tr>'
+        +'<tr><td>'+(D?'1x Hero Gear Schmiedehammer':'1x Hero Gear Forgehammer')+'</td><td>1.875</td></tr>'
+        +'<tr><td>'+(D?'Gov. Ausrüstungs-Score +1 (Mythic = 6.250 je Level!)':'Gov. Gear score +1 (Mythic = 6,250 per level!)')+'</td><td>22 – 6.250</td></tr>'
+        +'<tr><td>'+(D?'1x T11 Truppe trainieren':'Train 1x T11 troop')+'</td><td>30</td></tr>'
+        +'<tr><td>'+(D?'1x T10 Truppe':'Train 1x T10 troop')+'</td><td>24</td></tr>'
+        +'<tr><td>'+(D?'Gov. Talisman Charm +1':'Gov. Charm score +1')+'</td><td>45</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Mithril = 18.750 Punkte! Für Tag 4 oder Tag 6 aufbewahren. Gov. Gear auf Mythic = massiver Multiplikator!':'Mithril = 18,750 points! Save for Day 4 or Day 6. Gov. Gear at Mythic = massive multiplier!')+'</div>';
+
+      var t5='<div class="alert alert-gold">🏪 '+(D?'Tag 5 – Handelsbaron (24h)':'Day 5 – Trade Baron (24h)')+'</div>'
+        +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Aufgabe':'Task')+'</th><th>'+(D?'Punkte':'Points')+'</th></tr></thead><tbody>'
+        +'<tr><td>🚛 '+(D?'Karawane begleiten':'Escort Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>🚛 '+(D?'Karawane überfallen':'Raid Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>'+(D?'Terror-Rally (Stufe 26–30 Biest)':'Terror Rally (Level 26-30 beast)')+'</td><td style="color:var(--gold);font-weight:700">15.000</td></tr>'
+        +'<tr><td>'+(D?'Biest Stufe 26–30 besiegen':'Defeat beast level 26–30')+'</td><td>6.000</td></tr>'
+        +'<tr><td>'+(D?'Biest Stufe 21–25':'Defeat beast 21–25')+'</td><td>5.500</td></tr>'
+        +'<tr><td>'+(D?'Biest Stufe 16–20':'Defeat beast 16–20')+'</td><td>5.000</td></tr>'
+        +'<tr><td>'+(D?'1x Truegold (Gebäude)':'1x Truegold (building)')+'</td><td>1.250</td></tr>'
+        +'<tr><td>'+(D?'Gov. Ausrüstungs-Score +1':'Gov. Gear score +1')+'</td><td>22</td></tr>'
+        +'<tr><td>'+(D?'1 Min Speedups (alle Typen)':'1 min Speedups (all types)')+'</td><td>18</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert alert-tip">💡 '+(D?'Terror-Rally = 15.000 Punkte! Allianz koordinieren für Terror-Jagd. Biester Level 26–30 solo = 6.000 Punkte. Kein Beast-Speedup hier – kämpfe normal!':'Terror Rally = 15,000 points! Coordinate alliance for Terror hunting. Beat level 26-30 beasts solo = 6,000 each!')+'</div>';
+
+      var t6='<div class="alert" style="border:1px solid rgba(200,48,48,0.4);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px">'
+        +'🔥 <b>'+(D?'Tag 6 – Ultimativer Wettbewerb (36 STUNDEN!) – Wert 4 Hörner!':'Day 6 – Full-Scale Competition (36 HOURS!) – Worth 4 Horns!')+'</b><br>'
+        +(D?'ALLE Aufgaben aller vorherigen Tage sind verfügbar! Größte Punkte-Chance. ALLES für diesen Tag aufsparen!':'ALL tasks from all previous days available! Biggest scoring opportunity. Save EVERYTHING for this day!')
+        +'</div>'
+        +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Aufgabe':'Task')+'</th><th>'+(D?'Punkte':'Points')+'</th></tr></thead><tbody>'
+        +'<tr><td>🚛 '+(D?'Karawane begleiten':'Escort Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>🚛 '+(D?'Karawane überfallen':'Raid Caravan')+'</td><td style="color:var(--gold);font-weight:700">10.000</td></tr>'
+        +'<tr><td>1x Mithril</td><td style="color:var(--gold);font-weight:700">18.750</td></tr>'
+        +'<tr><td>'+(D?'Terror-Rally':'Terror Rally')+'</td><td style="color:var(--gold);font-weight:700">15.000</td></tr>'
+        +'<tr><td>'+(D?'1x Adv. Taming Mark':'1x Adv. Taming Mark')+'</td><td>9.370</td></tr>'
+        +'<tr><td>'+(D?'1x Widget':'1x Widget')+'</td><td>3.750</td></tr>'
+        +'<tr><td>'+(D?'Intel Mission':'Intel Mission')+'</td><td>3.000</td></tr>'
+        +'<tr><td>'+(D?'1x Mythic Hero Shard':'1x Mythic Hero Shard')+'</td><td>1.875</td></tr>'
+        +'<tr><td>'+(D?'1x Forgehammer':'1x Forgehammer')+'</td><td>1.875</td></tr>'
+        +'<tr><td>'+(D?'1x Truegold':'1x Truegold')+'</td><td>1.250</td></tr>'
+        +'<tr><td>'+(D?'Gov. Gear/Charm (bis 6.250 pro Level!)':'Gov. Gear/Charm (up to 6,250 per level!)')+'</td><td>22 – 6.250</td></tr>'
+        +'<tr><td>'+(D?'1x T11 Truppe':'1x T11 Troop')+'</td><td>30</td></tr>'
+        +'<tr><td>'+(D?'Biest Level 26–30':'Beast Level 26–30')+'</td><td>6.000</td></tr>'
+        +'<tr><td>'+(D?'1 Min Speedups':'1 min Speedups')+'</td><td>18</td></tr>'
+        +'</tbody></table></div>'
+        +'<div class="alert" style="border:1px solid rgba(200,48,48,0.4);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">'
+        +'🔥 '+(D?'STRATEGIE TAG 6: Mithril, Widgets, Adv. Taming Marks, Mythic Shards → ALLE hier ausgeben! Tag 6 = 4 Hörner = doppelt so wertvoll wie Tag 2–5! Die Allianz die Tag 6 gewinnt kann das Gesamt-Ergebnis drehen!':'STRATEGY DAY 6: Mithril, Widgets, Adv. Taming Marks, Mythic Shards → Spend ALL here! Day 6 = 4 Horns = twice as valuable as Day 2-5! The alliance that wins Day 6 can flip the overall result!')
+        +'</div>';
+
+      var t7='<div class="sub-head">'+(D?'🏆 Top-Tipps für Allianz-Gemenge':'🏆 Top Tips for Alliance Brawl')+'</div>'
+        +'<div class="grid-2">'
+          +'<div class="card card-highlight"><div class="card-title" style="color:var(--gold)">💡 Allgemeine Strategie</div>'
+          +'<p style="font-size:12px">'
+          +(D?'✅ Karawanes <b>täglich</b> begleiten UND überfallen (Händlerimperium!)<br>✅ Ressourcen für <b>Tag 6</b> aufsparen (4 Hörner!)<br>✅ Allianz-Koordination = Schlüssel<br>✅ Intel Missionen für Tag 2 oder 4 sparen<br>✅ Taming Marks für Tag 3 aufheben<br>✅ Mithril/Widgets für Tag 4 oder 6':'✅ Escort AND raid Caravans <b>daily</b> (Merchant Empire!)<br>✅ Save resources for <b>Day 6</b> (4 Horns!)<br>✅ Alliance coordination = key<br>✅ Save Intel Missions for Day 2 or 4<br>✅ Save Taming Marks for Day 3<br>✅ Mithril/Widgets for Day 4 or 6')
+          +'</p></div>'
+          +'<div class="card card-highlight"><div class="card-title" style="color:var(--ember-lt)">🚫 Was NICHT tun</div>'
+          +'<p style="font-size:12px">'
+          +(D?'❌ Allianz nach Matchmaking (Sonntag 23 UTC) wechseln<br>❌ Mithril/Widgets an frühen Tagen ausgeben<br>❌ Bericht-Truhe vor Tag 2 öffnen (Shard-Punkte verlieren!)<br>❌ Karawanes ignorieren – sie sind die konstanteste Punkte-Quelle!<br>❌ Terror-Rally alleine starten ohne Allianz-Koordination':'❌ Switch alliances after matchmaking (Sunday 23 UTC)<br>❌ Spend Mithril/Widgets on early days<br>❌ Open report chests before Day 2<br>❌ Ignore Caravans – most consistent point source!<br>❌ Start Terror Rally without alliance coordination')
+          +'</p></div>'
+        +'</div>'
+        +'<div class="alert" style="border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">'
+        +'🤝 '+(D?'<b>Für R4/R5:</b> Koordiniert täglich Karawane-Zeiten, Terror-Jagd für Tag 5, und startet den Endspurt-Push für Tag 6 gemeinsam! Kommunikation im Chat ist alles.':'<b>For R4/R5:</b> Coordinate daily Caravan times, Terror hunting for Day 5, and launch the final push for Day 6 together! Communication in chat is everything.')
+        +'</div>';
+
+      var tabs=D
+        ?['📋 Übersicht','🏙️ Tag 1','🦸 Tag 2','🐾 Tag 3','⚙️ Tag 4','🏪 Tag 5','🔥 Tag 6','💡 Tipps']
+        :['📋 Overview','🏙️ Day 1','🦸 Day 2','🐾 Day 3','⚙️ Day 4','🏪 Day 5','🔥 Day 6','💡 Tips'];
+      var contents=[t0,t1,t2,t3,t4,t5,t6,t7];
+      var tabNav='<div class="tab-nav" id="brawl-tabs">'+tabs.map(function(t,i){return '<button class="tab-btn'+(i===0?' active':'')+'" onclick="showBrawlTab('+i+')">'+t+'</button>';}).join('')+'</div>';
+      var tabDivs='<div id="brawl-tab-content">'+contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="brawltab-'+i+'">'+c+'</div>';}).join('')+'</div>';
+      return tabNav+tabDivs;
+    })(),
     eternity:(function(){
       var D=(LANG==='de');
       var tabs=D
@@ -3206,46 +3422,227 @@ function showEvt(id){
 }
 function buildGear(){
   var D=(LANG==='de');
-  document.getElementById('gear-title').textContent=tr('🛡️ Ausrüstung – Gear, Charms & Gouverneur','🛡️ Gear – Hero Gear, Charms & Governor','🛡️ Equipo – Equipo de Héroe, Amuletos y Gobernador');
-  var tabs=tr(['🪖 Hero-Gear','🗡️ Gouverneur-Gear','✨ Charms','💎 Gear-Stufen'],['🪖 Hero Gear','🗡️ Governor Gear','✨ Charms','💎 Gear Tiers'],['🪖 Equipo de Héroe','🗡️ Equipo de Gobernador','✨ Amuletos','💎 Niveles de Equipo']);
-  document.getElementById('gear-tabs').innerHTML=tabs.map((t,i)=>`<button class="tab-btn${i===0?' active':''}" onclick="showGearTab(${i})">${t}</button>`).join('');
-  var g1=D?[['#1','🧤 Infanterie Handschuhe','Gesundheit','Infanterie am Leben = Archer schaden länger!'],['#2','🪖 Archer Helm','Tödlichkeit','Tödlichkeit = direkter Schaden-Multiplikator'],['#3','🪖 Kav Helm','Tödlichkeit','Weitere Tödlichkeit für Kavallerie'],['#4','👟 Archer Stiefel','Tödlichkeit','Weitere Tödlichkeit für Archer'],['#5','🛡️ Infanterie Brust','Gesundheit','Gesundheit für Frontlinie'],['#6','⭐ Widget / Exclusive Gear','Attack + Lethality (mult!)','SEHR wichtig für Leader!']]:
-    [['#1','🧤 Infantry Gloves','Health','Infantry alive = Archers deal damage longer!'],['#2','🪖 Archer Helmet','Lethality','Lethality = direct damage multiplier'],['#3','🪖 Cav Helmet','Lethality','Additional Lethality for Cavalry'],['#4','👟 Archer Boots','Lethality','Additional Lethality for Archers'],['#5','🛡️ Infantry Chest','Health','Health for the frontline'],['#6','⭐ Widget / Exclusive Gear','Attack + Lethality (mult!)','VERY important for Leader!']];
-  var g2=D?[['🗡️ Waffe','+Angriff (höchster Wert)','⭐⭐⭐⭐⭐'],['💍 Ring','+Tödlichkeit / Krit-Rate','⭐⭐⭐⭐⭐'],['👟 Stiefel','+Marschgeschwindigkeit + Angriff','⭐⭐⭐⭐'],['🛡️ Brust','+Gesundheit (HP)','⭐⭐⭐'],['🪖 Helm','+Verteidigung + Kapazität','⭐⭐⭐'],['🌟 Set-Bonus (6 Stücke)','+15% Armee-Angriff – IMMER gleicher Tier!','⚠️ Kritisch!']]:
-    [['🗡️ Weapon','+Attack (highest value)','⭐⭐⭐⭐⭐'],['💍 Ring','+Lethality / Crit Rate','⭐⭐⭐⭐⭐'],['👟 Boots','+March Speed + Attack','⭐⭐⭐⭐'],['🛡️ Chest','+Health (HP)','⭐⭐⭐'],['🪖 Helmet','+Defense + Capacity','⭐⭐⭐'],['🌟 Set Bonus (6 pieces)','+15% Army Attack – ALWAYS same tier!','⚠️ Critical!']];
-  var g3=D?[['⬜ Grau (Common)','Lv 20','Gering','Freies Spielen'],['🟩 Grün (Uncommon)','Lv 40','Niedrig','Freies Spielen'],['🟦 Blau (Rare)','Lv 60','Mittel','Events, Campaign'],['🟪 Lila (Epic)','Lv 80','Gut','Arena Tokens, Events'],['🟨 Gold (Mythic)','Lv 100+','+50% Tödlichkeit!','Bärenfalle Forgehammer!'],['🟥 Rot (Imbued)','Lv 200','Massiv – Endgame','Mythic + Mithril']]:
-    [['⬜ Grey (Common)','Lv 20','Low','Free gameplay'],['🟩 Green (Uncommon)','Lv 40','Low','Free gameplay'],['🟦 Blue (Rare)','Lv 60','Medium','Events, Campaign'],['🟪 Purple (Epic)','Lv 80','Good','Arena Tokens, Events'],['🟨 Gold (Mythic)','Lv 100+','+50% Lethality!','Bear Hunt Forgehammers!'],['🟥 Red (Imbued)','Lv 200','Massive – Endgame','Mythic + Mithril']];
-  var charms=D?[['1️⃣ Infanterie Charm','+Infanterie Gesundheit & Tödlichkeit','Erste Priorität'],['2️⃣ Archer Charm','+Archer Tödlichkeit & Gesundheit','Zweite Priorität'],['3️⃣ Kav Charm','+Kavallerie Tödlichkeit & Gesundheit','Dritte Priorität']]:
-    [['1️⃣ Infantry Charm','+Infantry Health & Lethality','First priority'],['2️⃣ Archer Charm','+Archer Lethality & Health','Second priority'],['3️⃣ Cavalry Charm','+Cavalry Lethality & Health','Third priority']];
+  document.getElementById('gear-title').textContent=D?'🛡️ Ausrüstung – Gear, Charms & Gouverneur':'🛡️ Gear – Hero Gear, Charms & Governor';
+  var tabs=D
+    ?['🪖 Hero-Gear','🗡️ Gouverneur-Gear','✨ Charms','💎 Gear-Stufen','🔨 Forgehammer & Rot-Gear','🎯 Gear Priorität']
+    :['🪖 Hero Gear','🗡️ Governor Gear','✨ Charms','💎 Gear Tiers','🔨 Forgehammer & Red Gear','🎯 Gear Priority'];
+
+  // Build tab navigation
+  var tabHtml='';
+  for(var ti=0;ti<tabs.length;ti++){
+    tabHtml+='<button class="tab-btn'+(ti===0?' active':'')+'" onclick="showGearTab('+ti+')">'+tabs[ti]+'</button>';
+  }
+  document.getElementById('gear-tabs').innerHTML=tabHtml;
+
+  // Build gear-content wrapper
+  var gc=document.getElementById('gear-content');
+  if(!gc)return;
+
+  // ── Warning alert (always visible) ──
+  var warn='<div class="alert alert-warn">'
+    +(D?'⚠️ Hero-Gear & Gov-Gear zählen beim Bären NUR für den Rally Leader! Als Joiner ist dein Gear-Level IRRELEVANT!'
+       :'⚠️ Hero Gear & Gov Gear only count for the Rally Leader in Bear Hunt! As a Joiner your gear level is IRRELEVANT!')
+    +'</div>';
+
+  // ── Tab 0: Hero-Gear ──
   var h1=D?['Priorität','Gear-Stück','Hauptstat','Warum?']:['Priority','Gear Piece','Main Stat','Why?'];
+  var g1=D
+    ?[['1️⃣','🧤 Inf-Handschuhe','Gesundheit','Inf am Leben = Archer schaden länger!'],
+      ['2️⃣','🪖 Archer-Helm','Tödlichkeit','Tödlichkeit = direkter Schaden-Multiplikator!'],
+      ['3️⃣','🪖 Kav-Helm','Tödlichkeit','Weitere Tödlichkeit für Kavallerie'],
+      ['4️⃣','👟 Archer-Stiefel','Tödlichkeit','Weitere Tödlichkeit für Archer'],
+      ['5️⃣','🛡️ Inf-Brustpanzer','Gesundheit','Gesundheit für die Frontlinie'],
+      ['⭐','Widget / Exclusive Gear','ATK+Tödlichkeit (mult!)','SEHR wichtig für Leader!']]
+    :[['1️⃣','🧤 Inf Gloves','Health','Infantry alive = Archers deal more damage!'],
+      ['2️⃣','🪖 Archer Helm','Lethality','Lethality = direct damage multiplier!'],
+      ['3️⃣','🪖 Cav Helm','Lethality','Additional Lethality for Cavalry'],
+      ['4️⃣','👟 Archer Boots','Lethality','Additional Lethality for Archers'],
+      ['5️⃣','🛡️ Inf Chest','Health','Health for the frontline'],
+      ['⭐','Widget / Exclusive Gear','ATK+Lethality (mult!)','VERY important for Leader!']];
+  var t0='<div class="table-wrap"><table><thead><tr>';
+  for(var i=0;i<h1.length;i++) t0+='<th>'+h1[i]+'</th>';
+  t0+='</tr></thead><tbody>';
+  for(var i=0;i<g1.length;i++){
+    t0+='<tr>';
+    for(var j=0;j<g1[i].length;j++) t0+='<td>'+g1[i][j]+'</td>';
+    t0+='</tr>';
+  }
+  t0+='</tbody></table></div>'
+    +'<div class="alert alert-tip">💡 '+(D?'Tödlichkeit priorisieren! Archer-Helm = höchster Lethality-Wert pro Ressource. Widget ist MULTIPLIKATIV (nicht additiv)!':'Prioritize Lethality! Archer Helm = highest Lethality per resource. Widget is MULTIPLICATIVE (not additive)!')+'</div>';
+
+  // ── Tab 1: Gouverneur-Gear ──
   var h2=D?['Slot','Hauptstat','Priorität']:['Slot','Main Stat','Priority'];
+  var g2=D
+    ?[['🗡️ Waffe','+Angriff (höchster Wert)','⭐⭐⭐⭐⭐'],
+      ['💍 Ring','+Tödlichkeit / Krit-Rate','⭐⭐⭐⭐⭐'],
+      ['👟 Stiefel','+Marschgeschwindigkeit + Angriff','⭐⭐⭐⭐'],
+      ['🛡️ Brustpanzer','+Gesundheit (HP)','⭐⭐⭐'],
+      ['🪖 Helm','+Verteidigung + Kapazität','⭐⭐⭐'],
+      ['🌟 Set-Bonus (6 Stücke)','+15% Armee-Angriff – IMMER gleicher Tier!','⚠️ Kritisch!']]
+    :[['🗡️ Weapon','+Attack (highest value)','⭐⭐⭐⭐⭐'],
+      ['💍 Ring','+Lethality / Crit Rate','⭐⭐⭐⭐⭐'],
+      ['👟 Boots','+March Speed + Attack','⭐⭐⭐⭐'],
+      ['🛡️ Chest','+Health (HP)','⭐⭐⭐'],
+      ['🪖 Helmet','+Defense + Capacity','⭐⭐⭐'],
+      ['🌟 Set Bonus (6 pieces)','+15% Army Attack – ALWAYS same tier!','⚠️ Critical!']];
+  var t1='<div class="table-wrap"><table><thead><tr>';
+  for(var i=0;i<h2.length;i++) t1+='<th>'+h2[i]+'</th>';
+  t1+='</tr></thead><tbody>';
+  for(var i=0;i<g2.length;i++){
+    t1+='<tr>';
+    for(var j=0;j<g2[i].length;j++) t1+='<td>'+g2[i][j]+'</td>';
+    t1+='</tr>';
+  }
+  t1+='</tbody></table></div>'
+    +'<div class="alert alert-tip">💡 '+(D?'Gov-Gear Set-Bonus: Immer alle 6 Teile vom gleichen Tier behalten für +15% Armee-Angriff!':'Gov Gear Set Bonus: Always keep all 6 pieces of the same tier for +15% Army Attack!')+'</div>';
+
+  // ── Tab 2: Charms ──
+  var charms=D
+    ?[['1️⃣ Infanterie Charm','+Infanterie Gesundheit & Tödlichkeit','Erste Priorität'],
+      ['2️⃣ Archer Charm','+Archer Tödlichkeit & Gesundheit','Zweite Priorität'],
+      ['3️⃣ Kavallerie Charm','+Kavallerie Tödlichkeit & Gesundheit','Dritte Priorität']]
+    :[['1️⃣ Infantry Charm','+Infantry Health & Lethality','First priority'],
+      ['2️⃣ Archer Charm','+Archer Lethality & Health','Second priority'],
+      ['3️⃣ Cavalry Charm','+Cavalry Lethality & Health','Third priority']];
+  var t2='<div class="grid-3">';
+  for(var i=0;i<charms.length;i++){
+    t2+='<div class="card"><div class="card-title">'+charms[i][0]+'</div><p style="font-size:12px">'+charms[i][1]+'<br><br><span style="color:var(--text-muted)">'+charms[i][2]+'</span></p></div>';
+  }
+  t2+='</div>'
+    +'<div class="alert alert-tip">💡 '+(D?'Charms = HAUPTQUELLE für Tödlichkeit! Reihenfolge: Infanterie → Archer → Kavallerie. F2P und P2W identisch!':'Charms = MAIN SOURCE of Lethality! Order: Infantry → Archer → Cavalry. F2P and P2W identical!')+'</div>';
+
+  // ── Tab 3: Gear-Stufen ──
   var h3=D?['Seltenheit','Max Level','Bonus','Wie bekommen?']:['Rarity','Max Level','Bonus','How to get?'];
-  document.getElementById('gear-content').innerHTML=`
-  <div class="alert alert-warn">${D?'⚠️ Hero-Gear & Gov-Gear zählen beim Bären NUR für den Rally Leader! Als Joiner ist dein Gear-Level IRRELEVANT!':'⚠️ Hero Gear & Gov Gear only count for the Rally Leader in Bear Hunt! As a Joiner your gear is IRRELEVANT!'}</div>
-  <div class="tab-content active" id="gtab-0">
-    <div class="table-wrap"><table><thead><tr>${h1.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${g1.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <div class="grid-2" style="margin-top:16px">
-      <div class="card"><div class="card-title">🌿 F2P ${D?'Fokus':'Focus'}</div><p style="font-size:12px">${D?'1. Inf Handschuhe → Mythic<br>2. Archer Helm → Mythic<br>3. Archer Stiefel → Mythic<br>4. Widget upgraden<br><br><b>Bear Hunt Forgehammer = Hauptquelle!</b>':'1. Inf Gloves → Mythic<br>2. Archer Helmet → Mythic<br>3. Archer Boots → Mythic<br>4. Upgrade Widget<br><br><b>Bear Hunt Forgehammer = main source!</b>'}</p></div>
-      <div class="card"><div class="card-title">💎 P2W ${D?'Fokus':'Focus'}</div><p style="font-size:12px">${D?'1. Alle Stücke auf Mythic<br>2. Widget zuerst auf Rot (Imbued)<br>3. Dann restliche Slots auf Rot<br>4. Hall of Governors für Doppel-Wert!':'1. All pieces to Mythic<br>2. Widget first to Red (Imbued)<br>3. Then remaining slots to Red<br>4. Hall of Governors for double value!'}</p></div>
-    </div>
-  </div>
-  <div class="tab-content" id="gtab-1">
-    <div class="table-wrap"><table><thead><tr>${h2.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${g2.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <div class="alert alert-warn">${D?'⚠️ Set-Bonus: IMMER alle 6 Stücke im gleichen Tier! Einzelnes Upgrade bricht den +15% Bonus!':'⚠️ Set Bonus: ALWAYS keep all 6 pieces in same tier! Individual upgrade breaks the +15% bonus!'}</div>
-    <div class="alert alert-tip">${D?'💡 Hall of Governors Event nutzen = Doppel-Wert: Event-Punkte + Gear-Upgrade gleichzeitig!':'💡 Use Hall of Governors event = Double value: Event points + Gear upgrade simultaneously!'}</div>
-  </div>
-  <div class="tab-content" id="gtab-2">
-    <div class="grid-3">${charms.map(([t,s,n])=>`<div class="card"><div class="card-title">${t}</div><p><b style="color:var(--blue-lt)">${s}</b><br><br>${n}</p></div>`).join('')}</div>
-    <div class="alert alert-tip">${D?'💡 Charms = HAUPTQUELLE für Tödlichkeit! Reihenfolge: Infanterie → Archer → Kavallerie. F2P und P2W identisch!':'💡 Charms = MAIN SOURCE of Lethality! Order: Infantry → Archer → Cavalry. F2P and P2W identical!'}</div>
-  </div>
-  <div class="tab-content" id="gtab-3">
-    <div class="table-wrap"><table><thead><tr>${h3.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${g3.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <div class="alert alert-tip">${D?'💡 Bärenfalle → Forgehammer → Mythic Gear. Dann Mithril für Rot (Imbued) farmen!':'💡 Bear Hunt → Forgehammer → Mythic Gear. Then farm Mithril for Red (Imbued)!'}</div>
-  </div>`;
+  var g3=D
+    ?[['⬜ Grau (Common)','Lv 20','Gering','Freies Spielen'],
+      ['🟩 Grün (Uncommon)','Lv 40','Niedrig','Freies Spielen'],
+      ['🟦 Blau (Rare)','Lv 60','Mittel','Events, Campaign'],
+      ['🟪 Lila (Epic)','Lv 80','Gut','Arena Tokens, Events'],
+      ['🟨 Gold (Mythic)','Lv 100+','+50% Tödlichkeit!','Bärenfalle Forgehammer!'],
+      ['🟥 Rot (Imbued)','Lv 200','Massiv – Endgame','Mythic + Mithril']]
+    :[['⬜ Grey (Common)','Lv 20','Low','Free gameplay'],
+      ['🟩 Green (Uncommon)','Lv 40','Low','Free gameplay'],
+      ['🟦 Blue (Rare)','Lv 60','Medium','Events, Campaign'],
+      ['🟪 Purple (Epic)','Lv 80','Good','Arena Tokens, Events'],
+      ['🟨 Gold (Mythic)','Lv 100+','+50% Lethality!','Bear Hunt Forgehammers!'],
+      ['🟥 Red (Imbued)','Lv 200','Massive – Endgame','Mythic + Mithril']];
+  var t3='<div class="table-wrap"><table><thead><tr>';
+  for(var i=0;i<h3.length;i++) t3+='<th>'+h3[i]+'</th>';
+  t3+='</tr></thead><tbody>';
+  for(var i=0;i<g3.length;i++){
+    t3+='<tr>';
+    for(var j=0;j<g3[i].length;j++) t3+='<td>'+g3[i][j]+'</td>';
+    t3+='</tr>';
+  }
+  t3+='</tbody></table></div>'
+    +'<div class="alert alert-tip">💡 '+(D?'Bärenfalle → Forgehammer → Mythic Gear. Dann Mithril für Rot-Gear (Imbued) farmen!':'Bear Hunt → Forgehammer → Mythic Gear. Then farm Mithril for Red Gear (Imbued)!')+'</div>';
+
+  // ── Tab 4: Forgehammer & Rot-Gear ──
+  var t4=''
+    +'<div class="alert alert-gold">🔨 '+(D?'Mastery Forging – Gear von Gold auf ROT upgraden!':'Mastery Forging – Upgrade Gear from Gold to RED!')+'</div>'
+    +'<div class="sub-head">'+(D?'📋 Voraussetzungen':'📋 Requirements')+'</div>'
+    +'<div class="grid-2">'
+      +'<div class="card"><div class="card-title">'+(D?'🔓 Grundvoraussetzungen':'🔓 Basic Requirements')+'</div>'
+      +'<p style="font-size:12px">'+(D?'• Town Center Level <b>20</b><br>• Mythic (Gold) Gear auf Level <b>20+</b><br>• Nur für <b>Mythic Gear</b> möglich!<br>• Epic/Rare Gear = ❌':'• Town Center Level <b>20</b><br>• Mythic (Gold) gear at Level <b>20+</b><br>• Only for <b>Mythic Gear</b>!<br>• Epic/Rare Gear = ❌')+'</p></div>'
+      +'<div class="card"><div class="card-title" style="color:var(--ember-lt)">'+(D?'🔴 Rot-Gear Anforderungen':'🔴 Red Gear Requirements')+'</div>'
+      +'<p style="font-size:12px">'+(D?'• Town Center Level <b>30</b><br>• Mythic Gear auf Level <b>100</b><br>• Mastery Level <b>+10</b><br>• <b>2x Mythic Gear</b> als Opfer<br>• Dann: Level 100 → 200 möglich!':'• Town Center Level <b>30</b><br>• Mythic gear at Level <b>100</b><br>• Mastery Level <b>+10</b><br>• <b>2x Mythic Gear</b> sacrifice<br>• Then: Level 100 → 200 possible!')+'</p></div>'
+    +'</div>'
+    +'<div class="sub-head">'+(D?'🔨 Forgehammer-Kosten pro Mastery-Level':'🔨 Forgehammer Cost per Mastery Level')+'</div>'
+    +'<div class="alert" style="border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:10px;margin-bottom:10px;font-size:11px">'
+    +'⚠️ '+(D?'<b>Gesamt: ~2.100 Forgehammer + 55 Mythic Gear-Teile</b> für vollständigen Mastery-Fortschritt. Nie an falschen Helden verschwenden!':'<b>Total: ~2,100 Forgehammers + 55 Mythic pieces</b> for full Mastery progress. Never waste on wrong heroes!')+'</div>'
+    +'<div class="table-wrap"><table><thead><tr><th>Mastery</th><th>'+(D?'Hammer':'Hammers')+'</th><th>'+(D?'Extra Material':'Extra Material')+'</th><th>'+(D?'Gesamt':'Total')+'</th></tr></thead><tbody>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+1</td><td>10</td><td>—</td><td>10</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+2</td><td>20</td><td>—</td><td>30</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+3</td><td>30</td><td>—</td><td>60</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+4</td><td>40</td><td>—</td><td>100</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+5</td><td>50</td><td>—</td><td>150</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+6</td><td>60</td><td>—</td><td>210</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+7</td><td>70</td><td>—</td><td>280</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+8</td><td>80</td><td>—</td><td>360</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">+9</td><td>90</td><td>—</td><td>450</td></tr>'
+    +'<tr style="background:rgba(201,168,76,0.1)"><td style="color:#FFD700;font-weight:700">+10 🔴</td><td style="color:var(--ember-lt);font-weight:700">100</td><td style="color:var(--ember-lt);font-size:11px">'+(D?'Rot-Gear möglich!':'Red Gear possible!')+'</td><td style="color:var(--gold);font-weight:700">550</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+11</td><td>110</td><td style="font-size:11px">1x Mythic</td><td>660</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+12</td><td>120</td><td style="font-size:11px">2x Mythic</td><td>780</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+13</td><td>130</td><td style="font-size:11px">3x Mythic</td><td>910</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+14</td><td>140</td><td style="font-size:11px">4x Mythic</td><td>1.050</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+15</td><td>150</td><td style="font-size:11px">5x Mythic</td><td>1.200</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+16</td><td>160</td><td style="font-size:11px">6x Mythic</td><td>1.360</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+17</td><td>170</td><td style="font-size:11px">7x Mythic</td><td>1.530</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+18</td><td>180</td><td style="font-size:11px">8x Mythic</td><td>1.710</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+19</td><td>190</td><td style="font-size:11px">9x Mythic</td><td>1.900</td></tr>'
+    +'<tr><td style="color:var(--blue-lt);font-weight:700">+20</td><td>200</td><td style="font-size:11px">10x Mythic</td><td>2.100</td></tr>'
+    +'</tbody></table></div>'
+    +'<div class="sub-head">'+(D?'🔴 Gold → Rot: Schritt für Schritt':'🔴 Gold → Red: Step by Step')+'</div>'
+    +'<div class="grid-2">'
+      +'<div class="card card-highlight" style="border-color:rgba(200,48,48,0.4)">'
+        +'<div class="card-title" style="color:var(--ember-lt)">🔴 '+(D?'Rot-Gear Ablauf':'Red Gear Process')+'</div>'
+        +'<p style="font-size:12px">'+(D?'1️⃣ Mythic Gear auf Level 100<br>2️⃣ Mastery Forging auf +10 (550 Hammer)<br>3️⃣ Town Center Level 30<br>4️⃣ 2x Mythic Gear als Opfer<br>5️⃣ Umwandlung → Rot-Gear!<br>6️⃣ Rot-Gear bis Level 200 mit XP!':'1️⃣ Mythic Gear to Level 100<br>2️⃣ Mastery Forging to +10 (550 hammers)<br>3️⃣ Town Center Level 30<br>4️⃣ 2x Mythic Gear sacrifice<br>5️⃣ Convert → Red Gear!<br>6️⃣ Push Red Gear to Level 200!')+'</p>'
+      +'</div>'
+      +'<div class="card">'
+        +'<div class="card-title">📦 '+(D?'Woher Forgehammer farmen?':'Where to farm Forgehammers?')+'</div>'
+        +'<p style="font-size:12px">'+(D?'• <b>Valora-Meister</b> Skill Level 10<br>• <b>Allianz-Gemenge</b> Tag 4<br>• <b>KvK Prep</b> Ausrüstungstag<br>• <b>Stärkster Gouverneur</b><br>• <b>Händlerimperium</b> Event':'• <b>Valora Master</b> Skill Level 10<br>• <b>Alliance Brawl</b> Day 4<br>• <b>KvK Prep</b> Gear day<br>• <b>Strongest Governor</b><br>• <b>Merchant Empire</b> Event')+'</p>'
+      +'</div>'
+    +'</div>';
+
+  // ── Tab 5: Gear Priorität ──
+  var t5=''
+    +'<div class="alert alert-gold">🎯 '+(D?'Gear-Reihenfolge – Was zuerst upgraden?':'Gear Priority – What to upgrade first?')+'</div>'
+    +'<div class="alert" style="border:1px solid rgba(200,48,48,0.3);border-radius:8px;padding:10px;margin-bottom:12px;font-size:12px">'
+    +'⚠️ '+(D?'<b>Goldene Regel:</b> NIE ein komplettes Set beenden! Immer rotieren – das wertvollste Teil jeder Truppenart auf den Meilenstein, dann weiter!':'<b>Golden Rule:</b> NEVER complete one full set! Always rotate – advance the best piece of each troop type to milestone, then continue!')+'</div>'
+    +'<div class="sub-head">'+(D?'📋 Reihenfolge':'📋 Priority Order')+'</div>'
+    +'<div class="table-wrap"><table><thead><tr><th>'+(D?'Prio':'Prio')+'</th><th>'+(D?'Gear-Teil':'Gear Piece')+'</th><th>'+(D?'Hauptstat':'Main Stat')+'</th><th>'+(D?'Warum?':'Why?')+'</th></tr></thead><tbody>'
+    +'<tr><td style="color:var(--gold);font-weight:700">1️⃣</td><td><b>🏹 '+(D?'Archer-Helm':'Archer Helm')+'</b></td><td style="color:var(--ember-lt);font-weight:700">'+(D?'Tödlichkeit':'Lethality')+'</td><td style="font-size:11px">'+(D?'Höchster Lethality-Gewinn pro Ressource!':'Highest Lethality gain per resource!')+'</td></tr>'
+    +'<tr><td style="color:var(--gold);font-weight:700">2️⃣</td><td>🏹 '+(D?'Archer-Stiefel':'Archer Boots')+'</td><td style="color:var(--ember-lt)">'+(D?'ATK/Tödlichkeit':'ATK/Lethality')+'</td><td style="font-size:11px">'+(D?'Zweithöchster Offensiv-Wert':'2nd highest offensive value')+'</td></tr>'
+    +'<tr><td style="color:var(--text-muted)">3️⃣</td><td>🛡️ '+(D?'Inf-Handschuhe':'Inf Gloves')+'</td><td style="color:var(--blue-lt)">HP/'+(D?'Verteidigung':'Defense')+'</td><td style="font-size:11px">'+(D?'Inf tankt – HP nach Archer-Gear':'Inf tanks – HP after Archer gear')+'</td></tr>'
+    +'<tr><td style="color:var(--text-muted)">4️⃣</td><td>🏹 '+(D?'Archer-Brustpanzer':'Archer Chest')+'</td><td>'+(D?'Angriff':'Attack')+'</td><td style="font-size:11px">'+(D?'Wenn vorherige auf Meilenstein':'When previous at milestone')+'</td></tr>'
+    +'<tr><td style="color:var(--text-muted)">5️⃣</td><td>🛡️ '+(D?'Inf-Brustpanzer':'Inf Chest')+'</td><td>'+(D?'Verteidigung':'Defense')+'</td><td style="font-size:11px">'+(D?'Schutz für Front-Line':'Frontline protection')+'</td></tr>'
+    +'<tr><td style="color:var(--text-muted)">6️⃣</td><td>🐴 '+(D?'Kav-Helm':'Cav Helm')+'</td><td>'+(D?'Tödlichkeit':'Lethality')+'</td><td style="font-size:11px">'+(D?'Nach Archer+Inf – Kav sekundär':'After Archer+Inf – Cav secondary')+'</td></tr>'
+    +'<tr><td style="color:var(--text-muted)">7️⃣</td><td>🐴 '+(D?'Kav-Brustpanzer':'Cav Chest')+'</td><td>'+(D?'Gesundheit':'Health')+'</td><td style="font-size:11px">'+(D?'Nach Kav-Helm – vollständiges Kav-Set':'After Cav Helm – complete Cav set')+'</td></tr>'
+    +'</tbody></table></div>'
+    +'<div class="sub-head">'+(D?'⚖️ Richtig vs Falsch':'⚖️ Right vs Wrong')+'</div>'
+    +'<div class="grid-2">'
+      +'<div class="card card-highlight" style="border-color:rgba(26,90,42,0.5)">'
+        +'<div class="card-title" style="color:var(--green-lt)">✅ '+(D?'Richtig – Rotieren!':'Correct – Rotate!')+'</div>'
+        +'<p style="font-size:12px">'+(D?'Archer-Helm → 25<br>Archer-Stiefel → 25<br>Archer-Brustpanzer → 25<br>Alle drei → 50<br>Inf-Handschuhe → 25<br>Inf-Brustpanzer → 25<br>Alle → 75 → 100<br><br><b>= Gleichmäßige Progression!</b>':'Archer Helm → 25<br>Archer Boots → 25<br>Archer Chest → 25<br>All three → 50<br>Inf Gloves → 25<br>Inf Chest → 25<br>All → 75 → 100<br><br><b>= Even progression!</b>')+'</p>'
+      +'</div>'
+      +'<div class="card" style="border-color:rgba(200,48,48,0.3)">'
+        +'<div class="card-title" style="color:var(--ember-lt)">❌ '+(D?'Falsch – Alles in ein Teil!':'Wrong – Everything in one!')+'</div>'
+        +'<p style="font-size:12px">'+(D?'Archer-Helm → Level 100 maxen<br>Dann erst Stiefel anfangen<br><br>→ Unbalancierte Stats!<br>→ Ressourcen-Verschwendung!<br><br><b>= Größter F2P Fehler!</b>':'Archer Helm → max to Level 100<br>Then start boots<br><br>→ Unbalanced stats!<br>→ Resource waste!<br><br><b>= Biggest F2P mistake!</b>')+'</p>'
+      +'</div>'
+    +'</div>'
+    +'<div class="alert" style="border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">'
+    +'💡 <b>'+(D?'Mithril-Meilensteine:':'Mithril milestones:')+'</b> '
+    +(D?'Jedes Teil braucht Mithril bei Level +20/+40/+60/+80/+100 (5 Mithril pro Teil). Plane voraus!':'Each piece needs Mithril at Level +20/+40/+60/+80/+100 (5 Mithril per piece). Plan ahead!')+'</div>';
+
+  // ── Render all tabs with explicit display ──
+  var tabs_content=[t0,t1,t2,t3,t4,t5];
+  var html=warn;
+  for(var i=0;i<tabs_content.length;i++){
+    var d=document.createElement('div');
+    d.className='tab-content';
+    d.id='gtab-'+i;
+    d.innerHTML=tabs_content[i];
+    d.style.display=(i===0)?'block':'none';
+    gc.appendChild(d);
+  }
+  gc.innerHTML=warn;
+  for(var i=0;i<tabs_content.length;i++){
+    var d=document.createElement('div');
+    d.className='tab-content';
+    d.id='gtab-'+i;
+    d.innerHTML=tabs_content[i];
+    d.style.display=(i===0)?'block':'none';
+    gc.appendChild(d);
+  }
 }
 function showGearTab(i){
-  document.querySelectorAll('#gear-tabs .tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));
-  document.querySelectorAll('#gear-content .tab-content').forEach((c,j)=>c.classList.toggle('active',i===j));
+  document.querySelectorAll('#gear-tabs .tab-btn').forEach(function(b,j){
+    b.classList.toggle('active',i===j);
+  });
+  document.querySelectorAll('#gear-content .tab-content').forEach(function(c,j){
+    c.classList.toggle('active',i===j);
+    c.style.display=(i===j)?'block':'none';
+  });
 }
 function showKeTab(i){
   document.querySelectorAll('#ke-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});
@@ -3275,11 +3672,11 @@ function buildCapacity(){
   var eth=D?['Spieler-Typ','Pro Marsch','6 Märsche']:['Player Type','Per March','6 Marches'];
   document.getElementById('cap-content').innerHTML=`
     <div class="sub-head">${D?'📊 Kapazität pro TC/TG Level':'📊 Capacity per TC/TG Level'}</div>
-    <div class="table-wrap"><table><thead><tr>${th.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <div class="table-wrap"><table><thead><tr>${th.map(function(h){return '<th>'+h+'</th>';}).join('')}</tr></thead><tbody>${rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';}).join('')}</tbody></table></div>
     <div class="sub-head">${D?'➕ Alle Kapazitäts-Boni':'➕ All Capacity Bonuses'}</div>
     <div class="grid-3">${bonuses.map(b=>`<div class="card"><div class="card-title">${b.t}</div><p><b style="color:var(--gold)">${b.v}</b><br><br><span style="font-size:12px">${b.n}</span></p></div>`).join('')}</div>
     <div class="sub-head">${D?'📈 Geschätzte Gesamtkapazität (6 Märsche)':'📈 Estimated Total Capacity (6 Marches)'}</div>
-    <div class="table-wrap"><table><thead><tr>${eth.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${est.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <div class="table-wrap"><table><thead><tr>${eth.map(function(h){return '<th>'+h+'</th>';}).join('')}</tr></thead><tbody>${est.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';}).join('')}</tbody></table></div>
     <div class="alert alert-tip">${D?'💡 Oasis Island Brunnen auf Lv10 = +40% Kapazität = größter einzelner Bonus! Priorität #1 außerhalb Gebäude!':'💡 Oasis Island Fountain Lv10 = +40% Capacity = largest single bonus! Priority #1 outside buildings!'}</div>`;
 }
 function buildAkademie(){
@@ -3307,7 +3704,7 @@ function buildAkademie(){
     <div class="alert alert-tip">${D?'💡 P2W Priorität: Tödlichkeit > Gesundheit > Angriff > Verteidigung. Archer > Kav > Inf für Schaden!':'💡 P2W Priority: Lethality > Health > Attack > Defense. Archer > Cav > Inf for damage!'}</div>
   </div>`;
 }
-function showAkTab(i){document.querySelectorAll('#ak-tabs .tab-btn').forEach((b,j)=>b.classList.toggle('active',i===j));document.querySelectorAll('#ak-content .tab-content').forEach((c,j)=>c.classList.toggle('active',i===j));}
+function showAkTab(i){document.querySelectorAll('#ak-tabs .tab-btn').forEach(function(b,j){b.classList.toggle('active',i===j);});document.querySelectorAll('#ak-content .tab-content').forEach(function(c,j){c.classList.toggle('active',i===j);});}
 
 function buildMystic(){
   var D=(LANG==='de');
@@ -3373,69 +3770,203 @@ function buildMystic(){
 }
 function buildPets(){
   var D=(LANG==='de');
-  document.getElementById('pet-title').textContent=tr('🦁 Tiere (Pets) – Leveln & Priorität','🦁 Pets – Leveling & Priority','🦁 Mascotas – Nivel y Prioridad');
-  var pets=D?[
-    ['Gepard (Cheetah)','Gen 2','Tiernahrung täglich (Scent Mastery)','Wachstum','S-Tier','ZUERST maxen! Gibt Nahrung für alle anderen Tiere'],
-    ['Grauer Wolf','Gen 1','+15% Bau-Tempo für 5 Min','Bau','A-Tier','VOR Gebäude-Upgrades aktivieren!'],
-    ['Bison','Gen 1','Ressourcen-Sammeln sofort abschließen','Sammeln','A-Tier','VOR Sammel-Marsch aktivieren!'],
-    ['Luchs (Lynx)','Gen 1','+60 Ausdauer sofort','Ausdauer','A-Tier','Regelmäßig für Jagd & Events'],
-    ['Löwe (Lion)','Gen 3','Seltene Items aus Wildnis (Forgehammer!)','Allgemein','S-Tier','ZWEITE Priorität nach Gepard! Täglich aktivieren!'],
-    ['Elch (Moose)','Gen 2','Feind-HP reduzieren','Kampf','B-Tier','Gut wenn du Rally-Leader bist'],
-    ['Grizzlybär','Gen 3','March Speed + Feind-Tödlichkeit reduzieren','Kampf','A-Tier','Für Timing-kritische Angriffe'],
-    ['Rhino','Gen 3+','+Squad Attack für Rally','Kampf','A-Tier','Für Rally-Leader: vor großen Rallys!'],
-    ['Schwarzer Panther','Gen 3+','+Tödlichkeit für Truppen','Kampf','A-Tier','Sehr wertvoll für Late-Game PvP'],
-    ['Kriegselefant','Gen 4+','+Squad Health','Kampf','A-Tier','Mehr Überleben in großen Kämpfen'],
-    ['Weißer Löwe','Gen 4+','+Squad Defense','Kampf','B-Tier','Für Verteidigung in KvK/Tyrant'],
-  ]:[
-    ['Cheetah','Gen 2','Pet food daily (Scent Mastery)','Growth','S-Tier','Upgrade FIRST! Provides food for all other pets'],
-    ['Gray Wolf','Gen 1','+15% Build Speed 5 min','Building','A-Tier','Activate BEFORE building upgrades!'],
-    ['Bison','Gen 1','Instantly complete resource gathering','Gathering','A-Tier','Activate BEFORE gathering march!'],
-    ['Lynx','Gen 1','+60 Stamina instantly','Stamina','A-Tier','Activate regularly for hunting & events'],
-    ['Lion','Gen 3','Rare items from wilderness (Forgehammers!)','General','S-Tier','SECOND priority after Cheetah! Activate daily!'],
-    ['Moose','Gen 2','Reduce enemy HP','Combat','B-Tier','Good when you are Rally Leader'],
-    ['Grizzly Bear','Gen 3','March Speed + reduce enemy Lethality','Combat','A-Tier','For timing-critical attacks'],
-    ['Rhino','Gen 3+','+Squad Attack for Rally','Combat','A-Tier','For Rally Leaders: before big rallies!'],
-    ['Black Panther','Gen 3+','+Troop Lethality','Combat','A-Tier','Very valuable for late-game PvP'],
-    ['Ironclad War Elephant','Gen 4+','+Squad Health','Combat','A-Tier','More survival in big fights'],
-    ['Regal White Lion','Gen 4+','+Squad Defense','Combat','B-Tier','For defense in KvK/Tyrant'],
+  document.getElementById('pet-title').textContent=tr('🦁 Tiere (Pets) – Guide & Priorität','🦁 Pets – Guide & Priority','🦁 Mascotas – Guía');
+  var el=document.getElementById('pet-content');
+  if(!el)return;
+
+  var petRows=[
+    {gen:'Gen 1',day:'~Tag 55',pets:D?'Grauer Wolf, Luchs, Bison':'Gray Wolf, Lynx, Bison',skill:D?'Bau-Speed (+15%), Sammeln, Squad-Kapazität':'Construction Speed, Gathering, Squad Capacity',prio:D?'Niedrig – nicht überinvestieren!':'Low – do not overinvest!',color:'#8A7A6A'},
+    {gen:'Gen 2',day:'~Tag 75',pets:D?'Gepard, Elch':'Cheetah, Moose',skill:D?'Gepard: Tiernahrung (ZUERST maxen!) · Elch: +150k Rally-Kapazität':'Cheetah: Pet Food (MAX FIRST!) · Moose: +150k Rally Capacity',prio:D?'GEPARD ZUERST – gibt Nahrung für alle anderen Tiere!':'CHEETAH FIRST – provides food for all other pets!',color:'#8A6A2A'},
+    {gen:'Gen 3',day:'~Tag 110',pets:D?'Löwe, Grizzlybär':'Lion, Grizzly Bear',skill:D?'Löwe: Items in der Wildnis graben (Gear, TG, Charms) · Grizzlybär: -5% feindliche Tödlichkeit':'Lion: Digs items in Wilderness (Gear, TG, Charms) · Grizzly: -5% enemy Lethality',prio:D?'🏆 LÖWE = #1 F2P Priorität! Passiver Drop-Bonus ist massiv!':'🏆 LION = #1 F2P Priority! Passive item drop is massive!',color:'#C9A84C'},
+    {gen:'Gen 4',day:'~Tag 190',pets:D?'Riesiges Nashorn, Mächtiger Bison':'Giant Rhino, Mighty Bison',skill:D?'Nashorn: +10% Angriff · Bison: +10% HP':'Rhino: +10% Attack · Bison: +10% HP',prio:D?'Nashorn auf 30 maxen für Bison-Freischaltung':'Max Rhino to 30 to unlock Bison',color:'#6A8AB0'},
+    {gen:'Gen 5',day:'~Tag 270',pets:D?'Großer Elch, Alpha Schwarzer Panther':'Great Moose, Alpha Black Panther',skill:D?'Großer Elch: +150k Rally-Cap · Panther: +10% Tödlichkeit':'Great Moose: +150k Rally Cap · Panther: +10% Lethality',prio:D?'P2W: Panther (Lethality!) · F2P: Großer Elch (Rally!)':'P2W: Panther (Lethality!) · F2P: Great Moose (Rally!)',color:'#6A4A8A'},
+    {gen:'Gen 6',day:'~Tag 350',pets:D?'Weißer Löwe, Eiserner Kriegselefant':'White Lion, Ironclad War Elephant',skill:D?'Löwe: +10% Defense · Elefant: +10% Squad HP':'White Lion: +10% Defense · Elephant: +10% Squad HP',prio:D?'Beide stark – Elefant für Garrison-Fokus':'Both strong – Elephant for garrison focus',color:'#4A7A9A'},
+    {gen:'Gen 7',day:'~Tag 449',pets:D?'Eiserner Kriegsbär':'Ironclad War Bear',skill:D?'Eiserner Kriegsbär: Stärkstes Combat-Pet':'Ironclad War Bear: Strongest combat pet',prio:D?'Endgame P2W-Fokus':'Endgame P2W focus',color:'#8A3A3A'},
   ];
-  var th=D?['Tier','Gen','Skill','Typ','Rating','Hinweis']:['Pet','Gen','Skill','Type','Rating','Note'];
-  var rm={'S-Tier':'tag-sp','A-Tier':'tag-a','B-Tier':'tag-b'};
-  document.getElementById('pet-content').innerHTML=`
-    <div class="alert alert-tip">${D?'💡 Priorität: Gepard (Nahrung) → Löwe (Items) → Bison (Sammeln) → Luchs (Ausdauer) → dann Kampf-Tiere!':'💡 Priority: Cheetah (food) → Lion (items) → Bison (gathering) → Lynx (stamina) → then combat pets!'}</div>
-    <div class="alert alert-info">${D?'ℹ️ Tiere entsperren nach SERVER-Alter! Alle Spieler auf einem 100-Tage-Server haben Zugang zu denselben Tieren!':'ℹ️ Pets unlock based on SERVER age! All players on a Day 100 server have access to the same pets!'}</div>
-    <div class="table-wrap"><table><thead><tr>${th.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${pets.map(p=>`<tr><td>${p[0]}</td><td class="td-dim">${p[1]}</td><td class="td-dim" style="font-size:12px">${p[2]}</td><td class="td-dim">${p[3]}</td><td><span class="tag ${rm[p[4]]||'tag-b'}">${p[4]}</span></td><td class="td-dim" style="font-size:12px">${p[5]}</td></tr>`).join('')}</tbody></table></div>
-    <div class="sub-head">${D?'🔬 Verfeinerung (Refinement)':'🔬 Refinement'}</div>
-    <div class="grid-2">
-      <div class="card"><div class="card-title">${D?'📊 Verfeinerungs-Strategie':'📊 Refinement Strategy'}</div><p>${D?'1. Alle Common-Tier Stats auf Uncommon bringen<br>2. Dann Uncommon → Rare<br>3. <b>Infanterie Gesundheit + Archer Tödlichkeit</b> = wichtigste Sekundär-Stats!<br>4. "Replace" wählen wenn grüne Werte überwiegen<br>5. Taming Marks NUR bei guten Rolls ausgeben':'1. Bring all Common-tier stats to Uncommon first<br>2. Then Uncommon → Rare<br>3. <b>Infantry Health + Archer Lethality</b> = most valuable secondary stats!<br>4. Choose "Replace" when green values dominate<br>5. Only spend Taming Marks on good rolls'}</p></div>
-      <div class="card"><div class="card-title">${D?'⚠️ Wichtige Regeln':'⚠️ Important Rules'}</div><p>${D?'• Pet-Skills gelten nur wenn DU die Rally startest<br>• Als Joiner: eigener Pet-Skill hat keine Wirkung!<br>• Aber: Verfeinerungs-Stats gelten IMMER account-weit<br>• Gepard zuerst auf Lv40 für max. tägliche Nahrung<br>• Löwe täglich aktivieren für Forgehammer + Items!':'• Pet skills only apply when YOU start the rally<br>• As Joiner: own pet skill has no rally effect!<br>• But: Refinement stats ALWAYS apply account-wide<br>• Cheetah to Lv40 first for max daily pet food<br>• Activate Lion daily for Forgehammers + items!'}</p></div>
-    </div>
-    <div class="sub-head">${D?'🏆 Upgrade-Reihenfolge nach Spielertyp':'🏆 Upgrade Order by Player Type'}</div>
-    <div class="grid-2">
-      <div class="card card-highlight"><div class="card-title">🌿 F2P</div><p>${D?'Gepard (max) → Löwe (max) → Bison → Luchs → Grauer Wolf → Elch → Rest<br><br><b>Niemals Kampf-Tiere vor Gepard + Löwe maxen!</b>':'Cheetah (max) → Lion (max) → Bison → Lynx → Gray Wolf → Moose → rest<br><br><b>Never max combat pets before Cheetah + Lion!</b>'}</p></div>
-      <div class="card card-highlight"><div class="card-title">💎 P2W / Rally Leader</div><p>${D?'Gepard → Löwe → <b>Großer Elch</b> (Rally-Kapazität!) → Riesen-Rhino (Squad Attack) → Schwarzer Panther → Kriegselefant<br><br><b>Promotion-Medallions sind Engpass – strategisch nutzen!</b>':'Cheetah → Lion → <b>Great Moose</b> (Rally Capacity!) → Giant Rhino (Squad Attack) → Black Panther → War Elephant<br><br><b>Promotion Medallions are the bottleneck – use strategically!</b>'}</p></div>
-    </div>`;
+
+  var html='<div class="alert" style="border:1px solid rgba(201,168,76,0.4);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:12px">'
+    +'💡 <b>'+(D?'Wichtigste Regel:':'Most important rule:')+'</b> '
+    +(D?'Tiere entsperren sich nach <b>Server-Tagen</b>, nicht deinem TC-Level! Immer <b>ein Pet vorausplanen</b> – Löwe braucht Elch Level 15, Mächtiger Bison braucht Nashorn Level 30!':'Pets unlock by <b>server days</b>, not your TC level! Always <b>plan one pet ahead</b> – Lion needs Moose Lv.15, Mighty Bison needs Giant Rhino Lv.30!')
+    +'</div>';
+
+  html+='<div class="sub-head">'+(D?'📅 Freischalt-Reihenfolge & Priorität':'📅 Unlock Order & Priority')+'</div>';
+  html+='<div class="table-wrap"><table><thead><tr><th>Gen</th><th>'+(D?'Tag':'Day')+'</th><th>Pets</th><th>'+(D?'Hauptskill':'Main Skill')+'</th><th>'+(D?'F2P Priorität':'F2P Priority')+'</th></tr></thead><tbody>';
+  petRows.forEach(function(p){
+    html+='<tr><td style="color:'+p.color+';font-weight:700">'+p.gen+'</td><td style="font-size:11px;color:var(--text-muted)">'+p.day+'</td><td style="font-size:11px;font-weight:600">'+p.pets+'</td><td style="font-size:11px;color:var(--text-dim)">'+p.skill+'</td><td style="font-size:11px;color:'+p.color+'">'+p.prio+'</td></tr>';
+  });
+  html+='</tbody></table></div>';
+
+  html+='<div class="sub-head">'+(D?'🏆 F2P Reihenfolge – Was zuerst?':'🏆 F2P Order – What first?')+'</div>';
+  html+='<div class="grid-2">';
+  html+='<div class="card card-highlight" style="border-color:rgba(201,168,76,0.5)">'
+    +'<div class="card-title" style="color:var(--gold)">🌿 F2P Strategie</div>'
+    +'<p style="font-size:12px"><b>1.</b> 🐆 Gepard maxen (Tiernahrung!)<br>'
+    +'<b>2.</b> 🦌 Elch auf Level 15 bringen<br>'
+    +'<b>3.</b> 🦁 Löwe freischalten + MAXEN<br>'
+    +'<b>4.</b> 🦏 Nashorn auf Level 30<br>'
+    +'<b>5.</b> 🦬 Mächtiger Bison<br><br>'
+    +(D?'<b style="color:var(--gold)">Löwe = #1 für immer!</b> Sein passiver Drop gibt Gear, Truegold und Charms täglich!':'<b style="color:var(--gold)">Lion = #1 forever!</b> Passive drop gives Gear, Truegold & Charms daily!')
+    +'</p></div>';
+  html+='<div class="card card-highlight" style="border-color:rgba(106,74,138,0.5)">'
+    +'<div class="card-title" style="color:#8A5ACC">💎 P2W Strategie</div>'
+    +'<p style="font-size:12px"><b>1.</b> 🐆 Gepard maxen (Tiernahrung!)<br>'
+    +'<b>2.</b> 🦌 Elch Level 15 → 🦁 Löwe<br>'
+    +'<b>3.</b> 🐆 Alpha Panther (Gen 5) – +10% Tödlichkeit!<br>'
+    +'<b>4.</b> 🦁 Weißer Löwe (Gen 6) – Defense<br>'
+    +'<b>5.</b> 🐻 Eiserner Kriegsbär (Gen 7)<br><br>'
+    +(D?'Rally Leader: Nashorn → Bison (mehr Angriff)<br>Garrison: Elefant (Squad HP)':'Rally Leader: Rhino → Bison (more Attack)<br>Garrison: Elephant (Squad HP)')
+    +'</p></div>';
+  html+='</div>';
+
+  html+='<div class="alert" style="border:1px solid rgba(200,48,48,0.3);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px">'
+    +'⚠️ <b>'+(D?'NICHT überinvestieren in Gen 1!':'Do NOT overinvest in Gen 1!')+'</b><br>'
+    +(D?'Gen 1 Pets (Wolf, Luchs, Bison) sind schwach. Taming Marks lieber für Event-Tage sparen: KvK Prep Begleittier-Tag, Strongest Governor, Alliance Brawl!':'Gen 1 Pets (Wolf, Lynx, Bison) are weak. Save Taming Marks for event days: KvK Prep Pet Training day, Strongest Governor, Alliance Brawl!')
+    +'</div>';
+
+  html+='<div class="sub-head">'+(D?'⚡ Aktive Skills (wichtigste)':'⚡ Active Skills (most important)')+'</div>';
+  html+='<div class="table-wrap"><table><thead><tr><th>Pet</th><th>'+(D?'Aktiver Skill':'Active Skill')+'</th><th>Cooldown</th></tr></thead><tbody>';
+  var activeSkills=[
+    ['🦁 Löwe (Gen 3)',D?'Grabung in der Wildnis – findet Gear, TG, Charms':'Wilderness Dig – finds Gear, TG, Charms','20h'],
+    ['🦌 Elch (Gen 2)',D?'+150.000 Rally-Kapazität für 2h':'+150,000 Rally Capacity for 2h','20h'],
+    ['🦏 Nashorn (Gen 4)',D?'+10% Angriff aller Trupps für 2h':'+10% Attack all squads for 2h','20h'],
+    ['🐻 Grizzly (Gen 3)',D?'+30% Marsch-Tempo, -5% feindl. Tödlichkeit für 2h':'+30% March Speed, -5% enemy Lethality for 2h','20h'],
+    ['🐆 Panther (Gen 5)',D?'+10% Tödlichkeit für 2h':'+10% Lethality for 2h','20h'],
+    ['🐘 Elefant (Gen 6)',D?'+10% Squad HP für 2h':'+10% Squad HP for 2h','20h'],
+  ];
+  activeSkills.forEach(function(a){
+    html+='<tr><td style="font-weight:700;font-size:12px">'+a[0]+'</td><td style="font-size:11px;color:var(--text-dim)">'+a[1]+'</td><td style="font-size:11px;color:var(--text-muted)">'+a[2]+'</td></tr>';
+  });
+  html+='</tbody></table></div>';
+
+  el.innerHTML=html;
+}
+
+function calcTroops(){
+  var D=(LANG==='de');
+  var tier=document.getElementById('tc-tier');
+  var speed=document.getElementById('tc-speed');
+  var days=document.getElementById('tc-days');
+  var res=document.getElementById('tc-result');
+  if(!tier||!speed||!days||!res)return;
+  var t=parseInt(tier.value)||11;
+  var sp=parseInt(speed.value)||0;
+  var d=parseInt(days.value)||30;
+  // Training times per troop (seconds, approximate)
+  var times={1:6,2:10,3:20,4:60,5:180,6:600,7:1800,8:5400,9:10800,10:18000,11:36000};
+  var baseTime=times[t]||36000;
+  var reduction=sp/100;
+  var actualTime=baseTime*(1-reduction);
+  if(actualTime<1)actualTime=1;
+  var totalSec=d*24*3600;
+  var perQueue=Math.floor(totalSec/actualTime);
+  // Assume 2 training queues
+  var queues=2;
+  var total=perQueue*queues;
+  var fmt=function(n){return n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?(n/1000).toFixed(0)+'k':String(n);};
+  res.style.display='block';
+  res.innerHTML='<div style="font-size:13px;line-height:2">'
+    +'🏹 '+(D?'T'+t+' pro Queue:':'T'+t+' per Queue:')+' <b style="color:var(--gold)">'+fmt(perQueue)+'</b><br>'
+    +'⚔️ '+(D?'Total (2 Queues):':'Total (2 Queues):')+' <b style="color:var(--gold)">'+fmt(total)+'</b><br>'
+    +'⏱️ '+(D?'Zeit pro Truppe:':'Time per troop:')+' <b>'+Math.floor(actualTime/60)+(D?'min':'min')+'</b><br>'
+    +'📅 '+(D?'Zeitraum:':'Period:')+' <b>'+d+(D?' Tage':' days')+'</b>'
+    +'</div>'
+    +'<div style="font-size:10px;color:var(--text-muted);margin-top:6px">'+(D?'* Ohne Edelstein-Speedups. Mit War Academy Bonus. Näherungswerte!':'* Without gem speedups. With War Academy bonus. Approximate values!')+'</div>';
 }
 
 function buildMasters(){
   var D=(LANG==='de');
-  document.getElementById('ma-title').textContent=tr('🎓 Meisterakademie','🎓 Master Academy','🎓 Academia de Maestros');
-  document.getElementById('ma-content').innerHTML=`
-    <div class="alert alert-info">${D?'ℹ️ Meisterakademie entsperrt ab Tag 113 (Gen 3 Ära). Aktuelle Meister: Pan, Valora, Roman, Cassia.':'ℹ️ Master Academy unlocks around Day 113 (Gen 3 era). Current Masters: Pan, Valora, Roman, Cassia.'}</div>
-    <div class="grid-2">
-      <div class="card card-highlight"><div class="card-title">👑 Pan – ${D?'BESTER Meister':'BEST Master'}</div><p>${D?'<b>Efficient Reserves:</b> Alle 120 Min Reserve-Truhe. Max: 30 Truhen täglich!<br><br>🥇 <b>Falconer MUSS gemaxed werden!</b><br>+8 extra Intel-Missionen = 4–5 extra Truegold täglich!<br><br>🥇 <b>Ways & Means MUSS gemaxed werden!</b><br>+120 Mystery Badges + 4 gratis Shop-Refreshes → Widget-Deals!<br><br><b>Strategie: Pan zuerst auf Level 60!</b>':'<b>Efficient Reserves:</b> Reserve chest every 120 min. Max: 30 chests daily!<br><br>🥇 <b>Falconer MUST be maxed!</b><br>+8 extra Intel missions = 4–5 extra Truegold daily!<br><br>🥇 <b>Ways & Means MUST be maxed!</b><br>+120 Mystery Badges + 4 free shop refreshes → Widget deals!<br><br><b>Strategy: Push Pan to Level 60 first!</b>'}</p></div>
-      <div class="card"><div class="card-title">⚔️ Valora</div><p>${D?'<b>Fokus: Rally-Leader & Bärenfalle</b><br>Weapon Obsession = beste Forgehammer-Quelle!<br>Leader by Example = mehr Forgehammer aus Bärenfallen!<br><br><b>Für F2P weniger wichtig. Für P2W/Rally-Leader sehr stark!</b>':'<b>Focus: Rally Leader & Bear Hunt</b><br>Weapon Obsession = best Forgehammer source!<br>Leader by Example = more Forgehammers from Bear Hunt!<br><br><b>Less important for F2P. Very strong for P2W/Rally Leaders!</b>'}</p></div>
-      <div class="card"><div class="card-title">🏆 Roman</div><p>${D?'<b>Fokus: Arena & PvP</b><br>Star Belligerent Passiv: Jeder Arena-Kampf = Mythic Shards / Forgehammer Lotterie!<br><br><b>Gut für tägliche Arena-Grinder. Nach Pan & Valora upgraden.</b>':'<b>Focus: Arena & PvP</b><br>Star Belligerent passive: Every Arena fight = Mythic Shards / Forgehammer lottery!<br><br><b>Good for daily Arena grinders. Upgrade after Pan & Valora.</b>'}</p></div>
-      <div class="card"><div class="card-title">🌟 Cassia</div><p>${D?'<b>Fokus: Rally & Kampf-Stats</b><br>Inspiring Mobilization (L4–5): +20.000–25.000 Rally-Kapazität!<br>Firepower to Win + Commando (L5): +2.5% Atk/Tödlichkeit/HP!<br><br><b>Gut wenn du regelmäßig Rallys führst!</b>':'<b>Focus: Rally & Combat Stats</b><br>Inspiring Mobilization (L4–5): +20,000–25,000 Rally Capacity!<br>Firepower to Win + Commando (L5): +2.5% Atk/Lethality/HP!<br><br><b>Good when you regularly lead rallies!</b>'}</p></div>
-    </div>
-    <div class="sub-head">${D?'🗺️ Meister-Reise – Manuell vs. Auto':'🗺️ Realm Journey – Manual vs. Auto'}</div>
-    <div class="grid-2">
-      <div class="card card-highlight"><div class="card-title">${D?'🔄 Manuell (BESSER!)':'🔄 Manual (BETTER!)'}</div><p>${D?'Manuelles Spielen = 30–40% MEHR Belohnungen als Auto!<br><br>• Tidal Treasure Zusammenlegen für höhere Stufe<br>• Kompass-Timing optimieren<br>• Milestone-Ziele anpeilen<br><br><b>Empfehlung: Täglich kurz manuell spielen!</b>':'Manual play = 30–40% MORE rewards than Auto!<br><br>• Merge Tidal Treasures for higher tier<br>• Optimize compass timing<br>• Target milestone goals<br><br><b>Recommendation: Briefly play manually daily!</b>'}</p></div>
-      <div class="card"><div class="card-title">${D?'💡 Journey Tipps':'💡 Journey Tips'}</div><p style="font-size:12px">${D?'• Kompass NICHT sofort einsetzen – warten bis Treasure gemergt<br>• Emblems vor Research ausgeben (schaltet Passiv-Boni frei!)<br>• Hope Market Event abwarten (alle 2 Wochen) für Pan-Items<br>• VIP Shop Adventure Supplies meiden (7.500 Gems = zu teuer!)<br>• Frontier Encounter: $5 Pack alle 15 Tage = bester F2P ROI':'• Do NOT use compass immediately – wait until Treasure merges<br>• Spend Emblems before Research (unlocks passive bonuses!)<br>• Wait for Hope Market Event (every 2 weeks) for Pan items<br>• Avoid VIP Shop Adventure Supplies (7,500 Gems = too expensive!)<br>• Frontier Encounter: $5 Pack every 15 days = best F2P ROI'}</p></div>
-    </div>
-    <div class="alert alert-tip">${D?'💡 F2P Reihenfolge: Pan (Falconer+Ways&Means max, bis L60) → Valora (L3) → Cassia → Roman. Learning-Queue NIEMALS idle lassen!':'💡 F2P Order: Pan (Falconer+Ways&Means max, to L60) → Valora (L3) → Cassia → Roman. NEVER leave Learning queue idle!'}</div>`;
-}
+  document.getElementById('ma-title').textContent=D?'🎓 Meister-Akademie':'🎓 Master Academy';
+  var el=document.getElementById('ma-content');if(!el)return;
 
+  var h='<div class="alert" style="border:1px solid rgba(201,168,76,0.4);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:12px">'
+    +'🎓 <b>'+(D?'Freischaltung:':'Unlock:')+'</b> '
+    +(D?'Town Center Level 25 · ~Tag 113+ · Quinn findet Meister in den Badlands-Expeditionen. 1.000 Affinität = Meister siedelt sich in der Stadt an!':'Town Center Level 25 · ~Day 113+ · Quinn finds Masters in Badlands expeditions. 1,000 Affinity = Master settles in your city!')
+    +'</div>'
+    +'<div class="alert" style="border:1px solid rgba(74,138,186,0.3);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:11px">'
+    +'🆕 <b>20.07.2026:</b> '+(D?'Guinevere und Wilson sind jetzt in den Badlands verfügbar! (Königreich 1–1558)':'Guinevere and Wilson are now available in Badlands! (Kingdoms 1–1558)')
+    +'</div>';
+
+  // ── ALLE 6 MEISTER KARTEN ──
+  var masters=[
+    {emoji:'🍻',name:'Pan',title:D?'Forscher':'Explorer',col:'#C9A84C',f2p:1,
+     expertise:D?'Passiv: Gear, Truegold & Charms aus täglichen Badlands-Expeditionen':'Passive: Gear, Truegold & Charms from daily Badlands expeditions',
+     skills:D?['Badlands-Drops (+Gear/TG/Charms täglich)','Intel-Missionen täglich','Ressourcen-Sammelbonus']:['Badlands drops (+Gear/TG/Charms daily)','Daily Intel missions','Resource gathering bonus'],
+     tip:D?'#1 F2P IMMER! Passive Drops kompoundieren täglich. Pan + Löwe-Pet = stärkster F2P Stack!':'#1 F2P ALWAYS! Passive drops compound daily. Pan + Lion pet = strongest F2P stack!',
+     prio_f2p:'1️⃣',prio_p2w:'2️⃣'},
+    {emoji:'⚔️',name:'Valora',title:D?'Kampfmeisterin':'Battle Master',col:'#4A8AB0',f2p:0,
+     expertise:D?'Passiv: +Angriff & Tödlichkeit bei Rallys (Forgehammer-Drops aus Bären!)':'Passive: +Attack & Lethality in Rallies (Forgehammer drops from Bear Hunt!)',
+     skills:D?['Rally-Angriff & Tödlichkeit Buff','Bärenfalle Bonus-Schaden','Forgehammer-Drop-Rate +']:['Rally Attack & Lethality Buff','Bear Hunt bonus damage','Forgehammer drop rate +'],
+     tip:D?'#1 P2W/KvK! Direkte Rally-Buffs. Valora LVL 10 Skill = massive Forgehammer-Drops aus Bärenfalle!':'#1 P2W/KvK! Direct rally buffs. Valora Lv10 skill = massive Forgehammer drops from Bear Hunt!',
+     prio_f2p:'2️⃣',prio_p2w:'1️⃣'},
+    {emoji:'🌾',name:'Roman',title:D?'Ressourcen-Meister':'Resource Master',col:'#4A8A4A',f2p:0,
+     expertise:D?'Passiv: Ressourcen-Produktion & Arena-Boost':'Passive: Resource production & Arena boost',
+     skills:D?['Ressourcen-Produktion +','Arena Token-Bonus','Sammel-Geschwindigkeit +']:['Resource production +','Arena Token bonus','Gathering speed +'],
+     tip:D?'Gut für Early-Game & Arena. Außerhalb KvK nützlich, aber Pan und Valora gehen immer vor!':'Good for early game & Arena. Useful outside KvK, but Pan and Valora always come first!',
+     prio_f2p:'3️⃣',prio_p2w:'3️⃣'},
+    {emoji:'🗡️',name:'Cassia',title:D?'Kampf-Spezialistin':'Combat Specialist',col:'#8A4AB0',f2p:0,
+     expertise:D?'Passiv: +Angriff, Tödlichkeit & HP für Rally-Leader':'Passive: +Attack, Lethality & HP for Rally Leaders',
+     skills:D?['Rally Leader Angriff/HP Buff','Joiner Lethality Boost','Army-weite Defense-Buff']:['Rally Leader Attack/HP Buff','Joiner Lethality Boost','Army-wide Defense Buff'],
+     tip:D?'Starke KvK-Alternative zu Valora. Cassia Skill L20 = Joiner-Buff für die ganze Allianz!':'Strong KvK alternative to Valora. Cassia Skill Lv20 = joiner buff for the whole alliance!',
+     prio_f2p:'4️⃣',prio_p2w:'4️⃣'},
+    {emoji:'👑',name:'Guinevere',title:D?'Königin des Heiligen Schwertes':'Queen of Holy Sword',col:'#FFD700',f2p:0,
+     expertise:D?'Passiv: In der Nähe des Heiligen Schwertes → +30% Angriff & +30% Verteidigung (NUR Schwertland!)':'Passive: Near Holy Sword → +30% Attack & +30% Defense (Swordland ONLY!)',
+     skills:D?['Reliktmünzen +100%','1.000.000 Soldaten sofort heilen (kostenlos!)','Schwadron +30% Tödlichkeit & +30% HP (Schwertland)','+150.000 Rally-Kapazität (Schwertland)']:['Relic Coins +100%','Instantly heal 1,000,000 soldiers free!','+30% Lethality & +30% HP (Swordland)','+150,000 Rally Capacity (Swordland)'],
+     tip:D?'TOP PRIORITÄT wenn ihr aktiv Schwertland spielt! DEAD WEIGHT wenn nicht. Erster Skill = kostenlose Massenheilung = Ressourcen sparen. KEIN Effekt außerhalb Schwertland-Events!':'TOP PRIORITY if you actively play Swordland! Dead weight if you don\'t. First skill = free mass heal = saves resources. NO effect outside Swordland events!',
+     prio_f2p:'5️⃣ (nur wenn Schwertland aktiv!)',prio_p2w:'3️⃣ (Schwertland-Fokus)'},
+    {emoji:'📜',name:'Wilson',title:D?'Königlicher Herold':'Royal Herald',col:'#8AB04A',f2p:0,
+     expertise:D?'Passiv: Allianzladen -15% Preise + Persönliche Aktivitätssieg-Truhen +100%':'Passive: Alliance Shop -15% prices + Personal Activity Triumph Chests +100%',
+     skills:D?['Alliance Mobilization Punkte +20% (3 extra Meilenstein-Stufen!)','Allianz-Meisterschaft Abzeichen +50% (3 extra Shop-Items)','Wikinger-Event Punkte +50% (1 Truhe pro 200k Punkte)','Allianz-Gemenge Bonus']:['Alliance Mobilization points +20% (3 extra milestone tiers!)','Championship Badges +50% (3 extra shop items)','Viking event points +50% (1 chest per 200k points)','Alliance Brawl bonus'],
+     tip:D?'Perfekt für aktive Allianzen! Wilson zahlt in JEDEN Allianz-Event ein. KEIN Kampf-Bonus aber sichere Langzeit-Investition. Gesamtkosten: 63.000 Manuskripte, 2.803.000 Power.':'Perfect for active alliances! Wilson pays into EVERY alliance event. NO combat bonus but safe long-term investment. Total cost: 63,000 Manuscripts, 2,803,000 Power.',
+     prio_f2p:'6️⃣ (nach Pan zuerst))',prio_p2w:'5️⃣'},
+  ];
+
+  h+='<div class="sub-head">'+(D?'👥 Alle 6 Meister – Vollständige Übersicht':'👥 All 6 Masters – Complete Overview')+'</div>';
+
+  // Render master cards
+  masters.forEach(function(m){
+    h+='<div class="card" style="border-color:'+m.col+'44;margin-bottom:10px">'
+      +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">'
+        +'<div style="font-size:28px">'+m.emoji+'</div>'
+        +'<div><div class="card-title" style="color:'+m.col+'">'+m.name+'</div>'
+        +'<div style="font-size:11px;color:var(--text-muted)">'+m.title+'</div></div>'
+        +'<div style="margin-left:auto;text-align:right">'
+          +'<div style="font-size:10px;color:var(--text-muted)">F2P</div>'
+          +'<div style="font-size:13px">'+m.prio_f2p+'</div>'
+          +'<div style="font-size:10px;color:var(--text-muted);margin-top:4px">P2W</div>'
+          +'<div style="font-size:13px">'+m.prio_p2w+'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div style="font-size:11px;background:rgba(0,0,0,0.2);border-radius:6px;padding:6px 10px;margin-bottom:6px;color:var(--gold)">🔑 '+m.expertise+'</div>'
+      +'<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">'
+        +m.skills.map(function(sk,i){return '• '+sk;}).join('<br>')
+      +'</div>'
+      +'<div style="font-size:11px;background:rgba('+
+        (m.f2p?'201,168,76':'74,138,186')+',0.1);border-radius:6px;padding:6px 10px;color:var(--text-dim)">'
+        +'💡 '+m.tip
+      +'</div>'
+    +'</div>';
+  });
+
+  // Upgrade priority table
+  h+='<div class="sub-head">'+(D?'📈 Upgrade-Reihenfolge':'📈 Upgrade Priority')+'</div>';
+  h+='<div class="table-wrap"><table><thead><tr>'
+    +'<th>Master</th><th>F2P</th><th>P2W</th><th>'+(D?'Wann?':'When?')+'</th>'
+    +'</tr></thead><tbody>'
+    +'<tr><td>🍻 Pan</td><td><span class="tag tag-sp">1️⃣ Immer</span></td><td><span class="tag tag-a">2️⃣</span></td><td style="font-size:11px">'+(D?'Sofort nach Freischaltung':'Immediately after unlock')+'</td></tr>'
+    +'<tr><td>⚔️ Valora</td><td><span class="tag tag-a">2️⃣</span></td><td><span class="tag tag-sp">1️⃣ Immer</span></td><td style="font-size:11px">'+(D?'Direkt nach Pan':'Right after Pan')+'</td></tr>'
+    +'<tr><td>🌾 Roman</td><td><span class="tag tag-b">3️⃣</span></td><td><span class="tag tag-b">3️⃣</span></td><td style="font-size:11px">'+(D?'Wenn Pan+Valora auf 10+':'When Pan+Valora at 10+')+'</td></tr>'
+    +'<tr><td>🗡️ Cassia</td><td><span class="tag tag-b">4️⃣</span></td><td><span class="tag tag-a">4️⃣</span></td><td style="font-size:11px">'+(D?'KvK-Fokus Spieler':'KvK-focused players')+'</td></tr>'
+    +'<tr><td>👑 Guinevere</td><td><span class="tag tag-c">5️⃣*</span></td><td><span class="tag tag-a">3️⃣*</span></td><td style="font-size:11px"><b>*'+(D?'Nur wenn Schwertland aktiv gespielt!':'Only if Swordland actively played!')+'</b></td></tr>'
+    +'<tr><td>📜 Wilson</td><td><span class="tag tag-c">6️⃣</span></td><td><span class="tag tag-c">5️⃣</span></td><td style="font-size:11px">'+(D?'Wenn andere Meister gesichert':'When other masters secured')+'</td></tr>'
+    +'</tbody></table></div>';
+
+  h+='<div class="alert" style="border:1px solid rgba(201,168,76,0.3);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:12px">'
+    +'⚡ <b>'+(D?'Pan + Löwe-Pet Kombo = F2P König!':'Pan + Lion Pet Combo = F2P King!')+'</b> '
+    +(D?'Beide graben täglich passiv in der Wildnis. Pan = Gear/Truegold via Badlands, Löwe = Items beim Erkunden. Zusammen = stärkster F2P Langzeit-Stack im Spiel!':'Both passively dig in the Wilderness daily. Pan = Gear/Truegold via Badlands, Lion = items while exploring. Together = strongest F2P long-term stack in the game!')
+    +'</div>';
+
+  el.innerHTML=h;
+}
 function buildBooster(){
   var D=(LANG==='de');
   document.getElementById('bo-title').textContent=tr('⚡ Booster, Buffs & Stats','⚡ Boosters, Buffs & Stats','⚡ Potenciadores, Buffs y Estadísticas');
@@ -3519,6 +4050,39 @@ function buildTipps(){
         <b>11.</b> ${D?'Pan Learning Queue IMMER laufen lassen!':'Always keep Pan Learning Queue running!'}<br>
         <b>12.</b> ${D?'Ressourcen VOR KvK in den Rucksack packen!':'Pack resources into backpack BEFORE KvK!'}
       </p></div>
+    </div>
+
+    <div class="sub-head">${D?'⚔️ Schadensformel – Warum Tödlichkeit wichtiger ist':'⚔️ Damage Formula – Why Lethality matters more'}</div>
+    <div class="card card-highlight" style="border-color:rgba(200,48,48,0.4)">
+      <div class="card-title" style="color:var(--ember-lt)">🔢 ${D?'Echte Schadens-Formel':'Real Damage Formula'}</div>
+      <div style="font-family:monospace;font-size:13px;background:rgba(0,0,0,0.3);padding:10px;border-radius:8px;margin:8px 0;text-align:center;color:#FFD700">
+        Kills ≈ √Truppen × Angriff × Tödlichkeit ÷ (Verteidigung × HP)
+      </div>
+      <p style="font-size:12px;color:var(--text-dim)">
+        ${D?'🔑 <b>Kernregel:</b> Angriff und Tödlichkeit multiplizieren sich! Den <b>niedrigeren</b> der beiden zu erhöhen gibt immer mehr Schaden.<br><br>💡 <b>Warum Tödlichkeit besser ist:</b> Dein Angriff ist durch Forschung/Gear meist viel höher als deine Tödlichkeit. Also = Tödlichkeit erhöhen = mehr Schaden!<br><br>🛡️ <b>Verteidigung hat Diminishing Returns</b> ab einem bestimmten Level – dann lieber HP erhöhen.<br><br>⚔️ <b>Truppen √-Skalierung:</b> Mehr Truppen = mehr HP, nicht mehr Schaden. Rally-Größe schützt – tötet nicht!':'🔑 <b>Core Rule:</b> Attack and Lethality MULTIPLY each other! Raising the <b>lower</b> of the two always gives more damage.<br><br>💡 <b>Why Lethality wins:</b> Your Attack is usually much higher than Lethality from research/gear. So raising Lethality = more damage!<br><br>🛡️ <b>Defense has diminishing returns</b> at high levels – focus HP instead.<br><br>⚔️ <b>Troop √-scaling:</b> More troops = more HP, not more damage. Rally size protects – it does not kill!'}
+      </p>
+    </div>
+    <div class="grid-2" style="margin-top:8px">
+      <div class="card">
+        <div class="card-title" style="color:var(--green-lt)">✅ ${D?'Richtige Stat-Priorität':'Correct Stat Priority'}</div>
+        <p style="font-size:12px">${D?'<b>1.</b> Tödlichkeit (Lethality) – immer zuerst<br><b>2.</b> HP (Gesundheit) – schützt Truppen<br><b>3.</b> Angriff – wenn Tödlichkeit gleich hoch<br><b>4.</b> Verteidigung – niedriger Ertrag ab ~200%':'<b>1.</b> Lethality – always first<br><b>2.</b> HP (Health) – protects troops<br><b>3.</b> Attack – when Lethality is equal<br><b>4.</b> Defense – low returns above ~200%'}</p>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--ember-lt)">❌ ${D?'Häufige Fehler':'Common Mistakes'}</div>
+        <p style="font-size:12px">${D?'❌ Angriff über Tödlichkeit priorisieren<br>❌ Verteidigung nach 200% weiter stacken<br>❌ Rally-Größe als Schaden missverstehen<br>❌ Widget auf falschen Helden bauen':'❌ Prioritizing Attack over Lethality<br>❌ Stacking Defense beyond 200%<br>❌ Confusing rally size with damage<br>❌ Building Widget on wrong hero'}</p>
+      </div>
+    </div>
+
+    <div class="sub-head" style="margin-top:16px">${D?'🏥 Einberufungsbüro – Truppen verstehen':'🏥 Enlistment Office – Understanding Troops'}</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">${D?'📋 Was passiert mit verletzten Truppen?':'📋 What happens to injured troops?'}</div>
+        <p style="font-size:12px">${D?'🏥 <b>Krankenhaus (Infirmary):</b><br>Verletzte Truppen kommen HIERHER. Wenn Kapazität voll = Truppen sterben permanent!<br><br>📦 <b>Overflow:</b><br>Ist das Krankenhaus voll während KvK → überzählige Verletzte sterben → weg für immer!<br><br>⚠️ <b>Krankenhaus IMMER voll halten!</b> Vor KvK alle verfügbaren Kapazitäts-Upgrades nutzen.':'🏥 <b>Infirmary:</b><br>Injured troops go HERE. If capacity is full = troops die permanently!<br><br>📦 <b>Overflow:</b><br>Infirmary full during KvK → excess injured die → gone forever!<br><br>⚠️ <b>ALWAYS maximize Infirmary!</b> Before KvK use all available capacity upgrades.'}</p>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--ember-lt)">${D?'💀 Wann Truppen WIRKLICH sterben':'💀 When Troops REALLY Die'}</div>
+        <p style="font-size:12px">${D?'1️⃣ Krankenhaus überfüllt während Kampf<br>2️⃣ Nach Castle Battle – Panik-Heilen ist meist eine Falle!<br>3️⃣ Rally ohne Garrison-Schutz bei Abwesenheit<br><br>✅ <b>Goldene Regeln:</b><br>• Nie mehr Truppen schicken als Krankenhaus fassen kann<br>• Nach KvK: Field Triage aktivieren (bis 90% zurück kostenlos!)<br>• Ressourcen NIEMALS nach Kampf ausgeben um Verletzte zu heilen – warte auf Field Triage!':'1️⃣ Infirmary overflow during combat<br>2️⃣ After Castle Battle – panic healing is usually a trap!<br>3️⃣ Rally without Garrison protection when absent<br><br>✅ <b>Golden Rules:</b><br>• Never send more troops than Infirmary can hold<br>• After KvK: Field Triage (up to 90% back for free!)<br>• NEVER spend resources to heal right after combat – wait for Field Triage!'}</p>
+      </div>
     </div>`;
 }
 // ── NAVIGATION ──
@@ -3572,10 +4136,10 @@ function doSearch(q){
   var box=document.getElementById('search-results');
   if(!q||q.length<2){box.classList.remove('show');return;}
   var ql=q.toLowerCase();
-  var hits=SD.filter(d=>d.t.toLowerCase().includes(ql)||d.k.includes(ql));
+  var hits=SD.filter(function(d){return d.t.toLowerCase().includes(ql)||d.k.includes(ql);});
   if(!hits.length){box.innerHTML=`<div style="color:var(--text-muted);font-size:13px">${tr('Keine Ergebnisse.','No results.','Sin resultados.')}</div>`;box.classList.add('show');return;}
   box.innerHTML='<div style="font-size:10px;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">🔍 '+(LANG==='de'?'Suchergebnisse':'Results')+'</div>'+
-    hits.slice(0,8).map(h=>`<div class="sri" onclick="showSection('${h.s}')"><div class="sri-title">${h.t}</div></div>`).join('');
+    hits.slice(0,8).map(function(h){return '<div class="sri" onclick="showSection(\''+h.s+'\')"><div class="sri-title">'+h.t+'</div></div>';}).join('');
   box.classList.add('show');
 }
 
@@ -3671,17 +4235,17 @@ function _navTo(id){
 }
 
 function _doShowSection(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   var el=document.getElementById('sec-'+id);
   if(el)el.classList.add('active');
-  document.querySelectorAll('#main-nav button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-sec')===id));
-  document.querySelectorAll('.sidebar-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('data-sec')===id));
+  document.querySelectorAll('#main-nav button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-sec')===id);});
+  document.querySelectorAll('.sidebar-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-sec')===id);});
   document.getElementById('search-results').classList.remove('show');
   document.getElementById('search').value='';
   window.scrollTo(0,0);
   // re-trigger reveal
   setTimeout(()=>{
-    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>el.classList.remove('visible'));
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){el.classList.remove('visible');});
     
   },80);
 }
@@ -3741,6 +4305,15 @@ function buildHeroCards(){
   }).join('');
 }
 
+
+
+function isToday(dateStr){
+  var now=new Date();
+  var y=String(now.getFullYear());
+  var m=String(now.getMonth()+1).padStart(2,'0');
+  var d=String(now.getDate()).padStart(2,'0');
+  return dateStr===y+'-'+m+'-'+d;
+}
 </script>
 
 <script>
@@ -3892,36 +4465,47 @@ document.addEventListener('DOMContentLoaded',function(){
 
 // ── CHANGELOG ──
 var CHANGELOG=[
+  {date:'22. Juli 2026',ts:'2026-07-22',items:[
+    {icon:'👑',text:'Meister: Guinevere (Königin des Heiligen Schwertes) & Wilson (Königlicher Herold) – Vollständige Analyse F2P/P2W',time:'17:00'},
+    {icon:'📊',text:'KvK-Verlauf Kingdom 331 aktualisiert – 13 KvKs, Bilanz, Tabelle mit allen Ergebnissen',time:'17:00'},
+    {icon:'🔨',text:'NEU: Forgehammer & Rot-Gear Guide – Komplette Tabelle +1 bis +20, Kosten, Red Gear Schritt-für-Schritt',time:'17:00'},
+    {icon:'🤝',text:'Allianz-Gemenge: Karawane statt LKW (DE: Karawane, EN: Caravan)',time:'16:00'},
+  ]},
+  {date:'21. Juli 2026',ts:'2026-07-21',items:[
+    {icon:'🤝',text:'NEU: Allianz-Gemenge Event – 8 Tabs, alle 6 Tage mit Punkten, Zeitplan & Tipps für R4/R5',time:'20:00'},
+    {icon:'🦁',text:'Tiere (Pets) Guide komplett neu: Freischalt-Reihenfolge Gen1–7, F2P vs P2W Strategie, Löwe #1 F2P',time:'19:00'},
+    {icon:'🎓',text:'Meister-Guide: alle 6 Meister (Pan/Valora/Roman/Cassia + Guinevere/Wilson), Upgrade-Reihenfolge',time:'18:00'},
+    {icon:'📰',text:'NEU: News & Updates Kapitel – eigener Tab in der Navigation',time:'17:00'},
+    {icon:'📰',text:'News als erstes Icon in der Schnellzugriffsleiste',time:'17:00'},
+    {icon:'📅',text:'KvK-Countdown auf der Startseite (Tage/Stunden/Minuten)',time:'16:00'},
+    {icon:'🏹',text:'NEU: Truppen-Rechner im Einsteiger-Guide (T8–T11, Speed%, Zeitraum)',time:'16:00'},
+    {icon:'🎓',text:'Meister-Akademie: Pan/Valora/Roman komplett überarbeitet mit Upgrade-Priorität',time:'15:00'},
+  ]},
+  {date:'20. Juli 2026',ts:'2026-07-20',items:[
+    {icon:'👑',text:'Allianz-Kraft aktualisiert: [CBA] jetzt Rang 2, alle 6 Allianzen mit neuen Kraftwerten',time:'18:00'},
+    {icon:'⚙️',text:'Formation & Strategie: Alle 5 Game-Modi (KvK/Garrison/Bärenfalle/Wikinger/Sammeln) mit Erklärung',time:'17:00'},
+    {icon:'🐻',text:'Bärenfalle: Formation Gen1-5, Joiner-Blacklist, Pitfall Guide komplett überarbeitet',time:'16:00'},
+    {icon:'🛡️',text:'Wikinger: Elite-Wellen 7/14/17, HQ-Wellen 10/20, Heilungsverbot & Gordon/Howard Warnung',time:'15:00'},
+    {icon:'🌙',text:'Light/White Mode: Vollständige CSS-Überarbeitung – alle Texte jetzt lesbar',time:'14:00'},
+  ]},
+  {date:'19. Juli 2026',ts:'2026-07-19',items:[
+    {icon:'⚙️',text:'Formationsrechner in Bärenfalle verschoben – neuer Tab 🧮',time:'22:00'},
+    {icon:'🔍',text:'Suchfunktion repariert: Arrow-Functions entfernt, News/Pets/Formation in Suche hinzugefügt',time:'21:00'},
+    {icon:'🛡️',text:'Wikinger Formation korrigiert: 50%/50%/0% – Archers NIEMALS schicken (0 Punkte!)',time:'20:00'},
+    {icon:'🆕',text:'Juli 2026 Update v1.11.25: Hero Roulette 2 Gen zurück, Schwertland 30-Min Bonus eingebaut',time:'19:00'},
+  ]},
   {date:'12. Juli 2026',ts:'2026-07-12',items:[
-    {icon:'⚡',text:'Cesaren Zorn (Cesares Fury) komplett neu eingebaut – Schwierigkeiten, Kapitäne (R4/R5), Belohnungen & Tipps',time:'02:00'},
-    {icon:'🌍',text:'Welten der Ewigkeit – 1-Minuten-Trick & korrekter Skill-Pfad (R-R-L-L-R) eingebaut',time:'01:00'},
+    {icon:'⚡',text:'Cesaren Zorn komplett neu eingebaut – Schwierigkeiten, Kapitäne (R4/R5), Belohnungen & Tipps',time:'02:00'},
+    {icon:'🌍',text:'Welten der Ewigkeit – 1-Minuten-Trick & korrekter Skill-Pfad eingebaut',time:'01:00'},
   ]},
   {date:'11. Juli 2026',ts:'2026-07-11',items:[
-    {icon:'📖',text:'Einsteiger-Guide NEU: Erste 30 Tage, Diamanten, Truppen, Routine, Hero Roulette, Rotes Gear, Power-Rechner',time:'01:30'},
-    {icon:'🏰',text:'KvK – Schloss-Kampf (Castle Battle) mit Rally-Timing, Turrets & Shell-Strategie',time:'01:30'},
-    {icon:'🏟️',text:'Arena & Conquest Guide komplett neu eingebaut (Front/Back, F2P/P2W Teams)',time:'00:30'},
+    {icon:'📖',text:'Einsteiger-Guide NEU: Erste 30 Tage, Diamanten, Truppen, Routine, Hero Roulette, Rotes Gear',time:'01:30'},
+    {icon:'🏰',text:'KvK – Schloss-Kampf mit Rally-Timing, Turrets & Shell-Strategie',time:'01:30'},
+    {icon:'🏟️',text:'Arena & Conquest Guide komplett neu (Front/Back, F2P/P2W Teams)',time:'00:30'},
     {icon:'🛡️',text:'Wikinger Event komplett überarbeitet (4 Tabs, Wellen, Helden, Tipps)',time:'00:30'},
-    {icon:'📖',text:'Glossar mit 13 wichtigen Begriffen eingebaut (Tipps-Sektion)',time:'00:30'},
-    {icon:'🃏',text:'Helden-Tabelle: Neuer Karten-Modus für bessere Handy-Ansicht',time:'00:30'},
-    {icon:'⚔️',text:'KvK – F2P & P2W Aufstellungen für Angriff & Verteidigung hinzugefügt',time:'23:55'},
-    {icon:'⚔️',text:'KvK – Angriffs- & Verteidigungs-Strategie mit Rallys, Helden & Formationen',time:'23:45'},
-    {icon:'🏛️',text:'Kolosseum – Heldentypen, Formationen & Beispiel-Helden',time:'23:30'},
-    {icon:'🏛️',text:'Mystische Prüfung – Held-Platzierung pro Dungeon (Team 1/2/3)',time:'22:00'},
-    {icon:'🐻',text:'Bear Hunt Gen 1–4 vollständig ausgebaut',time:'21:30'},
-    {icon:'🌍',text:"Welten der Ewigkeit (Eternity's Reach) komplett neu",time:'20:00'},
-    {icon:'⚔️',text:'Schwertland – Map, Gebäude & Phasen ausgebaut',time:'18:00'},
-    {icon:'🏟️',text:'TAC – komplett neues Kapitel',time:'18:00'},
-    {icon:'📊',text:'KvK – Kingdom #331 Statistiken von ks-atlas.com',time:'15:00'},
-    {icon:'👑',text:'Kingdom #331 NAP6 Rangliste als eigenes Kapitel',time:'14:00'},
+    {icon:'🐻',text:'Bear Hunt Gen 1–4 vollständig überarbeitet – Formation, Joiner, Leader, Pitfall',time:'23:55'},
   ]},
 ];
-
-function isToday(dateStr){
-  var now=new Date();
-  var y=now.getFullYear(),m=String(now.getMonth()+1).padStart(2,'0'),d=String(now.getDate()).padStart(2,'0');
-  return dateStr===y+'-'+m+'-'+d;
-}
-
 function buildChangelog(){
   var D=(LANG==='de');
   document.getElementById('cl-title').textContent=D?'Was ist neu? 🆕':"What's new? 🆕";
@@ -4111,7 +4695,7 @@ function buildBearStart(){
   var D=(LANG==='de');
   var el=document.getElementById('bear-start-container');
   if(!el)return;
-  var times=[['[ZOO]','20:00 | 23:00 UTC'],['[40K]','01:00 | 17:00 UTC'],['[CBA]','20:15 | 01:00 UTC'],['[ANU]','20:30 | 01:30 UTC'],['[WBA]','00:30 | 19:30 UTC'],['[200]','12:00 | 19:00 UTC']];
+  var times=[['[ZOO]','20:00 | 23:00 UTC'],['[40K]','01:00 | 17:00 UTC'],['[CBA]','20:15 | 01:00 UTC'],['[ANU]','20:30 | 01:30 UTC'],['[WBA]','00:30 | 19:30 UTC'],['[200]','17:00 | 18:00 UTC']];
   el.innerHTML='<div class="bear-start">'
     +'<div style="font-family:Cinzel,serif;font-size:12px;color:var(--gold);margin-bottom:8px">🐻 '+(D?'Bärenfallen-Zeiten':'Bear Hunt Times')+'</div>'
     +times.map(function(t){return '<div class="bear-row"><span class="bear-ally">'+t[0]+'</span><span class="bear-t">'+t[1]+'</span></div>';}).join('')
@@ -4168,7 +4752,6 @@ function doPWAInstall(){
 
 
 <!-- CHANGELOG -->
-<button id="print-btn" onclick="window.print()" title="Drucken / Print">🖨️</button>
 <button id="changelog-btn" onclick="toggleChangelog()" title="Was ist neu?">📋</button>
 <div id="changelog-panel">
   <div class="changelog-title">📋 <span id="cl-title">Was ist neu?</span></div>

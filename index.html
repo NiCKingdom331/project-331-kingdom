@@ -344,8 +344,9 @@ td:first-child{font-weight:600;color:var(--parch);}
 .accord-inner{padding:0 18px 18px;}
 
 /* ── TABS ── */
-.tab-nav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px;border-bottom:1px solid rgba(58,52,42,0.6);padding-bottom:14px;}
-.tab-btn{background:transparent;border:1px solid var(--stone-5);color:var(--text-muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;transition:all 0.2s;white-space:nowrap;}
+.tab-nav{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;margin-bottom:18px;border-bottom:1px solid rgba(58,52,42,0.6);padding-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{background:transparent;border:1px solid var(--stone-5);color:var(--text-muted);padding:6px 14px;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;transition:all 0.2s;white-space:nowrap;;flex-shrink:0;}
 .tab-btn:hover{color:var(--gold);border-color:rgba(201,168,76,0.35);}
 .tab-btn.active{color:var(--gold);border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.07);box-shadow:0 2px 12px rgba(201,168,76,0.1);}
 .tab-content{display:none;animation:fadeIn 0.3s ease;}.tab-content.active{display:block;}
@@ -2196,7 +2197,7 @@ function showEvt(id){
     var t2=D?'🛡️ Verteidigung':'🛡️ Defense';
     var t3=D?'⛏️ Beim Sammeln':'⛏️ Gathering';
     var t4='🏥 Field Triage';
-    var tabLabels=D?['📋 Übersicht','📦 Vorbereitung']:['📋 Overview','📦 Preparation'];
+    var tabLabels=D?['📋 Übersicht','📦 Vorbereitung','⚔️ Angriff & Verteidigung','🗓️ Koordination','👑 König-Fähigkeiten']:['📋 Overview','📦 Preparation','⚔️ Attack & Defense','🗓️ Coordination','👑 King Skills'];
     var tabs=tabLabels.map(function(l,i){return '<button class="tab-btn'+(i===0?' active':'')+'" onclick="showKvkTab('+i+')">'+l+'</button>';}).join('');
 
     var statsHtml=(function(){
@@ -2463,7 +2464,7 @@ function showEvt(id){
       +'</p></div>'
       +'<div class="card"><div class="card-title">'+(D?'❌ Häufige Fehler':'❌ Common Mistakes')+'</div><p style="font-size:12px">'
         +(D?'• Buffs NACH dem Ausgeben aktivieren → verlorene Punkte!<br>• An Tag 1 alles ausgeben → nichts für Tag 4+5!<br>• Adv. Taming Marks für unwichtige Events nutzen<br>• Tag 4 aufgeben weil kein Mithril vorhanden<br>• Watchtower Intel Missionen verpassen<br>• Prep als Solo-Event behandeln – KvK ist TEAMARBEIT!':'• Activate buffs AFTER spending → lost points!<br>• Spend everything on Day 1 → nothing for Day 4+5!<br>• Use Adv. Taming Marks on unimportant events<br>• Give up on Day 4 because you have no Mithril<br>• Miss Watchtower Intel Mission timing<br>• Treat prep as solo event – KvK is TEAMWORK!')
-      +'</p></div></div>'
+      +'</p></div>'
       +'<div class="alert alert-warn">⚠️ '+(D?'Niemals kurz vor KvK große Forschungen oder Gebäude-Upgrades starten!':'NEVER start big research or building upgrades right before KvK!')+'</div>';
 
     
@@ -2755,7 +2756,7 @@ var prep=spendTable
       +'<div class="alert" style="border:1px solid rgba(74,138,186,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">'
       +'💡 '+(D?'<b>Chat-Ankündigung Template für den König:</b><br>📢 "Tag 1 Bautag: Groundworks Fähigkeit aktiv! Kanzler-Amt verfügbar – wer baut heute am meisten, jetzt bewerben!"<br>📢 "Tag 4 Ausrüstung: Mobilize Fähigkeit aktiv! Noble Advisor verfügbar – Training-Tempo läuft!"':'<b>Chat announcement template for the King:</b><br>📢 "Day 1 Build: Groundworks active! Chancellor available – who builds most today, apply now!"<br>📢 "Day 4 Gear: Mobilize active! Noble Advisor available – Training speed is running!"')
       +'</div>';
-    var contents=[overview,prep,koordination,koenigSkills];
+    var contents=[overview,prep,attackStrategy+defenseStrategy+castleBattle,koordination,koenigSkills];
     
     var tabDivs=contents.map(function(c,i){return '<div class="tab-content'+(i===0?' active':'')+'" id="kvktab-'+i+'">'+c+'</div>';}).join('');
     return '<div class="tab-nav" id="kvk-tabs">'+tabs+'</div><div id="kvk-tab-content">'+tabDivs+'</div>';
@@ -3545,6 +3546,15 @@ var prep=spendTable
     </div>`,
   };
   document.getElementById('evt-content').innerHTML=content[id]||'';
+  if(id==='kvk')showKvkTab(0);
+  if(id==='bear')showBearTab(0);
+  if(id==='brawl')showBrawlTab(0);
+  if(id==='sword')showSwordTab(0);
+  if(id==='tac')showTacTab(0);
+  if(id==='killevent')showKeTab(0);
+  if(id==='eternity')showEtTab(0);
+  if(id==='cesaren')showCzTab(0);
+  if(id==='viking')showVikTab(0);
   document.querySelectorAll('#evt-tabs .tab-btn').forEach(b=>b.classList.toggle('active',(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+id+"'"))));
 }
 function buildGear(){
